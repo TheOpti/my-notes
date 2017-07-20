@@ -1,16 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+import { MaterialModule } from '@angular/material';
+
+import { AppComponent } from './app';
+import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu';
+import { NavbarComponent } from './navbar/navbar';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SidenavMenuComponent,
+    NavbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+
+
+}

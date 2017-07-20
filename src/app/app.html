@@ -1,0 +1,19 @@
+<div class="app">
+  <navbar
+   class="app__navbar"
+   [sidenav]="sidenav"
+  ></navbar>
+
+  <md-sidenav-container class="app__sidenav-container">
+    <md-sidenav #sidenav mode="side" class="app__sidenav" [opened]="true">
+      <sidenav-menu></sidenav-menu>
+    </md-sidenav>
+
+    <div class="app__content">
+      <div>
+        Main content
+      </div>
+    </div>
+  </md-sidenav-container>
+</div>
+
