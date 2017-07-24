@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { MaterialModule } from '@angular/material';
+import { MdSidenavModule, MdToolbarModule, MdIconModule } from '@angular/material';
 
 import { AppComponent } from './app';
 import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu';
@@ -15,7 +15,9 @@ import { NavbarComponent } from './navbar/navbar';
   ],
   imports: [
     BrowserModule,
-    MaterialModule
+    MdSidenavModule,
+    MdToolbarModule,
+    MdIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
