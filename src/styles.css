@@ -11,3 +11,8 @@ html, body {
   box-sizing: border-box;
   font-family: Roboto;
 }
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
