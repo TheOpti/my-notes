@@ -1,5 +1,25 @@
 .navbar {
 
+  &__toggle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+
+    &:hover {
+      background-color: #233596;
+    }
+  }
+
+  &__app-title {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
   .example-spacer {
     flex: 1 1 auto;
   }
