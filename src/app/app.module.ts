@@ -15,6 +15,7 @@ import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu';
 import { NavbarComponent } from './navbar/navbar';
 import { NotesComponent } from './notes/notes';
 import { RemindersComponent } from './reminders/reminders';
+import { AddNoteComponent } from './add-note/add-note';
 
 const appRoutes: Routes = [
   {
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     SidenavMenuComponent,
     NavbarComponent,
     NotesComponent,
-    RemindersComponent
+    RemindersComponent,
+    AddNoteComponent
   ],
   imports: [
     RouterModule.forRoot( appRoutes, { enableTracing: true } ),

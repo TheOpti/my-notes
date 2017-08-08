@@ -4,10 +4,6 @@
   width: 100%;
   height: 100%;
 
-  &__navbar {
-
-  }
-
   &__sidenav-container {
     flex: 1;
   }
@@ -22,5 +18,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+
+  &__router-wrapper {
+    margin-top: 16px;
+    flex: 1;
   }
 }
