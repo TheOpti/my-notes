@@ -1,4 +1,34 @@
 <div class="add-note">
-  <span class="add-note__placeholder">Create new note...</span>
+  <div
+    *ngIf="!isAddingNewNote"
+    class="add-note__placeholder"
+  >
+    Create new note...
+  </div>
 
+  <div
+    *ngIf="isAddingNewNote"
+    class="add-note__form-wrapper"
+  >
+    <input
+      [(ngModel)]="title"
+      class="add-note__form-field add-note__title"
+      placeholder="Title"
+    />
+    <textarea
+      #textbox
+      placeholder="Create new note..."
+      class="add-note__form-field add-note__note"
+      [(ngModel)]="post"
+      (keyup)="adjustTextarea($event)"
+    ></textarea>
+    <div class="add-note__buttons">
+      <button
+        (click)="addNewNote()"
+        md-raised-button
+      >
+        Add
+      </button>
+    </div>
+  </div>
 </div>
