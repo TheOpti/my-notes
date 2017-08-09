@@ -10,7 +10,6 @@ import { NotesService } from '../services/notes.service';
 @Component({
   selector: 'add-note',
   templateUrl: 'add-note.html',
-  providers: [NotesService],
   styleUrls: ['add-note.scss']
 })
 export class AddNoteComponent {
@@ -54,9 +53,6 @@ export class AddNoteComponent {
   }
 
   addNewNote() {
-    this.clearInputs();
-    this.disableEditing();
-
     const note = {
       date: new Date(),
       title: this.title,
@@ -64,5 +60,8 @@ export class AddNoteComponent {
     };
 
     this.notesService.addNote(note);
+
+    this.clearInputs();
+    this.disableEditing();
   }
 }

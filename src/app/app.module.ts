@@ -17,6 +17,8 @@ import { NotesComponent } from './notes/notes';
 import { RemindersComponent } from './reminders/reminders';
 import { AddNoteComponent } from './add-note/add-note';
 
+import { NotesService } from './services/notes.service';
+
 const appRoutes: Routes = [
   {
     path: 'notes',
@@ -51,7 +53,7 @@ const appRoutes: Routes = [
     MdButtonModule,
     FormsModule
   ],
-  providers: [],
+  providers: [NotesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

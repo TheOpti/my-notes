@@ -1,3 +1,8 @@
-<div>
+<div class="notes">
   Notes component
+
+  <div *ngFor="let note of notes">
+    <div>{{note.title}}</div>
+    <div>{{note.post}}</div>
+  </div>
 </div>
