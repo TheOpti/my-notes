@@ -1,8 +1,25 @@
 <div class="notes">
-  Notes component
-
-  <div *ngFor="let note of notes">
-    <div>{{note.title}}</div>
-    <div>{{note.post}}</div>
+  <div *ngIf="notes.length" class="notes__note-list-wrapper">
+    <div
+      *ngFor="let note of notes"
+      class="notes__note"
+    >
+      <div class="notes__note-title">
+        {{note.title}}
+      </div>
+      <div class="notes__note-post">
+        {{note.post}}
+      </div>
+    </div>
   </div>
+
+  <div *ngIf="!notes.length" class="notes__placeholder">
+    <md-icon class="example-icon notes__placeholder-icon">
+      lightbulb_outline
+    </md-icon>
+    <div class="notes__placeholder-text">
+      Your notes will be show here
+    </div>
+  </div>
+
 </div>

@@ -16,12 +16,12 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
   }
 
   &__router-wrapper {
     margin-top: 16px;
-    flex: 1;
+    width: 100%;
   }
 }

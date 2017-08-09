@@ -34,7 +34,7 @@ export class NotesService {
       notes = [];
     }
 
-    return notes;
+    return notes ? notes : [];
   }
 
   deleteNote(noteId) {

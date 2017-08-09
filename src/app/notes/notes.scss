@@ -1,3 +1,65 @@
 .notes {
+  height: 100%;
 
+  &__note-list-wrapper {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__note {
+    display: inline-block;
+    margin: 16px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
+    background-color: white;
+    width: 250px;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 2px 15px rgba(0,0,0,0.30);
+    }
+  }
+
+  &__note-title {
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 34px;
+    padding: 15px 15px 0 15px;
+  }
+
+  &__note-post {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 36px;
+    padding: 22px 15px 15px 15px;
+    word-break: break-all;
+  }
+
+  &__placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    user-select: none;
+    cursor: default;
+    color: #a09f9f;
+    padding-top: 100px;
+  }
+
+  &__placeholder-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    font-size: 100px;
+    height: 100px;
+    width: 100px;
+  }
+
+  &__placeholder-text {
+    font-size: 26px;
+  }
 }
