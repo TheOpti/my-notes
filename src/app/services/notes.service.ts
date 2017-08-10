@@ -38,7 +38,11 @@ export class NotesService {
   }
 
   deleteNote(noteId) {
-    //TODO delete by ID from local storage
+    let notes = this.getAllNotes();
+    let filteredNotes = notes.filter(note => note.id !== noteId);
+
+    localStorage.setItem('notes', filteredNotes);
+    this.sendMessage(filteredNotes);
   }
 
   sendMessage(allNotes) {

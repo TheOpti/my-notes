@@ -5,6 +5,8 @@ import {
   HostListener
 } from '@angular/core';
 
+import v1 from 'uuid/v1';
+
 import { NotesService } from '../services/notes.service';
 
 @Component({
@@ -54,9 +56,10 @@ export class AddNoteComponent {
 
   addNewNote() {
     const note = {
+      id: v1(),
       date: new Date(),
       title: this.title,
-      post: this.post
+      post: this.post.replace(/\n\r?/g, '<br />')
     };
 
     this.notesService.addNote(note);

@@ -20,6 +20,10 @@
     &:hover {
       cursor: pointer;
       box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 2px 15px rgba(0,0,0,0.30);
+
+      .notes__icons {
+        opacity: 1;
+      }
     }
   }
 
@@ -61,5 +65,14 @@
 
   &__placeholder-text {
     font-size: 26px;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: flex-end;
+    color: #a09f9f;
+    padding: 10px 12px 12px 12px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
   }
 }
