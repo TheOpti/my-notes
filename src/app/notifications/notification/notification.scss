@@ -1,0 +1,23 @@
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #323232;
+  height: 50px;
+  width: 400px;
+  color: white;
+  padding: 0 10px;
+  margin: 6px 25px 6px 0;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+
+  &__title {
+    margin-left: 10px;
+  }
+
+  &__icon {
+    cursor: pointer;
+    margin-right: 6px;
+  }
+
+}

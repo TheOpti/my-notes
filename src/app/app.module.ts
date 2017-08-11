@@ -18,6 +18,8 @@ import { NavbarComponent } from './navbar/navbar';
 import { NotesComponent } from './notes/notes';
 import { RemindersComponent } from './reminders/reminders';
 import { AddNoteComponent } from './add-note/add-note';
+import { NotificationsComponent } from './notifications/notifications';
+import { NotificationComponent } from './notifications/notification/notification';
 
 import { NotesService } from './services/notes.service';
 
@@ -44,7 +46,9 @@ const appRoutes: Routes = [
     NavbarComponent,
     NotesComponent,
     RemindersComponent,
-    AddNoteComponent
+    AddNoteComponent,
+    NotificationsComponent,
+    NotificationComponent
   ],
   imports: [
     RouterModule.forRoot( appRoutes, { enableTracing: true } ),

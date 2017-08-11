@@ -24,4 +24,11 @@
     margin-top: 16px;
     width: 100%;
   }
+
+  &__notifications {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 25px;
+  }
 }
