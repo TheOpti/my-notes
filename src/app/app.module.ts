@@ -18,6 +18,8 @@ import { NavbarComponent } from './navbar/navbar';
 import { PlaceholderComponent } from './views/placeholder/placeholder';
 import { NotesComponent } from './views/notes/notes';
 import { RemindersComponent } from './views/reminders/reminders';
+import { ArchiveComponent } from './views/archive/archive';
+import { TrashComponent } from './views/trash/trash';
 import { AddNoteComponent } from './add-note/add-note';
 import { NotificationsComponent } from './notifications/notifications';
 import { NotificationComponent } from './notifications/notification/notification';
@@ -34,6 +36,14 @@ const appRoutes: Routes = [
     component: RemindersComponent
   },
   {
+    path: 'archive',
+    component: ArchiveComponent
+  },
+  {
+    path: 'trash',
+    component: TrashComponent
+  },
+  {
     path: '',
     redirectTo: '/notes',
     pathMatch: 'full'
@@ -48,6 +58,8 @@ const appRoutes: Routes = [
     PlaceholderComponent,
     NotesComponent,
     RemindersComponent,
+    ArchiveComponent,
+    TrashComponent,
     AddNoteComponent,
     NotificationsComponent,
     NotificationComponent

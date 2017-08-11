@@ -8,6 +8,14 @@ const placeholdersMap = {
   'reminders': {
     icon: 'lightbulb_outline',
     text: 'Reminders will be shown here'
+  },
+  'trash': {
+    icon: 'delete',
+    text: 'Your deleted notes will be stored here'
+  },
+  'archive': {
+    icon: 'archive',
+    text: 'Here you will see outdated events and archived notes'
   }
 };
 
