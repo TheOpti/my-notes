@@ -5,4 +5,13 @@ import { Component } from '@angular/core';
   templateUrl: 'reminders.html',
   styleUrls: ['reminders.scss']
 })
-export class RemindersComponent {}
+export class RemindersComponent {
+
+  private reminders : any;
+
+
+  constructor() {
+    this.reminders = []
+  }
+
+}
