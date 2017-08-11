@@ -1,8 +1,10 @@
 <div class="notification">
   <div class="notification__title">
-    You added a new note
+    {{notificationTypeMessage}}
   </div>
-  <md-icon class="notification__icon" mdTooltip="Close">
+  <md-icon class="notification__icon" mdTooltip="Close" (click)="closeNotification(id)">
     close
   </md-icon>
+
+  <div class="notification__progress-bar"></div>
 </div>

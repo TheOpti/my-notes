@@ -1,8 +1,9 @@
 <div class="notifications">
-
-  <notification></notification>
-
-  <notification></notification>
-
+  <notification
+    *ngFor="let notification of notifications; let i = index"
+    (delete)="deleteNotification(notification.id)"
+    [type]="notification.type"
+    [id]="notification.id"
+  ></notification>
 </div>
 
