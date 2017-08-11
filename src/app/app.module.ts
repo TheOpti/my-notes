@@ -15,8 +15,9 @@ import {
 import { AppComponent } from './app';
 import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu';
 import { NavbarComponent } from './navbar/navbar';
-import { NotesComponent } from './notes/notes';
-import { RemindersComponent } from './reminders/reminders';
+import { PlaceholderComponent } from './views/placeholder/placeholder';
+import { NotesComponent } from './views/notes/notes';
+import { RemindersComponent } from './views/reminders/reminders';
 import { AddNoteComponent } from './add-note/add-note';
 import { NotificationsComponent } from './notifications/notifications';
 import { NotificationComponent } from './notifications/notification/notification';
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     AppComponent,
     SidenavMenuComponent,
     NavbarComponent,
+    PlaceholderComponent,
     NotesComponent,
     RemindersComponent,
     AddNoteComponent,

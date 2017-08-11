@@ -18,13 +18,9 @@
     </div>
   </div>
 
-  <div *ngIf="!notes.length" class="notes__placeholder">
-    <md-icon class="notes__placeholder-icon">
-      notes
-    </md-icon>
-    <div class="notes__placeholder-text">
-      Your notes will be shown here
-    </div>
-  </div>
+  <placeholder
+    *ngIf="!notes.length"
+    [placeholderType]="'notes'"
+  ></placeholder>
 
 </div>

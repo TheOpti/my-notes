@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { NotesService } from '../services/notes.service';
+import { NotesService } from '../../services/notes.service';
 
 @Component({
   selector: 'notes',

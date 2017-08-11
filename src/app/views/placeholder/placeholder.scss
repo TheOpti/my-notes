@@ -1,0 +1,21 @@
+.placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  user-select: none;
+  cursor: default;
+  color: #a09f9f;
+  padding-top: 100px;
+
+  &__icon {
+    margin: 10px;
+    font-size: 100px;
+    height: 100px;
+    width: 100px;
+  }
+
+  &__text {
+    font-size: 26px;
+  }
+}
