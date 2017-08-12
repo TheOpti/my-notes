@@ -12,9 +12,9 @@
   <div class="sidenav-menu__section">
     <div class="sidenav-menu__add-tag-row">
       <div>Tags</div>
-      <button md-raised-button>Edit</button>
+      <button md-raised-button (click)="openTagsDialog()">Edit</button>
     </div>
-    <div class="sidenav-menu__entry">
+    <div class="sidenav-menu__entry" (click)="openTagsDialog()">
       <md-icon>add</md-icon>
       <span class="sidenav-menu__entry-title">Add tag</span>
     </div>

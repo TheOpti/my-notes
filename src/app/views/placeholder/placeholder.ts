@@ -34,7 +34,6 @@ export class PlaceholderComponent {
   }
 
   ngOnInit() {
-    console.log('this.placeholderType', this.placeholderType);
     this.placeholder = placeholdersMap[this.placeholderType];
   }
 

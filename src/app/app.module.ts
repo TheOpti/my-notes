@@ -9,11 +9,13 @@ import {
   MdToolbarModule,
   MdIconModule,
   MdButtonModule,
-  MdTooltipModule
+  MdTooltipModule,
+  MdDialogModule
 } from '@angular/material';
 
 import { AppComponent } from './app';
 import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu';
+import { TagsDialogComponent } from './sidenav-menu/tags-dialog/tags-dialog';
 import { NavbarComponent } from './navbar/navbar';
 import { PlaceholderComponent } from './views/placeholder/placeholder';
 import { NotesComponent } from './views/notes/notes';
@@ -54,6 +56,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SidenavMenuComponent,
+    TagsDialogComponent,
     NavbarComponent,
     PlaceholderComponent,
     NotesComponent,
@@ -64,6 +67,7 @@ const appRoutes: Routes = [
     NotificationsComponent,
     NotificationComponent
   ],
+  entryComponents: [TagsDialogComponent],
   imports: [
     RouterModule.forRoot( appRoutes, { enableTracing: true } ),
     BrowserModule,
@@ -73,7 +77,8 @@ const appRoutes: Routes = [
     MdToolbarModule,
     MdIconModule,
     MdButtonModule,
-    MdTooltipModule
+    MdTooltipModule,
+    MdDialogModule
   ],
   providers: [NotesService],
   bootstrap: [AppComponent]

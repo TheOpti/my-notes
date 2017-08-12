@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MdDialog, MdDialogRef } from '@angular/material';
+
+import { TagsDialogComponent } from './tags-dialog/tags-dialog';
 
 @Component({
   selector: 'sidenav-menu',
@@ -6,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: ['sidenav-menu.scss']
 })
 export class SidenavMenuComponent {
+
+  constructor(public dialog: MdDialog) {}
+
+  openTagsDialog() {
+    console.log('openTagsDialog');
+
+    this.dialog.open(TagsDialogComponent);
+  }
 
 }
