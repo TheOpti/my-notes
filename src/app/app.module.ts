@@ -29,6 +29,8 @@ import { NotificationComponent } from './notifications/notification/notification
 
 import { NotesService } from './services/notes.service';
 
+import {FocusDirective} from './directives/focus.directive';
+
 const appRoutes: Routes = [
   {
     path: 'notes',
@@ -67,7 +69,8 @@ const appRoutes: Routes = [
     TrashComponent,
     AddNoteComponent,
     NotificationsComponent,
-    NotificationComponent
+    NotificationComponent,
+    FocusDirective
   ],
   entryComponents: [TagsDialogComponent],
   imports: [
