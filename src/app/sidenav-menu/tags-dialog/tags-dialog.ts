@@ -47,8 +47,22 @@ export class TagsDialogComponent {
     this.currentEditingTag = null;
   }
 
+  createNewTag(tag) {
+    console.log('createNewTag: ', tag);
+    this.disableAddingNew()
+  }
+
+  editTag(tag, tagId) {
+    console.log('editTag', tag, tagId);
+    this.disableEditingTagById();
+  }
+
   deleteTag(tagId) {
     console.log('delete tag');
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 
 }

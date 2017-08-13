@@ -9,11 +9,11 @@
     <div class="tag-row__tag-title" (click)="enableEditing()">
       {{label}}
     </div>
-    <md-icon *ngIf="type === 'edit'" mdTooltip="Change tag">mode_edit</md-icon>
+    <md-icon *ngIf="type === 'edit'" mdTooltip="Change tag" (click)="enableEditing()">mode_edit</md-icon>
   </div>
 
   <div class="tag-row__row" *ngIf="condition">
-    <md-icon class="tag-row__icon" [mdTooltip]="editedTagTooltip" (click)="handleInputIconClick()">
+    <md-icon class="tag-row__icon" [mdTooltip]="editedTagTooltip" (click)="inputIconClick()">
       {{editedTagIcon}}
     </md-icon>
     <input
@@ -22,7 +22,7 @@
       [(ngModel)]="tag"
       [focus]="true"
     />
-    <md-icon mdTooltip="Accept">
+    <md-icon mdTooltip="Accept" (click)="acceptClick()">
       check
     </md-icon>
   </div>

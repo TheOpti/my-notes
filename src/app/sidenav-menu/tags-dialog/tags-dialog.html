@@ -11,6 +11,7 @@
       [condition]="isAddingNew"
       (onEnableEditingClick)="enableAddingNew()"
       (onInputIconClick)="disableAddingNew()"
+      (onAcceptClick)="createNewTag($event)"
     ></tag-row>
 
     <tag-row
@@ -23,10 +24,11 @@
       [condition]="currentEditingTag === tag.id"
       (onEnableEditingClick)="enableEditingTagById(tag.id)"
       (onInputIconClick)="deleteTag(tag.id)"
+      (onAcceptClick)="editTag($event, tag.id)"
     ></tag-row>
 
   </div>
-  <div class="tags-dialog__footer">
+  <div class="tags-dialog__footer" (click)="closeDialog()">
     <button md-raised-button>Ready</button>
   </div>
 </div>

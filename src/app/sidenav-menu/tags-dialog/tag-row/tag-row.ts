@@ -15,6 +15,7 @@ export class TagRowComponent {
 
   @Output() onEnableEditingClick = new EventEmitter<any>();
   @Output() onInputIconClick = new EventEmitter<any>();
+  @Output() onAcceptClick = new EventEmitter<any>();
 
   private label: string;
   private editedTagIcon: string;
@@ -30,9 +31,12 @@ export class TagRowComponent {
     this.onEnableEditingClick.emit();
   }
 
-  handleInputIconClick() {
-    console.log('handleInputIconClick');
+  inputIconClick() {
     this.onInputIconClick.emit();
+  }
+
+  acceptClick() {
+    this.onAcceptClick.emit(this.tag);
   }
 
 }
