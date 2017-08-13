@@ -16,6 +16,7 @@ import {
 import { AppComponent } from './app';
 import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu';
 import { TagsDialogComponent } from './sidenav-menu/tags-dialog/tags-dialog';
+import { TagRowComponent } from './sidenav-menu/tags-dialog/tag-row/tag-row';
 import { NavbarComponent } from './navbar/navbar';
 import { PlaceholderComponent } from './views/placeholder/placeholder';
 import { NotesComponent } from './views/notes/notes';
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
     AppComponent,
     SidenavMenuComponent,
     TagsDialogComponent,
+    TagRowComponent,
     NavbarComponent,
     PlaceholderComponent,
     NotesComponent,

@@ -3,53 +3,28 @@
     Edit tags
   </div>
   <div class="tags-dialog__tags-wrapper">
-    <div class="tags-dialog__row" *ngIf="!isAddingNew" (click)="enableAddingNew()">
-      <md-icon class="tags-dialog__icon" mdTooltip="Create new tag">
-        add
-      </md-icon>
-      <div class="tags-dialog__placeholder">Create new tag</div>
-    </div>
-    <div class="tags-dialog__row" *ngIf="isAddingNew">
-      <md-icon class="tags-dialog__icon" (click)="disableAddingNew()" mdTooltip="Cancel">
-        close
-      </md-icon>
-      <input
-        class="tags-dialog__placeholder tags-dialog__input"
-        placeholder="Create new tag"
-        autofocus
-      />
-      <md-icon (click)="disableAddingNew()" mdTooltip="Add new tag">
-        check
-      </md-icon>
-    </div>
-    <div
+
+    <tag-row
+      class="tags-dialog__row-wrapper"
+      [type]="'add'"
+      [placeholder]="'Create new tag'"
+      [condition]="isAddingNew"
+      (onEnableEditingClick)="enableAddingNew()"
+      (onInputIconClick)="disableAddingNew()"
+    ></tag-row>
+
+    <tag-row
+      class="tags-dialog__row-wrapper"
       *ngFor="let tag of tags"
-      class="tags-dialog__row"
-    >
+      [placeholder]="'Enter name of tag'"
+      [type]="'edit'"
+      [tag]="tag.name"
+      [id]="tag.id"
+      [condition]="currentEditingTag === tag.id"
+      (onEnableEditingClick)="enableEditingTagById(tag.id)"
+      (onInputIconClick)="deleteTag(tag.id)"
+    ></tag-row>
 
-      <div class="tags-dialog__tag-wrapper" *ngIf="currentEditingTag !== tag.id">
-        <md-icon class="tags-dialog__icon tags-dialog__row-label-icon">label</md-icon>
-        <md-icon class="tags-dialog__icon tags-dialog__row-delete-icon">delete</md-icon>
-        <div class="tags-dialog__tag-title" (click)="enableEditingTagById(tag.id)">
-          {{tag.name}}
-        </div>
-        <md-icon mdTooltip="Change tag" (click)="enableEditingTagById(tag.id)">mode_edit</md-icon>
-      </div>
-
-      <div class="tags-dialog__edited-tag-wrapper" *ngIf="currentEditingTag === tag.id">
-        <md-icon class="tags-dialog__icon">delete</md-icon>
-        <input
-          class="tags-dialog__placeholder tags-dialog__input"
-          placeholder="Create new tag"
-          [(ngModel)]="tag.name"
-          autofocus
-        />
-        <md-icon mdTooltip="Accept" (click)="disableEditingTagById()">
-          check
-        </md-icon>
-      </div>
-
-    </div>
   </div>
   <div class="tags-dialog__footer">
     <button md-raised-button>Ready</button>

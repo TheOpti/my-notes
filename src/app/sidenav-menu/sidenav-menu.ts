@@ -13,8 +13,6 @@ export class SidenavMenuComponent {
   constructor(public dialog: MdDialog) {}
 
   openTagsDialog() {
-    console.log('openTagsDialog');
-
     this.dialog.open(TagsDialogComponent);
   }
 

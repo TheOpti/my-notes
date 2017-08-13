@@ -47,4 +47,8 @@ export class TagsDialogComponent {
     this.currentEditingTag = null;
   }
 
+  deleteTag(tagId) {
+    console.log('delete tag');
+  }
+
 }
