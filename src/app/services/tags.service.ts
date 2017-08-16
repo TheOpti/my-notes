@@ -27,7 +27,7 @@ export class TagsService {
 
   deleteTag(tagId) {
     let tags = this.getAllTags();
-    let filteredTags = tags.filter(tag => tag.id !== tagId);
+    let filteredTags = JSON.stringify(tags.filter(tag => tag.id !== tagId));
 
     localStorage.setItem('tags', filteredTags);
     this.sendMessage(filteredTags);
@@ -43,6 +43,21 @@ export class TagsService {
     }
 
     return tags ? tags : [];
+  }
+
+  updateTag(tagName, tagId) {
+    let tags = this.getAllTags();
+
+    tags.forEach((tag) => {
+      if (tag.id === tagId) {
+        tag.name = tagName;
+      }
+    });
+
+    const stringifiedTags = JSON.stringify(tags);
+
+    localStorage.setItem('tags', stringifiedTags);
+    this.sendMessage(stringifiedTags);
   }
 
   sendMessage(allTags) {

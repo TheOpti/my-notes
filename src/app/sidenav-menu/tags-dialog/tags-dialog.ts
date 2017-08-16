@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
 import {MdDialogRef} from '@angular/material';
 
+import {TagsService} from '../../services/tags.service';
+
+import v1 from 'uuid/v1';
+
 @Component({
   selector: 'tags-dialog',
   templateUrl: 'tags-dialog.html',
@@ -12,23 +16,12 @@ export class TagsDialogComponent {
   private isAddingNew: boolean;
   private currentEditingTag: string;
 
-  constructor(public dialogRef: MdDialogRef<TagsDialogComponent>) {
-    this.tags = [
-      {
-        id: '1',
-        name: 'school'
-      },
-      {
-        id: '2',
-        name: 'office'
-      },
-      {
-        id: '3',
-        name: 'top priority'
-      }
-    ];
-
+  constructor(public dialogRef: MdDialogRef<TagsDialogComponent>, private tagsService: TagsService) {
     this.isAddingNew = false;
+  }
+
+  ngOnInit() {
+    this.tags = this.tagsService.getAllTags();
   }
 
   enableAddingNew() {
@@ -48,17 +41,29 @@ export class TagsDialogComponent {
   }
 
   createNewTag(tag) {
-    console.log('createNewTag: ', tag);
-    this.disableAddingNew()
+    const newTag = {
+      id: v1(),
+      name: tag
+    };
+
+    this.tagsService.addTag(newTag);
+
+    this.tags = this.tagsService.getAllTags();
+    this.disableAddingNew();
   }
 
-  editTag(tag, tagId) {
-    console.log('editTag', tag, tagId);
+  updateTag(tag, tagId) {
+    console.log('tag, tagId', tag, tagId);
+
+    this.tagsService.updateTag(tag, tagId);
+
+    this.tags = this.tagsService.getAllTags();
     this.disableEditingTagById();
   }
 
   deleteTag(tagId) {
-    console.log('delete tag');
+    this.tagsService.deleteTag(tagId);
+    this.tags = this.tagsService.getAllTags();
   }
 
   closeDialog() {

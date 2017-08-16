@@ -24,7 +24,8 @@
       [condition]="currentEditingTag === tag.id"
       (onEnableEditingClick)="enableEditingTagById(tag.id)"
       (onInputIconClick)="deleteTag(tag.id)"
-      (onAcceptClick)="editTag($event, tag.id)"
+      (onDeleteClick)="deleteTag($event)"
+      (onAcceptClick)="updateTag($event, tag.id)"
     ></tag-row>
 
   </div>

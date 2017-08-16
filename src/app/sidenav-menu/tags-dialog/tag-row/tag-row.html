@@ -4,8 +4,20 @@
     <md-icon *ngIf="type === 'add'" class="tag-row__icon" mdTooltip="Create new tag" (click)="enableEditing()">
       add
     </md-icon>
-    <md-icon *ngIf="type === 'edit'" class="tag-row__icon tag-row__icon-label">label</md-icon>
-    <md-icon *ngIf="type === 'edit'" class="tag-row__icon tag-row__icon-delete" mdTooltip="Delete">delete</md-icon>
+    <md-icon
+      *ngIf="type === 'edit'"
+      class="tag-row__icon tag-row__icon-label"
+    >
+      label
+    </md-icon>
+    <md-icon
+      *ngIf="type === 'edit'"
+      (click)="deleteTag(id)"
+      class="tag-row__icon tag-row__icon-delete"
+      mdTooltip="Delete"
+    >
+      delete
+    </md-icon>
     <div class="tag-row__tag-title" (click)="enableEditing()">
       {{label}}
     </div>
