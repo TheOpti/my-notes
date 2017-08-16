@@ -1,6 +1,15 @@
-<md-toolbar color="primary" class="navbar">
-  <div class="navbar__toggle-icon" (click)="toggle()">
+<md-toolbar color="primary" class="navbar" [ngClass]="cssClass">
+  <div class="navbar__icon navbar__toggle-icon" (click)="toggle()">
     <md-icon class="example-icon">menu</md-icon>
   </div>
-  <span class="navbar__app-title">My Notes</span>
+  <div class="navbar__app-title">{{title}}</div>
+  <div class="navbar__search-bar">
+    <md-icon class="navbar__icon">search</md-icon>
+    <input
+      class="navbar__input"
+      placeholder="Search"
+    />
+    <md-icon class="navbar__icon">clear</md-icon>
+
+  </div>
 </md-toolbar>

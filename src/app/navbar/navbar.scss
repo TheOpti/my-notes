@@ -1,27 +1,88 @@
 .navbar {
+  width: 100%;
+  transition: background-color 0.5s ease;
 
-  &__toggle-icon {
+  &__search-bar {
+    background: rgba(255,255,255,0.16);
+    width: 700px;
+    height: 44px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    flex: 1;
+    height: 80%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 0;
+  }
+
+  &__icon {
+    height: 40px;
+    width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
+    margin: 0 10px;
     cursor: pointer;
+  }
+
+  &__toggle-icon {
+    border-radius: 50%;
     transition: background-color 0.5s ease;
 
     &:hover {
-      background-color: #233596;
+      background-color: rgba(255, 255, 255, 0.15);
     }
   }
 
   &__app-title {
+    width: 175px;
     display: inline-block;
-    margin: 0 10px;
+    margin: 0 20px;
   }
 
-  .example-spacer {
-    flex: 1 1 auto;
+  &--notes {
+    background-color: #3498db;
+  }
+
+  &--reminders {
+    background-color: #9b59b6;
+  }
+
+  &--tags {
+    background-color: #7336e9;
+  }
+
+  &--search {
+    background-color: #95a5a6;
+  }
+
+  &--archive {
+    background-color: #34495e;
+  }
+
+  &--trash {
+    background-color: #95a5a6;
+    color: black;
+  }
+
+  ::-webkit-input-placeholder {
+    color: #ddd;
+  }
+  ::-moz-placeholder {
+    color: #ddd;
+  }
+  :-ms-input-placeholder {
+    color: #ddd;
+  }
+  :-moz-placeholder {
+    color: #ddd;
   }
 
 }

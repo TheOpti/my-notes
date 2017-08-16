@@ -19,8 +19,6 @@ export class TagsComponent {
 
     this.subscription = this.route.params.subscribe(params => {
       this.tagName = params['name'];
-
-      console.log('Received route param: ', this.tagName);
     });
   }
 
