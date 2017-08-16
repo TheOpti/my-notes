@@ -28,6 +28,7 @@ import { NotificationsComponent } from './notifications/notifications';
 import { NotificationComponent } from './notifications/notification/notification';
 
 import { NotesService } from './services/notes.service';
+import { TagsService } from './services/tags.service';
 
 import {FocusDirective} from './directives/focus.directive';
 
@@ -85,7 +86,7 @@ const appRoutes: Routes = [
     MdTooltipModule,
     MdDialogModule
   ],
-  providers: [NotesService],
+  providers: [NotesService, TagsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
