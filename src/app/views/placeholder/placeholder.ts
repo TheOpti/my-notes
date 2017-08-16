@@ -16,6 +16,10 @@ const placeholdersMap = {
   'archive': {
     icon: 'archive',
     text: 'Here you will see outdated events and archived notes'
+  },
+  'tags': {
+    icon: 'label',
+    text: 'There are no notes with this tag'
   }
 };
 

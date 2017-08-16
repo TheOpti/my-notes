@@ -14,7 +14,12 @@
       <div>Tags</div>
       <button md-raised-button (click)="openTagsDialog()">Edit</button>
     </div>
-    <a *ngFor="let tag of tags" routerLink="/tag" routerLinkActive="active" class="sidenav-menu__entry">
+    <a
+      *ngFor="let tag of tags"
+      [routerLink]="['/tags', tag.name]"
+      routerLinkActive="active"
+      class="sidenav-menu__entry"
+    >
       <md-icon>label</md-icon>
       <span class="sidenav-menu__entry-title">{{tag.name}}</span>
     </a>

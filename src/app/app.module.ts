@@ -21,6 +21,7 @@ import { NavbarComponent } from './navbar/navbar';
 import { PlaceholderComponent } from './views/placeholder/placeholder';
 import { NotesComponent } from './views/notes/notes';
 import { RemindersComponent } from './views/reminders/reminders';
+import { TagsComponent } from './views/tags/tags';
 import { ArchiveComponent } from './views/archive/archive';
 import { TrashComponent } from './views/trash/trash';
 import { AddNoteComponent } from './add-note/add-note';
@@ -40,6 +41,10 @@ const appRoutes: Routes = [
   {
     path: 'reminders',
     component: RemindersComponent
+  },
+  {
+    path: 'tags/:name',
+    component: TagsComponent
   },
   {
     path: 'archive',
@@ -66,6 +71,7 @@ const appRoutes: Routes = [
     PlaceholderComponent,
     NotesComponent,
     RemindersComponent,
+    TagsComponent,
     ArchiveComponent,
     TrashComponent,
     AddNoteComponent,
@@ -75,7 +81,7 @@ const appRoutes: Routes = [
   ],
   entryComponents: [TagsDialogComponent],
   imports: [
-    RouterModule.forRoot( appRoutes, { enableTracing: true } ),
+    RouterModule.forRoot( appRoutes, { enableTracing: false } ),
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
