@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {MdDialogRef} from '@angular/material';
+import { Subscription } from 'rxjs/Subscription';
 
 import {TagsService} from '../../services/tags.service';
 
@@ -15,13 +16,16 @@ export class TagsDialogComponent {
   private tags: any;
   private isAddingNew: boolean;
   private currentEditingTag: string;
+  private subscription: Subscription;
 
   constructor(public dialogRef: MdDialogRef<TagsDialogComponent>, private tagsService: TagsService) {
     this.isAddingNew = false;
-  }
 
-  ngOnInit() {
     this.tags = this.tagsService.getAllTags();
+
+    this.subscription = this.tagsService.getMessage().subscribe(notes => {
+      this.tags = notes;
+    });
   }
 
   enableAddingNew() {
@@ -47,8 +51,6 @@ export class TagsDialogComponent {
     };
 
     this.tagsService.addTag(newTag);
-
-    this.tags = this.tagsService.getAllTags();
     this.disableAddingNew();
   }
 
@@ -56,14 +58,11 @@ export class TagsDialogComponent {
     console.log('tag, tagId', tag, tagId);
 
     this.tagsService.updateTag(tag, tagId);
-
-    this.tags = this.tagsService.getAllTags();
     this.disableEditingTagById();
   }
 
   deleteTag(tagId) {
     this.tagsService.deleteTag(tagId);
-    this.tags = this.tagsService.getAllTags();
   }
 
   closeDialog() {

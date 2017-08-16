@@ -26,10 +26,11 @@ export class TagsService {
   }
 
   deleteTag(tagId) {
-    let tags = this.getAllTags();
-    let filteredTags = JSON.stringify(tags.filter(tag => tag.id !== tagId));
+    const tags = this.getAllTags();
+    const filteredTags = tags.filter(tag => tag.id !== tagId);
+    const stringified = JSON.stringify(filteredTags);
 
-    localStorage.setItem('tags', filteredTags);
+    localStorage.setItem('tags', stringified);
     this.sendMessage(filteredTags);
   }
 
@@ -57,7 +58,7 @@ export class TagsService {
     const stringifiedTags = JSON.stringify(tags);
 
     localStorage.setItem('tags', stringifiedTags);
-    this.sendMessage(stringifiedTags);
+    this.sendMessage(tags);
   }
 
   sendMessage(allTags) {

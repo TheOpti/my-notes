@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MdDialog, MdDialogRef } from '@angular/material';
+import { Subscription } from 'rxjs/Subscription';
 
 import { TagsDialogComponent } from './tags-dialog/tags-dialog';
 
@@ -12,15 +13,17 @@ import {TagsService} from '../services/tags.service';
 })
 export class SidenavMenuComponent {
 
-  private tags;
+  private tags: any;
+  private subscription: Subscription;
 
   constructor(public dialog: MdDialog, private tagsService: TagsService) {}
 
   ngOnInit() {
     this.tags = this.tagsService.getAllTags();
 
-    console.log('this.tags', this.tags);
-    console.log('typeof this.tags', typeof this.tags);
+    this.subscription = this.tagsService.getMessage().subscribe(notes => {
+      this.tags = notes;
+    });
   }
 
   openTagsDialog() {
