@@ -12,16 +12,21 @@ export class NotesComponent {
 
   private notes : any;
   private subscription: Subscription;
-
+  private loading: boolean;
 
   constructor(private notesService: NotesService) {
+    this.loading = true;
+
     this.subscription = this.notesService.getMessage().subscribe(notes => {
       this.notes = notes;
     });
   }
 
   ngOnInit() {
-    this.notes = this.notesService.getAllNotes();
+    this.notesService.getAllNotes().then((notes) => {
+      this.notes = notes;
+      this.loading = false;
+    });
   }
 
   ngOnDestroy() {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
@@ -20,9 +20,10 @@ export class NotesService {
     notes = JSON.stringify(notes);
     localStorage.setItem('notes', notes);
 
-    const allNotes = this.getAllNotes();
-
-    this.sendMessage(allNotes);
+    this.getAllNotes()
+      .then((notes) => {
+        this.sendMessage(notes);
+      });
   }
 
   getAllNotes() {
@@ -34,11 +35,23 @@ export class NotesService {
       notes = [];
     }
 
-    return notes ? notes : [];
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const notesToReturn = notes ? notes : [];
+        resolve(notesToReturn);
+      }, 1200);
+    });
   }
 
   deleteNote(noteId) {
-    let notes = this.getAllNotes();
+    let notes: any = localStorage.getItem('notes');
+
+    if (notes) {
+      notes = JSON.parse(notes);
+    } else {
+      notes = [];
+    }
+
     let filteredNotes = notes.filter(note => note.id !== noteId);
 
     localStorage.setItem('notes', filteredNotes);

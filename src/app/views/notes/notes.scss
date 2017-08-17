@@ -1,6 +1,10 @@
 .notes {
   height: 100%;
 
+  &__loading-spinner {
+    margin: 0 auto;
+  }
+
   &__note-list-wrapper {
     width: 80%;
     margin: 0 auto;

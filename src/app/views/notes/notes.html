@@ -1,5 +1,10 @@
 <div class="notes">
-  <div *ngIf="notes.length" class="notes__note-list-wrapper">
+  <md-spinner
+    *ngIf="loading"
+    class="notes__loading-spinner"
+  ></md-spinner>
+
+  <div *ngIf="!loading && notes.length" class="notes__note-list-wrapper">
     <div
       *ngFor="let note of notes"
       class="notes__note"
@@ -19,7 +24,7 @@
   </div>
 
   <placeholder
-    *ngIf="!notes.length"
+    *ngIf="!loading && !notes.length"
     [placeholderType]="'notes'"
   ></placeholder>
 
