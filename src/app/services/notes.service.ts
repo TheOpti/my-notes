@@ -39,7 +39,7 @@ export class NotesService {
       setTimeout(() => {
         const notesToReturn = notes ? notes : [];
         resolve(notesToReturn);
-      }, 1200);
+      }, 600);
     });
   }
 
@@ -53,8 +53,9 @@ export class NotesService {
     }
 
     let filteredNotes = notes.filter(note => note.id !== noteId);
+    let stringified = JSON.stringify(filteredNotes);
 
-    localStorage.setItem('notes', filteredNotes);
+    localStorage.setItem('notes', stringified);
     this.sendMessage(filteredNotes);
   }
 

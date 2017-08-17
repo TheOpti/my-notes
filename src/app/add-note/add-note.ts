@@ -16,7 +16,7 @@ import { NotesService } from '../services/notes.service';
 })
 export class AddNoteComponent {
 
-  private isAddingNewNote = true;
+  private isAddingNewNote = false;
   private post = '';
   private title = '';
   private addNoteClass = '';
@@ -36,6 +36,11 @@ export class AddNoteComponent {
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
+    if (event.target.className.includes('cdk-overlay-backdrop') || event.target.className.includes('mat-menu-content')) {
+      this.enableEditing();
+      return;
+    }
+
     if (this.eRef.nativeElement.contains(event.target)) {
       this.enableEditing();
     } else {
@@ -87,7 +92,7 @@ export class AddNoteComponent {
     return `color--${color}`;
   }
 
-  setColor(event, color) {
+  setColor(color) {
     this.currentColor = color;
     this.addNoteClass = this.getClassFromColor(color);
     this.menu.closeMenu();

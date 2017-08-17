@@ -2,11 +2,11 @@
   height: 100%;
 
   &__loading-spinner {
-    margin: 0 auto;
+    margin: 50px auto;
   }
 
   &__note-list-wrapper {
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     display: flex;
     align-items: flex-start;
@@ -16,10 +16,11 @@
   &__note {
     display: inline-block;
     margin: 16px;
+    border-radius: 5px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
-    background-color: white;
     width: 250px;
     transition: box-shadow 0.2s ease;
+    color: rgba(0, 0, 0, .55);
 
     &:hover {
       cursor: pointer;
@@ -49,42 +50,9 @@
   &__icons {
     display: flex;
     justify-content: flex-end;
-    color: #a09f9f;
     padding: 10px 12px 12px 12px;
     opacity: 0;
     transition: opacity 0.2s ease;
   }
-}
-
-.color--white {
-  background-color: white;
-}
-
-.color--red {
-  background-color: #ff8a80;
-}
-
-.color--orange {
-  background-color: #ffd180;
-}
-
-.color--yellow {
-  background-color: #ffff8d;
-}
-
-.color--grey {
-  background-color: #cfd8dc;
-}
-
-.color--blue {
-  background-color: #80d8ff;
-}
-
-.color--sea {
-  background-color: #a7ffeb;
-}
-
-.color--green {
-  background-color: #ccff90;
 }
 
