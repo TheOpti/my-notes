@@ -3,12 +3,18 @@
   transition: background-color 0.5s ease;
 
   &__search-bar {
-    background: rgba(255,255,255,0.16);
+    background-color: rgba(255,255,255,0.16);
+    transition: background-color 0.5s ease;
     width: 700px;
     height: 44px;
     border-radius: 5px;
     display: flex;
     align-items: center;
+
+    &--active {
+      background: white;
+      color: black;
+    }
   }
 
   &__input {
@@ -17,7 +23,6 @@
     background-color: transparent;
     outline: none;
     border: none;
-    color: white;
     font-size: 18px;
     padding: 10px 0;
   }
@@ -56,11 +61,11 @@
   }
 
   &--tags {
-    background-color: #7336e9;
+    background-color: #a214e9;
   }
 
   &--search {
-    background-color: #95a5a6;
+    background-color: #3e50b4;
   }
 
   &--archive {

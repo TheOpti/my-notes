@@ -21,6 +21,7 @@ import { NavbarComponent } from './navbar/navbar';
 import { PlaceholderComponent } from './views/placeholder/placeholder';
 import { NotesComponent } from './views/notes/notes';
 import { RemindersComponent } from './views/reminders/reminders';
+import { SearchComponent } from './views/search/search';
 import { TagsComponent } from './views/tags/tags';
 import { ArchiveComponent } from './views/archive/archive';
 import { TrashComponent } from './views/trash/trash';
@@ -45,6 +46,10 @@ const appRoutes: Routes = [
   {
     path: 'tags/:name',
     component: TagsComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   },
   {
     path: 'archive',
@@ -72,6 +77,7 @@ const appRoutes: Routes = [
     NotesComponent,
     RemindersComponent,
     TagsComponent,
+    SearchComponent,
     ArchiveComponent,
     TrashComponent,
     AddNoteComponent,

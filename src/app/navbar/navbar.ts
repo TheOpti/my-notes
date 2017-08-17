@@ -38,6 +38,7 @@ const cssClassesMap = {
 export class NavbarComponent {
 
   private cssClass: string;
+  private searchBarClass: string;
   private title: string;
 
   @Input() sidenav: MdSidenav;
@@ -54,11 +55,25 @@ export class NavbarComponent {
       });
   }
 
+  onSearchBarFocus() {
+    this.router.navigate(['/search']);
+  }
+
   setParams(url) {
+    this.searchBarClass = '';
+
+    if (url !== '/') {
+      this.title = 'My notes';
+    }
+
     if (url.includes('tags')) {
       this.cssClass = 'navbar--tags';
       const tag = url.split('/').pop();
       this.title = `Tag: ${tag}`;
+    } else if (url.includes('search')) {
+      this.title = 'Search';
+      this.cssClass = 'navbar--search';
+      this.searchBarClass = 'navbar__search-bar--active';
     } else {
       this.cssClass = cssClassesMap[url].cssClass;
       this.title = cssClassesMap[url].title;
