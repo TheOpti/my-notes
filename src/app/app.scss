@@ -20,11 +20,13 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    user-select: none;
   }
 
   &__router-wrapper {
-    margin-top: 16px;
+    padding-top: 32px;
     width: 100%;
+    flex: 1;
   }
 
   &__notifications {
@@ -66,4 +68,3 @@
 .color--green {
   background-color: #ccff90;
 }
-
