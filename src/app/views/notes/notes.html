@@ -7,6 +7,7 @@
   <div *ngIf="!loading && notes.length" class="notes__note-list-wrapper">
     <div
       *ngFor="let note of notes"
+      [ngClass]="getClassFromColor(note.color)"
       class="notes__note"
     >
       <div class="notes__note-title">

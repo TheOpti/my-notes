@@ -69,7 +69,8 @@ export class AddNoteComponent {
       id: v1(),
       date: new Date(),
       title: this.title,
-      post: this.post.replace(/\n\r?/g, '<br />')
+      post: this.post.replace(/\n\r?/g, '<br />'),
+      color: this.currentColor
     };
 
     this.notesService.addNote(note);
