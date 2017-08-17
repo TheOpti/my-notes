@@ -10,7 +10,9 @@
     </md-sidenav>
 
     <div class="app__content">
-      <add-note></add-note>
+      <add-note
+        *ngIf="canShowAddNoteComponent"
+      ></add-note>
       <div class="app__router-wrapper">
         <router-outlet></router-outlet>
       </div>
