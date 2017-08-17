@@ -16,14 +16,23 @@ import { NotesService } from '../services/notes.service';
 })
 export class AddNoteComponent {
 
-  constructor(private eRef: ElementRef, private notesService: NotesService) { }
+  private isAddingNewNote = true;
+  private post = '';
+  private title = '';
+  private addNoteClass = '';
+  private colors = [];
+  private currentColor = '';
 
   @ViewChild('textbox') textbox: any;
   @ViewChild('add-note-component') component: any;
+  @ViewChild('paletteMenuTrigger') menu: any;
 
-  private isAddingNewNote = false;
-  post = '';
-  title = '';
+  constructor(private eRef: ElementRef, private notesService: NotesService) {
+    this.currentColor = 'white';
+    this.addNoteClass = this.getClassFromColor(this.currentColor);
+
+    this.colors = ['white', 'red', 'orange', 'yellow', 'grey', 'blue', 'sea', 'green'];
+  }
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
@@ -32,6 +41,7 @@ export class AddNoteComponent {
     } else {
       this.clearInputs();
       this.disableEditing();
+      this.addNoteClass = 'color--white';
     }
   }
 
@@ -66,5 +76,19 @@ export class AddNoteComponent {
 
     this.clearInputs();
     this.disableEditing();
+  }
+
+  onMenuClick(event) {
+    event.stopPropagation();
+  }
+
+  getClassFromColor(color) {
+    return `color--${color}`;
+  }
+
+  setColor(event, color) {
+    this.currentColor = color;
+    this.addNoteClass = this.getClassFromColor(color);
+    this.menu.closeMenu();
   }
 }

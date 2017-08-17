@@ -11,7 +11,8 @@ import {
   MdButtonModule,
   MdTooltipModule,
   MdDialogModule,
-  MdProgressSpinnerModule
+  MdProgressSpinnerModule,
+  MdMenuModule
 } from '@angular/material';
 
 import { AppComponent } from './app';
@@ -98,7 +99,8 @@ const appRoutes: Routes = [
     MdButtonModule,
     MdTooltipModule,
     MdDialogModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdMenuModule
   ],
   providers: [NotesService, TagsService],
   bootstrap: [AppComponent]
