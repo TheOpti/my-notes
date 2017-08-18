@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer2} from '@angular/core';
 import { Router, NavigationEnd, Event} from '@angular/router';
 
 @Component({
@@ -10,7 +10,10 @@ export class AppComponent {
 
   private canShowAddNoteComponent: boolean;
 
-  constructor(private router: Router) {
+  @ViewChild('sidenav', {read: ElementRef}) sidenav: ElementRef;
+  @ViewChild('mainContent') mainContent: ElementRef;
+
+  constructor(private router: Router, private rd: Renderer2) {
     this.canShowAddNoteComponent = true;
   }
 
@@ -30,6 +33,14 @@ export class AppComponent {
     } else {
       this.canShowAddNoteComponent = false;
     }
+  }
+
+  toggleSidenavClass() {
+    this.sidenav.nativeElement.classList.toggle("app__sidenav--opened");
+    this.sidenav.nativeElement.classList.toggle("app__sidenav--closed");
+
+    this.mainContent.nativeElement.classList.toggle("app__main-content--full");
+    this.mainContent.nativeElement.classList.toggle("app__main-content--partial");
   }
 
 }

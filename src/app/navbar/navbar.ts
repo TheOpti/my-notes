@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { MdSidenav } from '@angular/material';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
@@ -45,7 +44,7 @@ export class NavbarComponent {
   private searchBarClass: string;
   private title: string;
 
-  @Input() sidenav: MdSidenav;
+  @Output() onToggleClick = new EventEmitter<any>();
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
@@ -85,7 +84,7 @@ export class NavbarComponent {
   }
 
   toggle() {
-    this.sidenav.toggle();
+    this.onToggleClick.emit();
   }
 
 }

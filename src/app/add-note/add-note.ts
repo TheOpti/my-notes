@@ -56,12 +56,14 @@ export class AddNoteComponent {
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if (event.target.className.includes('cdk-overlay-backdrop') || event.target.className.includes('mat')) {
+    if (event.target.className.includes('cdk-overlay-backdrop') ||
+      event.target.className.includes('mat-menu')) {
       this.enableEditing();
       return;
     }
 
     if (this.eRef.nativeElement.contains(event.target)) {
+      console.log('true!');
       this.enableEditing();
     } else {
       this.clearInputs();
@@ -71,6 +73,7 @@ export class AddNoteComponent {
   }
 
   enableEditing() {
+    console.log('enable editing');
     this.isAddingNewNote = true;
   }
 

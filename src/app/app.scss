@@ -3,24 +3,53 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 
-  &__sidenav-container {
-    flex: 1;
+  &__content {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
   }
 
   &__sidenav {
     border-right: 1px solid #ddd;
-    box-shadow: 3px 0 20px 4px rgba(0,0,0,0.15);
+    user-select: none;
+    transition: left 0.5s linear, box-shadow 1.2s ease;
+    position: absolute;
     width: 300px;
+    bottom: 0;
+    top: 64px;
+
+    &--opened {
+      box-shadow: 3px 0 20px 4px rgba(0,0,0,0.15);
+      left: 0;
+    }
+
+    &--closed {
+      box-shadow: none;
+      left: -300px;
+    }
   }
 
-  &__content {
-    height: 100%;
+  &__main-content {
+    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
     flex-direction: column;
-    user-select: none;
+    align-items: center;
+    transition: left 0.5s linear;
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+
+    &--full {
+      left: 0;
+    }
+
+    &--partial {
+      left: 300px;
+    }
   }
 
   &__router-wrapper {

@@ -1,15 +1,18 @@
 <div class="app">
   <navbar
    class="app__navbar"
-   [sidenav]="sidenav"
+   (onToggleClick)="toggleSidenavClass()"
   ></navbar>
 
-  <md-sidenav-container class="app__sidenav-container">
-    <md-sidenav #sidenav mode="side" class="app__sidenav" [opened]="true">
-      <sidenav-menu></sidenav-menu>
-    </md-sidenav>
-
-    <div class="app__content">
+  <div class="app__content">
+    <sidenav-menu
+      #sidenav
+      class="app__sidenav app__sidenav--opened"
+    ></sidenav-menu>
+    <div
+      #mainContent
+      class="app__main-content app__main-content--partial"
+    >
       <add-note
         *ngIf="canShowAddNoteComponent"
       ></add-note>
@@ -17,10 +20,8 @@
         <router-outlet></router-outlet>
       </div>
     </div>
-  </md-sidenav-container>
+  </div>
 
   <notifications class="app__notifications">
   </notifications>
-
 </div>
-
