@@ -12,12 +12,7 @@ export class NotificationsComponent {
   private notifications: any;
 
   ngOnInit() {
-    this.notifications = [
-      {
-        id: v1(),
-        type: 'note-delete'
-      }
-    ];
+    this.notifications = [];
   }
 
   deleteNotification(notificationId) {

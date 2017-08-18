@@ -16,7 +16,7 @@ import { NotesService } from '../services/notes.service';
 })
 export class AddNoteComponent {
 
-  private isAddingNewNote = true;
+  private isAddingNewNote = false;
   private post = '';
   private title = '';
   private addNoteClass = '';
