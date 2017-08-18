@@ -16,6 +16,10 @@ const cssClassesMap = {
     cssClass: 'navbar--reminders',
     title: 'Reminders'
   },
+  '/calendar': {
+    cssClass: 'navbar--calendar',
+    title: 'Calendar'
+  },
   '/search': {
     cssClass: 'navbar--search',
     title: 'Search'

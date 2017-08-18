@@ -23,6 +23,7 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "angular-calendar": "^0.20.1",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",
     "uuid": "^3.1.0",

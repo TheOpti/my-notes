@@ -1,0 +1,28 @@
+.calendar {
+  font-family: 'Roboto Condensed', arial, sans-serif;
+  position: relative;
+  margin: 10px 40px;
+
+  &__title-row {
+   display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    margin-top: 15px;
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    margin: 0 5px;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0 40px;
+  }
+
+}

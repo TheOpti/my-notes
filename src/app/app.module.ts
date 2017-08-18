@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CalendarModule } from 'angular-calendar';
 
 import {
   MdSidenavModule,
@@ -26,6 +27,7 @@ import { NavbarComponent } from './navbar/navbar';
 import { PlaceholderComponent } from './views/placeholder/placeholder';
 import { NotesComponent } from './views/notes/notes';
 import { RemindersComponent } from './views/reminders/reminders';
+import { CalendarComponent } from './views/calendar/calendar';
 import { SearchComponent } from './views/search/search';
 import { TagsComponent } from './views/tags/tags';
 import { ArchiveComponent } from './views/archive/archive';
@@ -49,6 +51,10 @@ const appRoutes: Routes = [
   {
     path: 'reminders',
     component: RemindersComponent
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent
   },
   {
     path: 'tags/:name',
@@ -83,6 +89,7 @@ const appRoutes: Routes = [
     PlaceholderComponent,
     NotesComponent,
     RemindersComponent,
+    CalendarComponent,
     TagsComponent,
     SearchComponent,
     ArchiveComponent,
@@ -96,6 +103,7 @@ const appRoutes: Routes = [
   entryComponents: [TagsDialogComponent],
   imports: [
     RouterModule.forRoot( appRoutes, { enableTracing: false } ),
+    CalendarModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
