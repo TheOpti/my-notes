@@ -1,7 +1,7 @@
 <div class="notifications">
   <notification
     *ngFor="let notification of notifications; let i = index"
-    (delete)="deleteNotification(notification.id)"
+    (onDeleteClick)="deleteNotification(notification.id)"
     [type]="notification.type"
     [id]="notification.id"
   ></notification>

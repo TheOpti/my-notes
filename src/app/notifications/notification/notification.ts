@@ -13,19 +13,21 @@ const notificationsTypesMap = {
 export class NotificationComponent {
 
   private notificationTypeMessage: string;
+
   @Input() type: string;
   @Input() id: string;
-  @Output() delete: EventEmitter<any> = new EventEmitter();
+
+  @Output() onDeleteClick: EventEmitter<any> = new EventEmitter();
 
   ngOnInit() {
     this.notificationTypeMessage = notificationsTypesMap[this.type];
 
     setTimeout(() => {
-      this.delete.emit(this.id);
-    }, 6000);
+      this.onDeleteClick.emit(this.id);
+    }, 10000);
   }
 
   closeNotification() {
-    this.delete.emit(this.id);
+    this.onDeleteClick.emit(this.id);
   }
 }

@@ -1,11 +1,15 @@
- import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
+
+import {NotificationService} from "./notification.service";
 
 @Injectable()
 export class NotesService {
 
   private subject = new Subject<any>();
+
+  constructor(private notificationService: NotificationService) { }
 
   addNote(note) {
     let notes: any = localStorage.getItem('notes');
@@ -23,6 +27,7 @@ export class NotesService {
     this.getAllNotes()
       .then((notes) => {
         this.sendMessage(notes);
+        this.notificationService.addNotification('note-add');
       });
   }
 
@@ -57,6 +62,7 @@ export class NotesService {
 
     localStorage.setItem('notes', stringified);
     this.sendMessage(filteredNotes);
+    this.notificationService.addNotification('note-add');
   }
 
   sendMessage(allNotes) {

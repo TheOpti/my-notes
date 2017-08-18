@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 
-import v1 from 'uuid/v1';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'notifications',
@@ -10,14 +11,21 @@ import v1 from 'uuid/v1';
 export class NotificationsComponent {
 
   private notifications: any;
+  private subscription: Subscription;
 
-  ngOnInit() {
+  constructor(private notificationService: NotificationService) {
     this.notifications = [];
   }
 
+  ngOnInit() {
+    this.subscription = this.notificationService.getMessage()
+      .subscribe(notifications => {
+        this.notifications = notifications;
+      });
+  }
+
   deleteNotification(notificationId) {
-    this.notifications = this.notifications
-      .filter(notification => notification.id !== notificationId);
+    this.notificationService.deleteNote(notificationId);
   }
 
 }
