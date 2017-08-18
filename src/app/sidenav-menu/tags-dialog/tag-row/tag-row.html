@@ -34,7 +34,7 @@
       [(ngModel)]="tag"
       [focus]="true"
     />
-    <md-icon mdTooltip="Accept" (click)="acceptClick()">
+    <md-icon mdTooltip="Accept" *ngIf="tag" (click)="acceptClick()">
       check
     </md-icon>
   </div>
