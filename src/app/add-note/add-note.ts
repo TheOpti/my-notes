@@ -16,16 +16,36 @@ import { NotesService } from '../services/notes.service';
 })
 export class AddNoteComponent {
 
-  private isAddingNewNote = false;
+  private isAddingNewNote = true;
   private post = '';
   private title = '';
   private addNoteClass = '';
   private colors = [];
   private currentColor = '';
+  private noteDate = '';
+
+  private dateOptions = [
+    {
+      id: 'tomorrow-16',
+      day: 'Today',
+      time: '16:00'
+    },
+    {
+      id: 'tomorrow-8',
+      day: 'Tomorrow',
+      time: '08:00'
+    },
+    {
+      id: 'next-week-8',
+      day: 'Next week',
+      time: '12:00'
+    },
+  ];
 
   @ViewChild('textbox') textbox: any;
   @ViewChild('add-note-component') component: any;
-  @ViewChild('paletteMenuTrigger') menu: any;
+  @ViewChild('paletteMenuTrigger') paletteMenu: any;
+  @ViewChild('reminderMenuTrigger') dateMenu: any;
 
   constructor(private eRef: ElementRef, private notesService: NotesService) {
     this.currentColor = 'white';
@@ -36,7 +56,7 @@ export class AddNoteComponent {
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if (event.target.className.includes('cdk-overlay-backdrop') || event.target.className.includes('mat-menu-content')) {
+    if (event.target.className.includes('cdk-overlay-backdrop') || event.target.className.includes('mat')) {
       this.enableEditing();
       return;
     }
@@ -61,6 +81,8 @@ export class AddNoteComponent {
   clearInputs() {
     this.title = '';
     this.post = '';
+    this.currentColor = 'white';
+    this.noteDate = '';
   }
 
   adjustTextarea() {
@@ -75,7 +97,8 @@ export class AddNoteComponent {
       date: new Date(),
       title: this.title,
       post: this.post.replace(/\n\r?/g, '<br />'),
-      color: this.currentColor
+      color: this.currentColor,
+      reminder: this.noteDate
     };
 
     this.notesService.addNote(note);
@@ -95,6 +118,11 @@ export class AddNoteComponent {
   setColor(color) {
     this.currentColor = color;
     this.addNoteClass = this.getClassFromColor(color);
-    this.menu.closeMenu();
+    this.paletteMenu.closeMenu();
+  }
+
+  setDate(date) {
+    this.noteDate = date;
+    this.dateMenu.closeMenu();
   }
 }

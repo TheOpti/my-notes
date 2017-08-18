@@ -28,6 +28,8 @@
         <md-icon
           class="add-note__icon"
           mdTooltip="Reminde me"
+          #reminderMenuTrigger="mdMenuTrigger"
+          [mdMenuTriggerFor]="reminderMenu"
         >
           av_timer
         </md-icon>
@@ -40,6 +42,19 @@
           palette
         </md-icon>
       </div>
+
+      <md-menu #reminderMenu="mdMenu">
+        <div class="add-note__reminder-menu" (click)="onMenuClick($event)">
+          <div class="add-note__reminder-title">Reminder:</div>
+          <div class="add-note__reminder-divider"></div>
+          <div class="add-note__reminders">
+            <div class="add-note__reminder" *ngFor="let date of dateOptions" (click)="setDate(date)">
+              <span>{{date.day}}</span>
+              <span>{{date.time}}</span>
+            </div>
+          </div>
+        </div>
+      </md-menu>
 
       <md-menu #paletteMenu="mdMenu">
         <div class="add-note__palette" (click)="onMenuClick($event)">
@@ -61,5 +76,11 @@
         Add
       </button>
     </div>
+
+    <reminder-bar
+      *ngIf="noteDate"
+      [reminder]="noteDate"
+    ></reminder-bar>
+
   </div>
 </div>

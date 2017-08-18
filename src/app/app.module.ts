@@ -12,7 +12,10 @@ import {
   MdTooltipModule,
   MdDialogModule,
   MdProgressSpinnerModule,
-  MdMenuModule
+  MdMenuModule,
+  MdInputModule,
+  MdDatepickerModule,
+  MdNativeDateModule
 } from '@angular/material';
 
 import { AppComponent } from './app';
@@ -30,6 +33,7 @@ import { TrashComponent } from './views/trash/trash';
 import { AddNoteComponent } from './add-note/add-note';
 import { NotificationsComponent } from './notifications/notifications';
 import { NotificationComponent } from './notifications/notification/notification';
+import { ReminderBarComponent } from './reminder-bar/reminder-bar';
 
 import { NotesService } from './services/notes.service';
 import { TagsService } from './services/tags.service';
@@ -85,6 +89,7 @@ const appRoutes: Routes = [
     AddNoteComponent,
     NotificationsComponent,
     NotificationComponent,
+    ReminderBarComponent,
     FocusDirective
   ],
   entryComponents: [TagsDialogComponent],
@@ -100,7 +105,10 @@ const appRoutes: Routes = [
     MdTooltipModule,
     MdDialogModule,
     MdProgressSpinnerModule,
-    MdMenuModule
+    MdMenuModule,
+    MdInputModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
   providers: [NotesService, TagsService],
   bootstrap: [AppComponent]

@@ -1,0 +1,24 @@
+.reminder-bar {
+  margin: 0 8px;
+  border-top: 2px dotted rgba(0,0,0,0.1);
+  color: rgba(0, 0, 0, 0.55);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__time-section {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    cursor: pointer;
+    margin: 0 4px;
+  }
+
+  &__time {
+    padding-left: 3px;
+  }
+
+}

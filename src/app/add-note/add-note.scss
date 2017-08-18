@@ -100,4 +100,48 @@
       border: 2px solid rgba(0,0,0,0.45);
     }
   }
+
+  &__reminder-menu {
+    width: 280px;
+    user-select: none;
+  }
+
+  &__reminder-title {
+    height: 46px;
+    font-size: 16px;
+    padding: 10px 15px;
+    font-weight: bold;
+  }
+
+  &__reminder {
+    cursor: pointer;
+    margin: 3px 0;
+    padding: 10px 15px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+
+  &__reminder-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    margin: 5px 0;
+  }
+
+  &__choose-date-title {
+    padding-left: 15px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__datepicker {
+    display: flex;
+    justify-content: center;
+  }
 }

@@ -21,6 +21,13 @@
           delete
         </md-icon>
       </div>
+
+      <reminder-bar
+        *ngIf="note.reminder"
+        [reminder]="note.reminder"
+      ></reminder-bar>
+
+
     </div>
   </div>
 
