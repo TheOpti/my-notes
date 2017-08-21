@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'reminder-bar',
@@ -9,6 +9,12 @@ export class ReminderBarComponent {
 
   @Input() reminder: any;
 
-  constructor() {
+  @Output() onDeleteClick = new EventEmitter<any>();
+
+  constructor() { }
+
+  removeReminder($event) {
+    this.onDeleteClick.emit($event);
   }
+
 }

@@ -48,7 +48,7 @@
           <div class="add-note__reminder-title">Reminder:</div>
           <div class="add-note__reminder-divider"></div>
           <div class="add-note__reminders">
-            <div class="add-note__reminder" *ngFor="let date of dateOptions" (click)="setDate(date)">
+            <div class="add-note__reminder" *ngFor="let date of dateOptions" (click)="setReminder(date)">
               <span>{{date.day}}</span>
               <span>{{date.time}}</span>
             </div>
@@ -81,6 +81,7 @@
     <reminder-bar
       *ngIf="noteDate"
       [reminder]="noteDate"
+      (onDeleteClick)="removeReminder($event)"
     ></reminder-bar>
 
   </div>

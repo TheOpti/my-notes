@@ -9,6 +9,11 @@ import v1 from 'uuid/v1';
 
 import { NotesService } from '../services/notes.service';
 
+const NOTE_TYPES = {
+  NOTE: 'note',
+  REMINDER: 'reminder'
+};
+
 @Component({
   selector: 'add-note',
   templateUrl: 'add-note.html',
@@ -20,9 +25,10 @@ export class AddNoteComponent {
   private post = '';
   private title = '';
   private addNoteClass = '';
-  private colors = [];
-  private currentColor = '';
+  private colors = ['white', 'red', 'orange', 'yellow', 'grey', 'blue', 'sea', 'green'];
+  private currentColor = 'white';
   private noteDate = '';
+  private noteType = NOTE_TYPES.NOTE;
 
   private dateOptions = [
     {
@@ -48,22 +54,18 @@ export class AddNoteComponent {
   @ViewChild('reminderMenuTrigger') dateMenu: any;
 
   constructor(private eRef: ElementRef, private notesService: NotesService) {
-    this.currentColor = 'white';
     this.addNoteClass = this.getClassFromColor(this.currentColor);
-
-    this.colors = ['white', 'red', 'orange', 'yellow', 'grey', 'blue', 'sea', 'green'];
   }
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if (event.target.className.includes('cdk-overlay-backdrop') ||
-      event.target.className.includes('mat-menu')) {
+    if (event.target.className.includes('cdk-overlay-backdrop')
+      || event.target.className.includes('mat-menu')) {
       this.enableEditing();
       return;
     }
 
     if (this.eRef.nativeElement.contains(event.target)) {
-      console.log('true!');
       this.enableEditing();
     } else {
       this.clearInputs();
@@ -73,7 +75,6 @@ export class AddNoteComponent {
   }
 
   enableEditing() {
-    console.log('enable editing');
     this.isAddingNewNote = true;
   }
 
@@ -97,11 +98,12 @@ export class AddNoteComponent {
   addNewNote() {
     const note = {
       id: v1(),
-      date: new Date(),
+      creationDate: new Date(),
       title: this.title,
       post: this.post.replace(/\n\r?/g, '<br />'),
       color: this.currentColor,
-      reminder: this.noteDate
+      reminder: this.noteDate,
+      type: this.noteType
     };
 
     this.notesService.addNote(note);
@@ -124,8 +126,18 @@ export class AddNoteComponent {
     this.paletteMenu.closeMenu();
   }
 
-  setDate(date) {
+  setReminder(date) {
     this.noteDate = date;
+    this.noteType = NOTE_TYPES.REMINDER;
+
     this.dateMenu.closeMenu();
   }
+
+  removeReminder($event) {
+    $event.stopPropagation();
+
+    this.noteDate = null;
+    this.noteType = NOTE_TYPES.NOTE;
+  }
+
 }

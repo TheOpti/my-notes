@@ -11,7 +11,8 @@
     <span class="reminder-bar__time">{{reminder.time}}</span>
   </div>
   <md-icon
-    mdTooltip="Delete reminder"
+    (click)="removeReminder($event)"
+    md-tooltip="Remove reminder"
     class="reminder-bar__icon"
   >
     cancel
