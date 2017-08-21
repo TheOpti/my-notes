@@ -79,8 +79,8 @@
     </div>
 
     <reminder-bar
-      *ngIf="noteDate"
-      [reminder]="noteDate"
+      *ngIf="reminder"
+      [reminder]="reminder"
       (onDeleteClick)="removeReminder($event)"
     ></reminder-bar>
 

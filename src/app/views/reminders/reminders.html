@@ -1,7 +1,35 @@
 <div class="reminders">
+  <md-spinner
+    *ngIf="loading"
+    class="reminders__loading-spinner"
+  ></md-spinner>
+
+  <div *ngIf="!loading && reminders.length" class="reminders__note-list-wrapper">
+    <div
+      *ngFor="let note of reminders"
+      [ngClass]="getClassFromColor(note.color)"
+      class="reminders__note"
+    >
+      <div class="reminders__note-title">
+        {{note.title}}
+      </div>
+      <div class="reminders__note-post">
+        {{note.post}}
+      </div>
+      <div class="reminders__icons">
+        <md-icon class="example-icon" mdTooltip="Delete note" (click)="deleteNote(note.id)">
+          delete
+        </md-icon>
+      </div>
+      <reminder-bar
+        *ngIf="note.reminder"
+        [reminder]="note.reminder"
+      ></reminder-bar>
+    </div>
+  </div>
 
   <placeholder
-    *ngIf="!reminders.length"
+    *ngIf="!loading && !reminders.length"
     [placeholderType]="'reminders'"
   ></placeholder>
 

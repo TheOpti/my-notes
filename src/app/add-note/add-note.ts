@@ -27,8 +27,8 @@ export class AddNoteComponent {
   private addNoteClass = '';
   private colors = ['white', 'red', 'orange', 'yellow', 'grey', 'blue', 'sea', 'green'];
   private currentColor = 'white';
-  private noteDate = '';
-  private noteType = NOTE_TYPES.NOTE;
+  private reminder = '';
+  private type = NOTE_TYPES.NOTE;
 
   private dateOptions = [
     {
@@ -86,7 +86,8 @@ export class AddNoteComponent {
     this.title = '';
     this.post = '';
     this.currentColor = 'white';
-    this.noteDate = '';
+    this.reminder = null;
+    this.type = NOTE_TYPES.NOTE;
   }
 
   adjustTextarea() {
@@ -102,8 +103,8 @@ export class AddNoteComponent {
       title: this.title,
       post: this.post.replace(/\n\r?/g, '<br />'),
       color: this.currentColor,
-      reminder: this.noteDate,
-      type: this.noteType
+      reminder: this.reminder,
+      type: this.type
     };
 
     this.notesService.addNote(note);
@@ -127,8 +128,8 @@ export class AddNoteComponent {
   }
 
   setReminder(date) {
-    this.noteDate = date;
-    this.noteType = NOTE_TYPES.REMINDER;
+    this.reminder = date;
+    this.type = NOTE_TYPES.REMINDER;
 
     this.dateMenu.closeMenu();
   }
@@ -136,8 +137,8 @@ export class AddNoteComponent {
   removeReminder($event) {
     $event.stopPropagation();
 
-    this.noteDate = null;
-    this.noteType = NOTE_TYPES.NOTE;
+    this.reminder = null;
+    this.type = NOTE_TYPES.NOTE;
   }
 
 }

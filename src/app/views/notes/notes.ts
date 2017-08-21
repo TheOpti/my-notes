@@ -16,15 +16,16 @@ export class NotesComponent {
 
   constructor(private notesService: NotesService) {
     this.loading = true;
+    this.notes = [];
 
     this.subscription = this.notesService.getMessage().subscribe(notes => {
-      this.notes = notes;
+      this.notes = notes.filter(note => note.type === 'note');
     });
   }
 
   ngOnInit() {
-    this.notesService.getAllNotes().then((notes) => {
-      this.notes = notes;
+    this.notesService.getAllNotes().then((notes: Array<any>) => {
+      this.notes = notes.filter(note => note.type === 'note');
       this.loading = false;
     });
   }
