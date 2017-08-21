@@ -4,7 +4,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { Router, NavigationEnd, ActivatedRoute, Event } from '@angular/router';
+import { Router, NavigationEnd, Event, RoutesRecognized } from '@angular/router';
 
 const cssClassesMap = {
   '/notes': {
@@ -43,15 +43,20 @@ export class NavbarComponent {
   private cssClass: string;
   private searchBarClass: string;
   private title: string;
+  private routeParams: any;
 
   @Output() onToggleClick = new EventEmitter<any>();
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.router.events
-      .filter((event) => event instanceof NavigationEnd)
+      .filter((event) => event instanceof NavigationEnd || event instanceof RoutesRecognized)
       .subscribe((event:Event) => {
+        if (event instanceof RoutesRecognized) {
+          this.routeParams = event.state.root.firstChild.params
+        }
+
         if (event instanceof NavigationEnd) {
           this.setParams(event.url);
         }
@@ -72,7 +77,7 @@ export class NavbarComponent {
     if (url.includes('tags')) {
       this.cssClass = 'navbar--tags';
       const tag = url.split('/').pop();
-      this.title = `Tag: ${tag}`;
+      this.title = `Tag: ${this.routeParams.name}`;
     } else if (url.includes('search')) {
       this.title = 'Search';
       this.cssClass = 'navbar--search';

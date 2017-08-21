@@ -13,9 +13,7 @@
       <div class="reminders__note-title">
         {{note.title}}
       </div>
-      <div class="reminders__note-post">
-        {{note.post}}
-      </div>
+      <div class="reminders__note-post" [innerHTML]="note.post"></div>
       <div class="reminders__icons">
         <md-icon class="example-icon" mdTooltip="Delete note" (click)="deleteNote(note.id)">
           delete
