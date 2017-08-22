@@ -34,10 +34,6 @@ export class NotesComponent {
     this.subscription.unsubscribe();
   }
 
-  getClassFromColor(color) {
-    return `color--${color}`;
-  }
-
   deleteNote(noteId) {
     this.notesService.deleteNote(noteId);
   }

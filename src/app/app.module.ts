@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'angular-calendar';
 
@@ -24,6 +24,7 @@ import { SidenavMenuComponent } from './sidenav-menu/sidenav-menu';
 import { TagsDialogComponent } from './sidenav-menu/tags-dialog/tags-dialog';
 import { TagRowComponent } from './sidenav-menu/tags-dialog/tag-row/tag-row';
 import { NavbarComponent } from './navbar/navbar';
+import { NoteComponent } from './note/note';
 import { PlaceholderComponent } from './views/placeholder/placeholder';
 import { NotesComponent } from './views/notes/notes';
 import { RemindersComponent } from './views/reminders/reminders';
@@ -43,41 +44,7 @@ import { NotificationService } from './services/notification.service';
 
 import {FocusDirective} from './directives/focus.directive';
 
-const appRoutes: Routes = [
-  {
-    path: 'notes',
-    component: NotesComponent
-  },
-  {
-    path: 'reminders',
-    component: RemindersComponent
-  },
-  {
-    path: 'calendar',
-    component: CalendarComponent
-  },
-  {
-    path: 'tags/:name',
-    component: TagsComponent
-  },
-  {
-    path: 'search',
-    component: SearchComponent
-  },
-  {
-    path: 'archive',
-    component: ArchiveComponent
-  },
-  {
-    path: 'trash',
-    component: TrashComponent
-  },
-  {
-    path: '',
-    redirectTo: '/notes',
-    pathMatch: 'full'
-  },
-];
+import { routes } from './routes';
 
 @NgModule({
   declarations: [
@@ -86,6 +53,7 @@ const appRoutes: Routes = [
     TagsDialogComponent,
     TagRowComponent,
     NavbarComponent,
+    NoteComponent,
     PlaceholderComponent,
     NotesComponent,
     RemindersComponent,
@@ -102,7 +70,7 @@ const appRoutes: Routes = [
   ],
   entryComponents: [TagsDialogComponent],
   imports: [
-    RouterModule.forRoot( appRoutes, { enableTracing: false } ),
+    RouterModule.forRoot( routes, { enableTracing: false } ),
     CalendarModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
