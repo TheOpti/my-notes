@@ -30,8 +30,4 @@ export class RemindersComponent {
     });
   }
 
-  getClassFromColor(color) {
-    return `color--${color}`;
-  }
-
 }

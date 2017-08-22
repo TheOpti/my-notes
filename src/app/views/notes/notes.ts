@@ -33,8 +33,4 @@ export class NotesComponent {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-  deleteNote(noteId) {
-    this.notesService.deleteNote(noteId);
-  }
 }
