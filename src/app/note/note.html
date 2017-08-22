@@ -1,7 +1,10 @@
 <div
-  [ngClass]="getClassFromColor(note.color)"
-  class="note"
+  [ngClass]="{'note--selected': isSelected(note.id)}"
+  class="note {{getClassFromColor(note.color)}}"
 >
+  <div class="note__selection-tick" mdTooltip="Add to selection" (click)="handleSelection(note.id)">
+    <md-icon class="note__selection-icon">done</md-icon>
+  </div>
   <div class="note__title" *ngIf="note.title">
     {{note.title}}
   </div>

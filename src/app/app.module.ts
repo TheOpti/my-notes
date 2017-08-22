@@ -41,6 +41,7 @@ import { ReminderBarComponent } from './reminder-bar/reminder-bar';
 import { NotesService } from './services/notes.service';
 import { TagsService } from './services/tags.service';
 import { NotificationService } from './services/notification.service';
+import { SelectionService } from './services/selection.service';
 
 import {FocusDirective} from './directives/focus.directive';
 
@@ -87,7 +88,7 @@ import { routes } from './routes';
     MdDatepickerModule,
     MdNativeDateModule
   ],
-  providers: [NotesService, TagsService, NotificationService],
+  providers: [NotesService, TagsService, NotificationService, SelectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
