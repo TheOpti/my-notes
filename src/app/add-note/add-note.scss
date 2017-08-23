@@ -100,16 +100,41 @@
     }
   }
 
-  &__reminder-menu {
-    width: 280px;
+  &__menu {
+    width: 250px;
     user-select: none;
   }
 
-  &__reminder-title {
-    height: 46px;
+  &__menu-title {
+    height: 36px;
     font-size: 16px;
-    padding: 10px 15px;
+    padding: 10px 15px 0 15px;
     font-weight: bold;
+  }
+
+  &__menu-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    margin: 5px 0;
+  }
+
+  &__menu-items-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__menu-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 26px;
+    margin: 6px 0;
+    padding: 0 12px;
+
+    &--date {
+      justify-content: space-between;
+    }
   }
 
   &__reminder {
@@ -123,25 +148,6 @@
     &:hover {
       background-color: #eee;
     }
-  }
-
-  &__reminder-divider {
-    width: 100%;
-    height: 1px;
-    background-color: #ddd;
-    margin: 5px 0;
-  }
-
-  &__choose-date-title {
-    padding-left: 15px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-  }
-
-  &__datepicker {
-    display: flex;
-    justify-content: center;
   }
 
   ::-webkit-input-placeholder {

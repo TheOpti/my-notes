@@ -9,6 +9,9 @@
     {{note.title}}
   </div>
   <div class="note__post" [innerHTML]="note.post"></div>
+  <selected-tags-bar
+    [selectedTags]="note.tags"
+  ></selected-tags-bar>
   <div class="note__icons">
     <md-icon mdTooltip="Delete note" (click)="deleteNote(note.id)">
       delete

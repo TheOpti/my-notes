@@ -62,7 +62,7 @@ export class NotesService {
 
     localStorage.setItem('notes', stringified);
     this.sendMessage(filteredNotes);
-    this.notificationService.addNotification('note-add');
+    this.notificationService.addNotification('note-delete');
   }
 
   sendMessage(allNotes) {

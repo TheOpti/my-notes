@@ -1,0 +1,22 @@
+.selected-tags-bar {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  margin: 12px 5px 0 5px;
+
+  &__tag {
+    cursor: pointer;
+    background: rgba(0,0,0,0.1);
+    border: 1px solid transparent;
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    margin: 0 6px 6px 0;
+    padding: 4px 9px;
+    border-radius: 2px;
+    text-transform: none;
+    max-width: 100px;
+  }
+}

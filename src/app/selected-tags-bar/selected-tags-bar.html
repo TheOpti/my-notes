@@ -1,0 +1,11 @@
+<div
+  *ngIf="selectedTags && selectedTags.length"
+  class="selected-tags-bar"
+>
+  <div
+    *ngFor="let tag of selectedTags"
+    class="selected-tags-bar__tag"
+  >
+    {{tag.name}}
+  </div>
+</div>

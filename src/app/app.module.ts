@@ -16,7 +16,8 @@ import {
   MdMenuModule,
   MdInputModule,
   MdDatepickerModule,
-  MdNativeDateModule
+  MdNativeDateModule,
+  MdCheckboxModule
 } from '@angular/material';
 
 import { AppComponent } from './app';
@@ -38,6 +39,7 @@ import { NoteCanvasComponent } from './note-canvas/note-canvas';
 import { NotificationsComponent } from './notifications/notifications';
 import { NotificationComponent } from './notifications/notification/notification';
 import { ReminderBarComponent } from './reminder-bar/reminder-bar';
+import { SelectedTagsBarComponent } from './selected-tags-bar/selected-tags-bar';
 
 import { NotesService } from './services/notes.service';
 import { TagsService } from './services/tags.service';
@@ -69,6 +71,7 @@ import { routes } from './routes';
     NotificationsComponent,
     NotificationComponent,
     ReminderBarComponent,
+    SelectedTagsBarComponent,
     FocusDirective
   ],
   entryComponents: [TagsDialogComponent],
@@ -88,7 +91,8 @@ import { routes } from './routes';
     MdMenuModule,
     MdInputModule,
     MdDatepickerModule,
-    MdNativeDateModule
+    MdNativeDateModule,
+    MdCheckboxModule
   ],
   providers: [NotesService, TagsService, NotificationService, SelectionService],
   bootstrap: [AppComponent]

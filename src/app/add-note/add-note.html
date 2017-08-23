@@ -23,6 +23,11 @@
       (keyup)="adjustTextarea($event)"
     ></textarea>
 
+    <selected-tags-bar
+      [selectedTags]="selectedTags"
+    ></selected-tags-bar>
+
+
     <div class="add-note__footer">
       <div class="add-note__icons">
         <md-icon
@@ -41,14 +46,26 @@
         >
           palette
         </md-icon>
+        <md-icon
+          class="add-note__icon"
+          mdTooltip="Select tags"
+          #tagsMenuTrigger="mdMenuTrigger"
+          [mdMenuTriggerFor]="tagsMenu"
+        >
+          label
+        </md-icon>
       </div>
 
       <md-menu #reminderMenu="mdMenu">
-        <div class="add-note__reminder-menu" (click)="onMenuClick($event)">
-          <div class="add-note__reminder-title">Reminder:</div>
-          <div class="add-note__reminder-divider"></div>
-          <div class="add-note__reminders">
-            <div class="add-note__reminder" *ngFor="let date of dateOptions" (click)="setReminder(date)">
+        <div class="add-note__menu" (click)="onMenuClick($event)">
+          <div class="add-note__menu-title">Reminder:</div>
+          <div class="add-note__menu-divider"></div>
+          <div class="add-note__menu-items-list">
+            <div
+              *ngFor="let date of dateOptions"
+              (click)="setReminder(date)"
+              class="add-note__menu-item add-note__menu-item--date"
+            >
               <span>{{date.day}}</span>
               <span>{{date.time}}</span>
             </div>
@@ -65,6 +82,23 @@
             [ngClass]="getClassFromColor(color)"
           >
             <md-icon *ngIf="currentColor === color">done</md-icon>
+          </div>
+        </div>
+      </md-menu>
+
+      <md-menu #tagsMenu="mdMenu">
+        <div class="add-note__menu" (click)="onMenuClick($event)">
+          <div class="add-note__menu-title">Edit tags for note:</div>
+          <div class="add-note__menu-divider"></div>
+          <div class="add-note__menu-items-list">
+            <div *ngFor="let tag of tags" class="add-note__menu-item">
+              <md-checkbox
+                [checked]="isTagSelected(tag)"
+                (change)="handleTagSelection(tag)"
+              >
+                {{tag.name}}
+              </md-checkbox>
+            </div>
           </div>
         </div>
       </md-menu>

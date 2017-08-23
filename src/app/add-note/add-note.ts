@@ -8,6 +8,7 @@ import {
 import v1 from 'uuid/v1';
 
 import { NotesService } from '../services/notes.service';
+import { TagsService } from '../services/tags.service';
 
 const NOTE_TYPES = {
   NOTE: 'note',
@@ -21,7 +22,7 @@ const NOTE_TYPES = {
 })
 export class AddNoteComponent {
 
-  private isAddingNewNote = false;
+  private isAddingNewNote = true;
   private post = '';
   private title = '';
   private addNoteClass = '';
@@ -29,6 +30,10 @@ export class AddNoteComponent {
   private currentColor = 'white';
   private reminder = '';
   private type = NOTE_TYPES.NOTE;
+
+  private tags = [];
+  private subscription: any;
+  private selectedTags = [];
 
   private dateOptions = [
     {
@@ -53,8 +58,14 @@ export class AddNoteComponent {
   @ViewChild('paletteMenuTrigger') paletteMenu: any;
   @ViewChild('reminderMenuTrigger') dateMenu: any;
 
-  constructor(private eRef: ElementRef, private notesService: NotesService) {
+  constructor(private eRef: ElementRef, private notesService: NotesService, private tagsService: TagsService) {
     this.addNoteClass = this.getClassFromColor(this.currentColor);
+
+    this.tags = this.tagsService.getAllTags();
+
+    this.subscription = this.tagsService.getMessage().subscribe(tags => {
+      this.tags = tags;
+    });
   }
 
   @HostListener('document:click', ['$event'])
@@ -88,6 +99,7 @@ export class AddNoteComponent {
     this.currentColor = 'white';
     this.reminder = null;
     this.type = NOTE_TYPES.NOTE;
+    this.selectedTags = [];
   }
 
   adjustTextarea() {
@@ -104,7 +116,8 @@ export class AddNoteComponent {
       post: this.post.replace(/\n\r?/g, '<br />'),
       color: this.currentColor,
       reminder: this.reminder,
-      type: this.type
+      type: this.type,
+      tags: this.selectedTags
     };
 
     this.notesService.addNote(note);
@@ -139,6 +152,18 @@ export class AddNoteComponent {
 
     this.reminder = null;
     this.type = NOTE_TYPES.NOTE;
+  }
+
+  isTagSelected(tag) {
+    return !!this.selectedTags.find(entry => entry.id === tag.id);
+  }
+
+  handleTagSelection(tag) {
+    if (this.isTagSelected(tag)) {
+      this.selectedTags = this.selectedTags.filter(entry => entry.id !== tag.id);
+    } else {
+      this.selectedTags.push(tag);
+    }
   }
 
 }
