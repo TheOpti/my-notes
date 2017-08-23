@@ -4,12 +4,10 @@
     class="reminders__loading-spinner"
   ></md-spinner>
 
-  <div *ngIf="!loading && reminders.length" class="reminders__list-wrapper">
-    <note
-      *ngFor="let note of reminders"
-      [note]="note"
-    ></note>
-  </div>
+  <note-canvas
+    *ngIf="!loading && reminders.length"
+    [notes]="reminders"
+  ></note-canvas>
 
   <placeholder
     *ngIf="!loading && !reminders.length"

@@ -34,6 +34,7 @@ import { TagsComponent } from './views/tags/tags';
 import { ArchiveComponent } from './views/archive/archive';
 import { TrashComponent } from './views/trash/trash';
 import { AddNoteComponent } from './add-note/add-note';
+import { NoteCanvasComponent } from './note-canvas/note-canvas';
 import { NotificationsComponent } from './notifications/notifications';
 import { NotificationComponent } from './notifications/notification/notification';
 import { ReminderBarComponent } from './reminder-bar/reminder-bar';
@@ -64,6 +65,7 @@ import { routes } from './routes';
     ArchiveComponent,
     TrashComponent,
     AddNoteComponent,
+    NoteCanvasComponent,
     NotificationsComponent,
     NotificationComponent,
     ReminderBarComponent,
