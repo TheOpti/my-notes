@@ -31,6 +31,22 @@ export class NotesService {
       });
   }
 
+  updateNote(updatedNote, noteId) {
+    let notes: any = localStorage.getItem('notes');
+
+    if (notes) {
+      notes = JSON.parse(notes);
+    } else {
+      notes = [];
+    }
+
+    const idx = notes.findIndex(note => note.id === noteId);
+    notes[idx] = updatedNote;
+
+    notes = JSON.stringify(notes);
+    localStorage.setItem('notes', notes);
+  }
+
   getAllNotes() {
     let notes;
 
