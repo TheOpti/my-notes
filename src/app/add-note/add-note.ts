@@ -8,7 +8,6 @@ import {
 import v1 from 'uuid/v1';
 
 import { NotesService } from '../services/notes.service';
-import { TagsService } from '../services/tags.service';
 
 const NOTE_TYPES = {
   NOTE: 'note',
@@ -26,46 +25,16 @@ export class AddNoteComponent {
   private post = '';
   private title = '';
   private addNoteClass = '';
-  private colors = ['white', 'red', 'orange', 'yellow', 'grey', 'blue', 'sea', 'green'];
   private currentColor = 'white';
   private reminder = '';
   private type = NOTE_TYPES.NOTE;
-
-  private tags = [];
-  private subscription: any;
   private selectedTags = [];
-
-  private dateOptions = [
-    {
-      id: 'tomorrow-16',
-      day: 'Today',
-      time: '16:00'
-    },
-    {
-      id: 'tomorrow-8',
-      day: 'Tomorrow',
-      time: '08:00'
-    },
-    {
-      id: 'next-week-8',
-      day: 'Next week',
-      time: '12:00'
-    },
-  ];
 
   @ViewChild('textbox') textbox: any;
   @ViewChild('add-note-component') component: any;
-  @ViewChild('paletteMenuTrigger') paletteMenu: any;
-  @ViewChild('reminderMenuTrigger') dateMenu: any;
 
-  constructor(private eRef: ElementRef, private notesService: NotesService, private tagsService: TagsService) {
+  constructor(private eRef: ElementRef, private notesService: NotesService) {
     this.addNoteClass = this.getClassFromColor(this.currentColor);
-
-    this.tags = this.tagsService.getAllTags();
-
-    this.subscription = this.tagsService.getMessage().subscribe(tags => {
-      this.tags = tags;
-    });
   }
 
   @HostListener('document:click', ['$event'])
@@ -126,9 +95,6 @@ export class AddNoteComponent {
     this.disableEditing();
   }
 
-  onMenuClick(event) {
-    event.stopPropagation();
-  }
 
   getClassFromColor(color) {
     return `color--${color}`;
@@ -137,14 +103,11 @@ export class AddNoteComponent {
   setColor(color) {
     this.currentColor = color;
     this.addNoteClass = this.getClassFromColor(color);
-    this.paletteMenu.closeMenu();
   }
 
   setReminder(date) {
     this.reminder = date;
     this.type = NOTE_TYPES.REMINDER;
-
-    this.dateMenu.closeMenu();
   }
 
   removeReminder($event) {

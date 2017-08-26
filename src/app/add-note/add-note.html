@@ -10,11 +10,13 @@
     *ngIf="isAddingNewNote"
     class="add-note__form-wrapper"
   >
+
     <input
       [(ngModel)]="title"
       class="add-note__form-field add-note__title"
       placeholder="Title"
     />
+
     <textarea
       #textbox
       placeholder="Create new note..."
@@ -27,81 +29,16 @@
       [selectedTags]="selectedTags"
     ></selected-tags-bar>
 
-
     <div class="add-note__footer">
-      <div class="add-note__icons">
-        <md-icon
-          class="add-note__icon"
-          mdTooltip="Reminde me"
-          #reminderMenuTrigger="mdMenuTrigger"
-          [mdMenuTriggerFor]="reminderMenu"
-        >
-          av_timer
-        </md-icon>
-        <md-icon
-          class="add-note__icon"
-          mdTooltip="Change color"
-          #paletteMenuTrigger="mdMenuTrigger"
-          [mdMenuTriggerFor]="paletteMenu"
-        >
-          palette
-        </md-icon>
-        <md-icon
-          class="add-note__icon"
-          mdTooltip="Select tags"
-          #tagsMenuTrigger="mdMenuTrigger"
-          [mdMenuTriggerFor]="tagsMenu"
-        >
-          label
-        </md-icon>
-      </div>
-
-      <md-menu #reminderMenu="mdMenu">
-        <div class="add-note__menu" (click)="onMenuClick($event)">
-          <div class="add-note__menu-title">Reminder:</div>
-          <div class="add-note__menu-divider"></div>
-          <div class="add-note__menu-items-list">
-            <div
-              *ngFor="let date of dateOptions"
-              (click)="setReminder(date)"
-              class="add-note__menu-item add-note__menu-item--date"
-            >
-              <span>{{date.day}}</span>
-              <span>{{date.time}}</span>
-            </div>
-          </div>
-        </div>
-      </md-menu>
-
-      <md-menu #paletteMenu="mdMenu">
-        <div class="add-note__palette" (click)="onMenuClick($event)">
-          <div
-            *ngFor="let color of colors"
-            (click)="setColor(color)"
-            class="add-note__palette-color"
-            [ngClass]="getClassFromColor(color)"
-          >
-            <md-icon *ngIf="currentColor === color">done</md-icon>
-          </div>
-        </div>
-      </md-menu>
-
-      <md-menu #tagsMenu="mdMenu">
-        <div class="add-note__menu" (click)="onMenuClick($event)">
-          <div class="add-note__menu-title">Edit tags for note:</div>
-          <div class="add-note__menu-divider"></div>
-          <div class="add-note__menu-items-list">
-            <div *ngFor="let tag of tags" class="add-note__menu-item">
-              <md-checkbox
-                [checked]="isTagSelected(tag)"
-                (change)="handleTagSelection(tag)"
-              >
-                {{tag.name}}
-              </md-checkbox>
-            </div>
-          </div>
-        </div>
-      </md-menu>
+      <icons-bar
+        [currentColor]="currentColor"
+        [reminder]="reminder"
+        [selectedTags]="selectedTags"
+        [isTagSelected]="isTagSelected"
+        (onColorSelect)="setColor($event, color)"
+        (onReminderSelect)="setReminder($event, reminder)"
+        (onTagSelect)="handleTagSelection($event, tag)"
+      ></icons-bar>
 
       <button
         (click)="addNewNote()"

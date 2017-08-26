@@ -40,6 +40,7 @@ import { NotificationsComponent } from './notifications/notifications';
 import { NotificationComponent } from './notifications/notification/notification';
 import { ReminderBarComponent } from './reminder-bar/reminder-bar';
 import { SelectedTagsBarComponent } from './selected-tags-bar/selected-tags-bar';
+import { IconsBarComponent } from './icons-bar/icons-bar';
 
 import { NotesService } from './services/notes.service';
 import { TagsService } from './services/tags.service';
@@ -72,6 +73,7 @@ import { routes } from './routes';
     NotificationComponent,
     ReminderBarComponent,
     SelectedTagsBarComponent,
+    IconsBarComponent,
     FocusDirective
   ],
   entryComponents: [TagsDialogComponent],
