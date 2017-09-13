@@ -27,6 +27,8 @@ import { TagRowComponent } from './sidenav-menu/tags-dialog/tag-row/tag-row';
 import { NavbarComponent } from './navbar/navbar';
 import { NoteComponent } from './note/note';
 import { PlaceholderComponent } from './views/placeholder/placeholder';
+import { LoginComponent } from './views/login/login';
+import { ApplicationComponent } from './views/application/application';
 import { NotesComponent } from './views/notes/notes';
 import { RemindersComponent } from './views/reminders/reminders';
 import { CalendarComponent } from './views/calendar/calendar';
@@ -60,6 +62,8 @@ import { routes } from './routes';
     NavbarComponent,
     NoteComponent,
     PlaceholderComponent,
+    LoginComponent,
+    ApplicationComponent,
     NotesComponent,
     RemindersComponent,
     CalendarComponent,
