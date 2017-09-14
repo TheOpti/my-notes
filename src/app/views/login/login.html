@@ -1,11 +1,23 @@
 <div class="login">
-
-  <div>Login page!</div>
-  <div>
-    <a routerLink="/application" routerLinkActive="active">
-      Go to application!
-    </a>
+  <div class="login__form">
+    <div class="login__logo-section">
+      <span>My notes logo</span>
+    </div>
+    <md-form-field class="login__input-wrapper">
+      <input mdInput placeholder="Login" type="text">
+    </md-form-field>
+    <md-form-field class="login__input-wrapper">
+      <input mdInput placeholder="Password" type="password">
+    </md-form-field>
+    <button
+      md-button
+      class="login__login-button"
+      color="primary"
+      routerLink="/application"
+      routerLinkActive="active"
+    >
+      Login
+    </button>
   </div>
-
 
 </div>
