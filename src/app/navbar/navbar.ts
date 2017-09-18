@@ -70,6 +70,11 @@ export class NavbarComponent {
   }
 
   setParams(url) {
+    // TODO refactor because it causes too many bugs
+    if (url === '/login' || url === '/application') {
+      return;
+    }
+
     this.searchBarClass = '';
 
     if (url !== '/') {
