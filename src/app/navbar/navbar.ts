@@ -7,27 +7,27 @@ import 'rxjs/add/operator/mergeMap';
 import { Router, NavigationEnd, Event, RoutesRecognized } from '@angular/router';
 
 const cssClassesMap = {
-  '/notes': {
+  '/application/notes': {
     cssClass: 'navbar--notes',
     title: 'Notes'
   },
-  '/reminders': {
+  '/application/reminders': {
     cssClass: 'navbar--reminders',
     title: 'Reminders'
   },
-  '/calendar': {
+  '/application/calendar': {
     cssClass: 'navbar--calendar',
     title: 'Calendar'
   },
-  '/search': {
+  '/application/search': {
     cssClass: 'navbar--search',
     title: 'Search'
   },
-  '/trash': {
+  '/application/trash': {
     cssClass: 'navbar--trash',
     title: 'Trash'
   },
-  '/archive': {
+  '/application/archive': {
     cssClass: 'navbar--archive',
     title: 'Archive'
   }
@@ -54,17 +54,19 @@ export class NavbarComponent {
       .filter((event) => event instanceof NavigationEnd || event instanceof RoutesRecognized)
       .subscribe((event:Event) => {
         if (event instanceof RoutesRecognized) {
-          this.routeParams = event.state.root.firstChild.params
+          this.routeParams = event.state.root.firstChild.params;
         }
 
         if (event instanceof NavigationEnd) {
           this.setParams(event.url);
         }
       });
+
+    this.setParams(this.router.url);
   }
 
   onSearchBarFocus() {
-    this.router.navigate(['/search']);
+    this.router.navigate(['/application/search']);
   }
 
   setParams(url) {
