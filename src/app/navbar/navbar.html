@@ -16,9 +16,11 @@
     <mat-icon class="navbar__icon">clear</mat-icon>
 
   </div>
-  <div class="navbar__icon navbar__toggle-icon" [routerLink]="['/login']">
-    <mat-icon mdTooltip="Logout">
-      exit_to_app
-    </mat-icon>
+  <div class="navbar__more-actions">
+    <div class="navbar__icon navbar__toggle-icon" (click)="logout()">
+      <mat-icon mdTooltip="Logout">
+        exit_to_app
+      </mat-icon>
+    </div>
   </div>
 </mat-toolbar>

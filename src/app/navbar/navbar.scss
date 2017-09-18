@@ -36,6 +36,7 @@
     margin: 0 10px;
     cursor: pointer;
     user-select: none;
+    outline: none;
   }
 
   &__toggle-icon {
@@ -51,6 +52,12 @@
     width: 200px;
     display: inline-block;
     margin: 0 15px;
+  }
+
+  &__more-actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
   }
 
   &--notes {
