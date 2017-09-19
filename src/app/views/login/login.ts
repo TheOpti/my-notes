@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
+const LOGIN_STATES = {
+  LOGIN: 'login',
+  REGISTER: 'register',
+  PASSWORD_FORGOT: 'password-forgot',
+  REGISTERED: 'registered',
+};
 
 @Component({
   selector: 'login',
@@ -8,7 +15,17 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private router: Router) { }
+  private mode: string;
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route
+      .data
+      .subscribe(data => {
+        this.mode = LOGIN_STATES[data.state];
+      });
+  }
 
   login() {
     // TODO implement login logic

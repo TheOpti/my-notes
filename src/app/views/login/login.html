@@ -3,6 +3,11 @@
     <div class="login__logo-section">
       <span>My notes logo</span>
     </div>
+
+    <div>
+      State: {{mode}}
+    </div>
+
     <md-form-field class="login__input-wrapper">
       <input mdInput placeholder="Login" type="text">
     </md-form-field>
@@ -20,10 +25,10 @@
       Login
     </button>
     <div class="login__buttons-wrapper">
-      <button md-button class="login__button">
+      <button md-button class="login__button" routerLink="/password-forgot">
         Forgot password?
       </button>
-      <button md-button class="login__button">
+      <button md-button class="login__button" routerLink="/register">
         Create new account
       </button>
     </div>

@@ -14,17 +14,29 @@ import {ApplicationComponent} from "./views/application/application";
 export const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    data: { state: 'LOGIN' }
+  },
+  {
+    path: 'register',
+    component: LoginComponent,
+    data: { state: 'REGISTER' }
+  },
+  {
+    path: 'password-forgot',
+    component: LoginComponent,
+    data: { state: 'PASSWORD_FORGOT' }
+  },
+  {
+    path: 'registered',
+    component: LoginComponent,
+    data: { state: 'REGISTERED' }
   },
   {
     path: 'application',
     component: ApplicationComponent,
+    outlet: 'application',
     children: [
-      {
-        path: '',
-        redirectTo: 'notes',
-        pathMatch: 'full'
-      },
       {
         path: 'notes',
         component: NotesComponent
