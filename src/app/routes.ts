@@ -35,7 +35,6 @@ export const routes: Routes = [
   {
     path: 'application',
     component: ApplicationComponent,
-    outlet: 'application',
     children: [
       {
         path: 'notes',
