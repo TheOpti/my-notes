@@ -4,25 +4,73 @@
       <span>My notes logo</span>
     </div>
 
-    <div>
-      State: {{mode}}
+    <div *ngIf="mode === 'login'" class="login__form-wrapper">
+      <md-form-field class="login__input-wrapper">
+        <input mdInput placeholder="Login" type="text">
+      </md-form-field>
+      <md-form-field class="login__input-wrapper">
+        <input mdInput placeholder="Password" type="password">
+      </md-form-field>
+      <button
+        md-button
+        class="login__login-button"
+        color="primary"
+        (click)="login()"
+      >
+        Login
+      </button>
     </div>
 
-    <md-form-field class="login__input-wrapper">
-      <input mdInput placeholder="Login" type="text">
-    </md-form-field>
-    <md-form-field class="login__input-wrapper">
-      <input mdInput placeholder="Password" type="password">
-    </md-form-field>
-    <button
-      md-button
-      class="login__login-button"
-      color="primary"
-      (click)="login()"
-    >
-      Login
-    </button>
-    <div class="login__buttons-wrapper">
+    <div *ngIf="mode === 'register'" class="login__form-wrapper">
+      <md-form-field class="login__input-wrapper">
+        <input mdInput placeholder="Select login" type="text">
+      </md-form-field>
+      <md-form-field class="login__input-wrapper">
+        <input mdInput placeholder="E-mail" type="email">
+      </md-form-field>
+      <md-form-field class="login__input-wrapper">
+        <input mdInput placeholder="Password" type="password">
+      </md-form-field>
+      <md-form-field class="login__input-wrapper">
+        <input mdInput placeholder="Repeat password" type="password">
+      </md-form-field>
+      <button
+        md-button
+        class="login__login-button"
+        color="primary"
+        (click)="register()"
+      >
+        Create new account
+      </button>
+      <div class="login__already-registered">
+        Already have an account? <a class="login__login-link" routerLink="/login">Login</a>
+      </div>
+    </div>
+
+    <div *ngIf="mode === 'password-forgot'" class="login__form-wrapper">
+      <div class="login__password-forgot-title">Forgot password?</div>
+      <div class="login__password-forgot-description">
+        We just need your registered email to send you
+        password reset instructions.
+      </div>
+      <md-form-field class="login__input-wrapper">
+        <input mdInput placeholder="Email" type="email">
+      </md-form-field>
+      <button
+        md-button
+        class="login__login-button"
+        color="primary"
+        (click)="resetPassword()"
+      >
+        Reset password
+      </button>
+      <div class="login__already-registered">
+        <a class="login__login-link" routerLink="/login">Login</a>
+      </div>
+    </div>
+
+
+    <div class="login__buttons-wrapper" *ngIf="mode ==='login'">
       <button md-button class="login__button" routerLink="/password-forgot">
         Forgot password?
       </button>
