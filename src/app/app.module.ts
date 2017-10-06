@@ -28,6 +28,9 @@ import { NavbarComponent } from './navbar/navbar';
 import { NoteComponent } from './note/note';
 import { PlaceholderComponent } from './views/placeholder/placeholder';
 import { LoginComponent } from './views/login/login';
+import { LoginFormComponent } from './views/login/forms/login-form/login-form';
+import { PasswordForgotFormComponent } from './views/login/forms/password-forgot-form/password-forgot-form';
+import { RegisterFormComponent } from './views/login/forms/register-form/register-form';
 import { ApplicationComponent } from './views/application/application';
 import { NotesComponent } from './views/notes/notes';
 import { RemindersComponent } from './views/reminders/reminders';
@@ -63,6 +66,9 @@ import { routes } from './routes';
     NoteComponent,
     PlaceholderComponent,
     LoginComponent,
+    LoginFormComponent,
+    PasswordForgotFormComponent,
+    RegisterFormComponent,
     ApplicationComponent,
     NotesComponent,
     RemindersComponent,

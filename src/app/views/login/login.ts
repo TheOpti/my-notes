@@ -17,7 +17,7 @@ export class LoginComponent {
 
   private mode: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route
@@ -25,11 +25,6 @@ export class LoginComponent {
       .subscribe(data => {
         this.mode = LOGIN_STATES[data.state];
       });
-  }
-
-  login() {
-    // TODO implement login logic
-    this.router.navigate(['/application/notes']);
   }
 
 }

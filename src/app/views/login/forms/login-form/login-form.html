@@ -1,0 +1,22 @@
+<md-form-field class="login__input-wrapper">
+  <input mdInput placeholder="Login" type="text">
+</md-form-field>
+<md-form-field class="login__input-wrapper">
+  <input mdInput placeholder="Password" type="password">
+</md-form-field>
+<button
+  md-button
+  class="login__login-button"
+  color="primary"
+  (click)="login()"
+>
+  Login
+</button>
+<div class="login__buttons-wrapper">
+  <button md-button class="login__button" routerLink="/password-forgot">
+    Forgot password?
+  </button>
+  <button md-button class="login__button" routerLink="/register">
+    Create new account
+  </button>
+</div>
