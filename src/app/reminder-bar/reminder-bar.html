@@ -1,20 +1,20 @@
 <div class="reminder-bar">
   <div class="reminder-bar__time-section">
-    <md-icon
-      mdTooltip="Change reminder"
+    <mat-icon
+      matTooltip="Change reminder"
       class="reminder-bar__icon"
     >
       access_time
-    </md-icon>
+    </mat-icon>
     <span>{{reminder.day}}</span>
     <span>, </span>
     <span class="reminder-bar__time">{{reminder.time}}</span>
   </div>
-  <md-icon
+  <mat-icon
     (click)="removeReminder($event)"
-    md-tooltip="Remove reminder"
+    mat-tooltip="Remove reminder"
     class="reminder-bar__icon"
   >
     cancel
-  </md-icon>
+  </mat-icon>
 </div>

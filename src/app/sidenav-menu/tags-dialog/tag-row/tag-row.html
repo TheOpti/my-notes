@@ -1,42 +1,42 @@
 <div class="tag-row">
 
   <div class="tag-row__row" *ngIf="!condition">
-    <md-icon *ngIf="type === 'add'" class="tag-row__icon" mdTooltip="Create new tag" (click)="enableEditing()">
+    <mat-icon *ngIf="type === 'add'" class="tag-row__icon" matTooltip="Create new tag" (click)="enableEditing()">
       add
-    </md-icon>
-    <md-icon
+    </mat-icon>
+    <mat-icon
       *ngIf="type === 'edit'"
       class="tag-row__icon tag-row__icon-label"
     >
       label
-    </md-icon>
-    <md-icon
+    </mat-icon>
+    <mat-icon
       *ngIf="type === 'edit'"
       (click)="deleteTag(id)"
       class="tag-row__icon tag-row__icon-delete"
-      mdTooltip="Delete"
+      matTooltip="Delete"
     >
       delete
-    </md-icon>
+    </mat-icon>
     <div class="tag-row__tag-title" (click)="enableEditing()">
       {{label}}
     </div>
-    <md-icon *ngIf="type === 'edit'" mdTooltip="Change tag" (click)="enableEditing()">mode_edit</md-icon>
+    <mat-icon *ngIf="type === 'edit'" matTooltip="Change tag" (click)="enableEditing()">mode_edit</mat-icon>
   </div>
 
   <div class="tag-row__row" *ngIf="condition">
-    <md-icon class="tag-row__icon" [mdTooltip]="editedTagTooltip" (click)="inputIconClick()">
+    <mat-icon class="tag-row__icon" [matTooltip]="editedTagTooltip" (click)="inputIconClick()">
       {{editedTagIcon}}
-    </md-icon>
+    </mat-icon>
     <input
       class="tag-row__input"
       [placeholder]="placeholder"
       [(ngModel)]="tag"
       [focus]="true"
     />
-    <md-icon mdTooltip="Accept" *ngIf="tag" (click)="acceptClick()">
+    <mat-icon matTooltip="Accept" *ngIf="tag" (click)="acceptClick()">
       check
-    </md-icon>
+    </mat-icon>
   </div>
 
 </div>

@@ -1,8 +1,8 @@
 <div class="reminders">
-  <md-spinner
+  <mat-spinner
     *ngIf="loading"
     class="reminders__loading-spinner"
-  ></md-spinner>
+  ></mat-spinner>
 
   <note-canvas
     *ngIf="!loading && reminders.length"

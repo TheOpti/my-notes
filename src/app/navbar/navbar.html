@@ -1,19 +1,19 @@
-<md-toolbar color="primary" class="navbar" [ngClass]="cssClass">
+<mat-toolbar color="primary" class="navbar" [ngClass]="cssClass">
   <div class="navbar__icon navbar__toggle-icon" (click)="toggle()">
-    <md-icon class="example-icon">menu</md-icon>
+    <mat-icon class="example-icon">menu</mat-icon>
   </div>
   <div class="navbar__app-title">{{title}}</div>
   <div
     [ngClass]="searchBarClass"
     class="navbar__search-bar"
   >
-    <md-icon class="navbar__icon">search</md-icon>
+    <mat-icon class="navbar__icon">search</mat-icon>
     <input
       (focus)="onSearchBarFocus()"
       class="navbar__input"
       placeholder="Search"
     />
-    <md-icon class="navbar__icon">clear</md-icon>
+    <mat-icon class="navbar__icon">clear</mat-icon>
 
   </div>
-</md-toolbar>
+</mat-toolbar>

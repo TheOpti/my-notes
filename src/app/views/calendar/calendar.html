@@ -3,7 +3,7 @@
     <div class="calendar__buttons">
       <button
         mwlCalendarPreviousView
-        md-raised-button
+        mat-raised-button
         [view]="view"
         [(viewDate)]="viewDate"
         class="calendar__button"
@@ -12,7 +12,7 @@
       </button>
       <button
         mwlCalendarToday
-        md-raised-button
+        mat-raised-button
         [(viewDate)]="viewDate"
         class="calendar__button"
       >
@@ -20,7 +20,7 @@
       </button>
       <button
         mwlCalendarNextView
-        md-raised-button
+        mat-raised-button
         [view]="view"
         [(viewDate)]="viewDate"
         class="calendar__button"
@@ -35,7 +35,7 @@
       <button
         (click)="view = 'month'"
         [class.active]="view === 'month'"
-        md-raised-button
+        mat-raised-button
         class="calendar__button"
       >
         Month
@@ -43,7 +43,7 @@
       <button
         (click)="view = 'week'"
         [class.active]="view === 'week'"
-        md-raised-button
+        mat-raised-button
         class="calendar__button"
       >
         Week
@@ -51,7 +51,7 @@
       <button
         (click)="view = 'day'"
         [class.active]="view === 'day'"
-        md-raised-button
+        mat-raised-button
         class="calendar__button"
       >
         Day

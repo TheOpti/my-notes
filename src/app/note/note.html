@@ -1,7 +1,7 @@
 <div [ngClass]="getCssClasses()" class="note">
 
-  <div class="note__selection-tick" mdTooltip="Add to selection" (click)="handleSelection(note.id)">
-    <md-icon class="note__selection-icon">done</md-icon>
+  <div class="note__selection-tick" matTooltip="Add to selection" (click)="handleSelection(note.id)">
+    <mat-icon class="note__selection-icon">done</mat-icon>
   </div>
 
   <div class="note__title" *ngIf="note.title">
@@ -25,9 +25,9 @@
       (onTagSelect)="handleTagSelection($event, tag)"
     ></icons-bar>
 
-    <md-icon mdTooltip="Delete note" (click)="deleteNote(note.id)">
+    <mat-icon matTooltip="Delete note" (click)="deleteNote(note.id)">
       delete
-    </md-icon>
+    </mat-icon>
   </div>
 
   <reminder-bar

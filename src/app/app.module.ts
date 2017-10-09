@@ -6,18 +6,18 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'angular-calendar';
 
 import {
-  MdSidenavModule,
-  MdToolbarModule,
-  MdIconModule,
-  MdButtonModule,
-  MdTooltipModule,
-  MdDialogModule,
-  MdProgressSpinnerModule,
-  MdMenuModule,
-  MdInputModule,
-  MdDatepickerModule,
-  MdNativeDateModule,
-  MdCheckboxModule
+  MatSidenavModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatTooltipModule,
+  MatDialogModule,
+  MatProgressSpinnerModule,
+  MatMenuModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import { AppComponent } from './app';
@@ -83,18 +83,18 @@ import { routes } from './routes';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    MdSidenavModule,
-    MdToolbarModule,
-    MdIconModule,
-    MdButtonModule,
-    MdTooltipModule,
-    MdDialogModule,
-    MdProgressSpinnerModule,
-    MdMenuModule,
-    MdInputModule,
-    MdDatepickerModule,
-    MdNativeDateModule,
-    MdCheckboxModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   providers: [NotesService, TagsService, NotificationService, SelectionService],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MdDialogRef} from '@angular/material';
+import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
 import {TagsService} from '../../services/tags.service';
@@ -18,7 +18,7 @@ export class TagsDialogComponent {
   private currentEditingTag: string;
   private subscription: Subscription;
 
-  constructor(public dialogRef: MdDialogRef<TagsDialogComponent>, private tagsService: TagsService) {
+  constructor(public dialogRef: MatDialogRef<TagsDialogComponent>, private tagsService: TagsService) {
     this.isAddingNew = false;
 
     this.tags = this.tagsService.getAllTags();

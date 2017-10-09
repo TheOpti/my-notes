@@ -1,22 +1,22 @@
 <div class="sidenav-menu">
   <div class="sidenav-menu__section">
     <a routerLink="/notes" routerLinkActive="active" class="sidenav-menu__entry">
-      <md-icon>notes</md-icon>
+      <mat-icon>notes</mat-icon>
       <span class="sidenav-menu__entry-title">Notes</span>
     </a>
     <a routerLink="/reminders" routerLinkActive="active" class="sidenav-menu__entry">
-      <md-icon>lightbulb_outline</md-icon>
+      <mat-icon>lightbulb_outline</mat-icon>
       <span class="sidenav-menu__entry-title">Reminders</span>
     </a>
     <a routerLink="/calendar" routerLinkActive="active" class="sidenav-menu__entry">
-      <md-icon>today</md-icon>
+      <mat-icon>today</mat-icon>
       <span class="sidenav-menu__entry-title">Calendar</span>
     </a>
   </div>
   <div class="sidenav-menu__section">
     <div class="sidenav-menu__add-tag-row">
       <div>Tags</div>
-      <button md-raised-button (click)="openTagsDialog()">Edit</button>
+      <button mat-raised-button (click)="openTagsDialog()">Edit</button>
     </div>
     <a
       *ngFor="let tag of tags"
@@ -24,21 +24,21 @@
       routerLinkActive="active"
       class="sidenav-menu__entry"
     >
-      <md-icon>label</md-icon>
+      <mat-icon>label</mat-icon>
       <span class="sidenav-menu__entry-title">{{tag.name}}</span>
     </a>
     <div class="sidenav-menu__entry" (click)="openTagsDialog()">
-      <md-icon>add</md-icon>
+      <mat-icon>add</mat-icon>
       <span class="sidenav-menu__entry-title">Add tag</span>
     </div>
   </div>
   <div class="sidenav-menu__section">
     <a routerLink="/archive" routerLinkActive="active" class="sidenav-menu__entry">
-      <md-icon>archive</md-icon>
+      <mat-icon>archive</mat-icon>
       <span class="sidenav-menu__entry-title">Archive</span>
     </a>
     <a routerLink="/trash" routerLinkActive="active" class="sidenav-menu__entry">
-      <md-icon>delete</md-icon>
+      <mat-icon>delete</mat-icon>
       <span class="sidenav-menu__entry-title">Trash</span>
     </a>
   </div>

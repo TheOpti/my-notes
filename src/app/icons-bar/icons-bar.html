@@ -1,30 +1,30 @@
 <div class="icons-bar">
-  <md-icon
+  <mat-icon
     class="icons-bar__icon"
-    mdTooltip="Reminde me"
-    #reminderMenuTrigger="mdMenuTrigger"
-    [mdMenuTriggerFor]="reminderMenu"
+    matTooltip="Reminde me"
+    #reminderMenuTrigger="matMenuTrigger"
+    [matMenuTriggerFor]="reminderMenu"
   >
     av_timer
-  </md-icon>
-  <md-icon
+  </mat-icon>
+  <mat-icon
     class="icons-bar__icon"
-    mdTooltip="Change color"
-    #paletteMenuTrigger="mdMenuTrigger"
-    [mdMenuTriggerFor]="paletteMenu"
+    matTooltip="Change color"
+    #paletteMenuTrigger="matMenuTrigger"
+    [matMenuTriggerFor]="paletteMenu"
   >
     palette
-  </md-icon>
-  <md-icon
+  </mat-icon>
+  <mat-icon
     class="icons-bar__icon"
-    mdTooltip="Select tags"
-    #tagsMenuTrigger="mdMenuTrigger"
-    [mdMenuTriggerFor]="tagsMenu"
+    matTooltip="Select tags"
+    #tagsMenuTrigger="matMenuTrigger"
+    [matMenuTriggerFor]="tagsMenu"
   >
     label
-  </md-icon>
+  </mat-icon>
 
-  <md-menu #reminderMenu="mdMenu">
+  <mat-menu #reminderMenu="matMenu">
     <div class="icons-bar__menu" (click)="onMenuClick($event)">
       <div class="icons-bar__menu-title">Reminder:</div>
       <div class="icons-bar__menu-divider"></div>
@@ -39,9 +39,9 @@
         </div>
       </div>
     </div>
-  </md-menu>
+  </mat-menu>
 
-  <md-menu #paletteMenu="mdMenu">
+  <mat-menu #paletteMenu="matMenu">
     <div class="icons-bar__palette" (click)="onMenuClick($event)">
       <div
         *ngFor="let color of colors"
@@ -49,26 +49,26 @@
         class="icons-bar__palette-color"
         [ngClass]="getClassFromColor(color)"
       >
-        <md-icon *ngIf="currentColor === color">done</md-icon>
+        <mat-icon *ngIf="currentColor === color">done</mat-icon>
       </div>
     </div>
-  </md-menu>
+  </mat-menu>
 
-  <md-menu #tagsMenu="mdMenu">
+  <mat-menu #tagsMenu="matMenu">
     <div class="icons-bar__menu" (click)="onMenuClick($event)">
       <div class="icons-bar__menu-title">Edit tags for note:</div>
       <div class="icons-bar__menu-divider"></div>
       <div class="icons-bar__menu-items-list">
         <div *ngFor="let tag of tags" class="icons-bar__menu-item">
-          <md-checkbox
+          <mat-checkbox
             [checked]="isTagSelected(tag)"
             (change)="handleTagSelection(tag)"
           >
             {{tag.name}}
-          </md-checkbox>
+          </mat-checkbox>
         </div>
       </div>
     </div>
-  </md-menu>
+  </mat-menu>
 
 </div>
