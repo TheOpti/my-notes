@@ -5,10 +5,7 @@
       <span>My notes logo</span>
     </div>
 
-    <login-form
-      *ngIf="mode === 'login'"
-      class="login__form-wrapper"
-    ></login-form>
+    <login-form *ngIf="mode === 'login'" ></login-form>
 
     <register-form
       *ngIf="mode === 'register'"

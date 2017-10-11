@@ -1,22 +1,56 @@
-<mat-form-field class="login__input-wrapper">
-  <input matInput placeholder="Login" type="text">
-</mat-form-field>
-<mat-form-field class="login__input-wrapper">
-  <input matInput placeholder="Password" type="password">
-</mat-form-field>
-<button
-  mat-button
-  class="login__login-button"
-  color="primary"
-  (click)="login()"
+<form
+  (ngSubmit)="save(form.value, form.valid)"
+  [formGroup]="form"
+  class="login__form-wrapper"
+  novalidate
 >
-  Login
-</button>
-<div class="login__buttons-wrapper">
-  <button mat-button class="login__button" routerLink="/password-forgot">
-    Forgot password?
+  <mat-form-field class="login__input-wrapper">
+    <input
+      formControlName="login"
+      placeholder="Login"
+      type="text"
+      required
+      matInput
+    >
+  </mat-form-field>
+  <div class="login__error-message">
+    <span [hidden]="form.controls.login.valid || (form.controls.login.pristine && !submitted)">
+      Login field is required.
+    </span>
+  </div>
+  <mat-form-field class="login__input-wrapper">
+    <input
+      formControlName="password"
+      placeholder="Password"
+      type="password"
+      required
+      matInput
+    >
+  </mat-form-field>
+  <div class="login__error-message">
+    <span [hidden]="form.controls.password.valid || (form.controls.password.pristine && !submitted)">
+      Password field is required.
+    </span>
+  </div>
+  <button
+    type="submit"
+    class="login__login-button"
+    color="primary"
+    mat-button
+  >
+    Login
   </button>
-  <button mat-button class="login__button" routerLink="/register">
-    Create new account
-  </button>
-</div>
+  <div class="login__error-message">
+    <span [hidden]="(!form.controls.login.valid || !form.controls.password.valid) && !submitted">
+      Login or password is incorrect.
+    </span>
+  </div>
+  <div class="login__buttons-wrapper">
+    <button mat-button class="login__button" routerLink="/password-forgot">
+      Forgot password?
+    </button>
+    <button mat-button class="login__button" routerLink="/register">
+      Create new account
+    </button>
+  </div>
+</form>

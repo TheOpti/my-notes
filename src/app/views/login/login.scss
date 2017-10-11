@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 410px;
   }
 
 
@@ -74,16 +74,27 @@
   }
 
 
+  &__error-message {
+    width: 80%;
+    font-size: 14px;
+    text-align: left;
+    user-select: none;
+    margin: 6px 0;
+    color: red;
+    cursor: default;
+  }
+
+
   &__input-wrapper {
     width: 80%;
     height: 42px;
     font-size: 18px;
-    margin: 15px 0;
+    margin: 10px 0;
   }
 
 
   &__login-button {
-    margin: 30px 0 25px;
+    margin: 30px 0 5px;
     width: 82%;
     background-color: #3498db;
     color: white;
