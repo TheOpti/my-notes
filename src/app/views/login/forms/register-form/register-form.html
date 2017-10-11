@@ -1,23 +1,77 @@
-<mat-form-field class="login__input-wrapper">
-  <input matInput placeholder="Select login" type="text">
-</mat-form-field>
-<mat-form-field class="login__input-wrapper">
-  <input matInput placeholder="E-mail" type="email">
-</mat-form-field>
-<mat-form-field class="login__input-wrapper">
-  <input matInput placeholder="Password" type="password">
-</mat-form-field>
-<mat-form-field class="login__input-wrapper">
-  <input matInput placeholder="Repeat password" type="password">
-</mat-form-field>
-<button
-  mat-button
-  class="login__login-button"
-  color="primary"
-  (click)="register()"
+<form
+  (ngSubmit)="register(form.value, form.valid)"
+  [formGroup]="form"
+  class="login__form-wrapper"
+  novalidate
 >
-  Create new account
-</button>
-<div class="login__already-registered">
-  Already have an account? <a class="login__login-link" routerLink="/login">Login</a>
-</div>
+  <mat-form-field class="login__input-wrapper">
+    <input
+      formControlName="login"
+      placeholder="Select login"
+      type="text"
+      required
+      matInput
+    >
+  </mat-form-field>
+  <div class="login__error-message">
+    <span [hidden]="form.controls.login.valid || (form.controls.login.pristine && !submitted)">
+      Login field is required.
+    </span>
+    <span [hidden]="true">
+      This login is already taken.
+    </span>
+  </div>
+  <mat-form-field class="login__input-wrapper">
+    <input
+      formControlName="email"
+      placeholder="Email"
+      type="email"
+      required
+      matInput
+    >
+  </mat-form-field>
+  <div class="login__error-message">
+    <span [hidden]="form.controls.email.valid || (form.controls.email.pristine && !submitted)">
+      Email is required.
+    </span>
+  </div>
+  <mat-form-field class="login__input-wrapper">
+    <input
+      formControlName="password"
+      placeholder="Password"
+      type="password"
+      required
+      matInput
+    >
+  </mat-form-field>
+  <div class="login__error-message">
+    <span [hidden]="form.controls.password.valid || (form.controls.password.pristine && !submitted)">
+      Password field is required.
+    </span>
+  </div>
+  <mat-form-field class="login__input-wrapper">
+    <input
+      formControlName="passwordRepeat"
+      placeholder="Select login"
+      type="password"
+      required
+      matInput
+    >
+  </mat-form-field>
+  <div class="login__error-message">
+    <span [hidden]="form.controls.passwordRepeat.valid || (form.controls.passwordRepeat.pristine && !submitted)">
+      You have to repeat your password.
+    </span>
+  </div>
+  <button
+    type="submit"
+    class="login__login-button"
+    color="primary"
+    mat-button
+  >
+    Create new account
+  </button>
+  <div class="login__already-registered">
+    Already have an account? <a class="login__login-link" routerLink="/login">Login</a>
+  </div>
+</form>

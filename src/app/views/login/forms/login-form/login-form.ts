@@ -33,6 +33,7 @@ export class LoginFormComponent {
     formValueChanges$.subscribe(x => this.events.push({ event: 'VALUE_CHANGED', object: x }));
   }
 
+
   save(model, isValid) {
     this.submitted = true;
     if (isValid) {
@@ -40,4 +41,5 @@ export class LoginFormComponent {
       this.router.navigate(['/application/notes']);
     }
   }
+
 }
