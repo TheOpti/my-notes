@@ -1,6 +1,7 @@
 
-const app = require('express');
-const api = app.Router();
+import express from 'express';
+
+const api = express.Router();
 
 class TestController {
 
