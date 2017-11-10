@@ -1,12 +1,17 @@
 
 import express from 'express';
-
+import jwt from 'jsonwebtoken';
 const api = express.Router();
 
 class LoginController {
 
   login(req, res) {
-    res.send('POST login');
+    const { login, password } = req.body;
+
+    return res.json({
+      // todo add expiration date
+      token: jwt.sign({login: login}, 'RESTFULAPIs')
+    });
   }
 
   changePassword(req, res) {
