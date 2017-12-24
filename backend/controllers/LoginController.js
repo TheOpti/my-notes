@@ -7,8 +7,8 @@ class LoginController {
 
   async login(req, res) {
     const {
-      login = "",
-      password = ""
+      login = '',
+      password = ''
     } = req.body;
 
     if (login && password) {
@@ -41,8 +41,23 @@ class LoginController {
   }
 
 
-  changePassword(req, res) {
-    res.send('POST changepassword');
+  async changePassword(req, res) {
+    const {
+      login = '',
+      password = '',
+      repeatedPassword = ''
+    } = req.body;
+
+    if (login && password && repeatedPassword && password === repeatedPassword) {
+      const response = await UserService.changePassword(login, password);
+      const statusCode = response.status === 'OK' ? 200 : 400;
+
+      res.status(statusCode);
+      res.send(response);
+    } else {
+      res.status(401);
+      res.send();
+    }
   }
 
 

@@ -60,6 +60,36 @@ class UserService {
   }
 
 
+  async changePassword(login, password) {
+    const foundUser = await User.findOne({
+      where: { login },
+      attributes: ['id', 'login', 'password', 'salt']
+    });
+
+    if (foundUser) {
+      const newPassword = this.encryptPassword(password, foundUser.salt);
+      const isUpdated = await foundUser.updateAttributes({ password: newPassword });
+
+      if (isUpdated) {
+        return {
+          status: 'OK',
+          msg: 'Password changed.'
+        };
+      } else {
+        return {
+          status: 'ERROR',
+          msg: 'Error during password change.'
+        };
+      }
+    } else {
+      return {
+        status: 'ERROR',
+        msg: 'Login or password incorrect.'
+      }
+    }
+  }
+
+
   generateSalt() {
     return crypto
       .randomBytes(4)
