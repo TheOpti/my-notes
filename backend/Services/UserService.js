@@ -1,12 +1,32 @@
 import crypto from 'crypto';
 import uuidv1 from 'uuid/v1';
+import jwt from 'jsonwebtoken';
 
 import User from '../Models/User';
 
-const md5sum = crypto.createHash('md5');
-const sha256 = crypto.createHash('sha256');
-
 class UserService {
+
+  async login(login, password) {
+    const user = await User.findOne({
+      where: { login },
+      attributes: ['login', 'password', 'salt']
+    });
+
+    const passwordToCheck = this.encryptPassword(password, user.salt);
+    if (passwordToCheck === user.password) {
+      const token = jwt.sign({ login: login }, 'RESTFULAPIs');
+      return {
+        status: 'OK',
+        msg: 'Logged successfully',
+        token,
+      };
+    } else {
+      return {
+        status: 'ERROR',
+        msg: 'Login or password incorrect.'
+      }
+    }
+  }
 
   async register(user) {
     const foundUser = await User.findOne({
@@ -48,13 +68,10 @@ class UserService {
 
 
   encryptPassword(password, salt) {
-    const firstPart = md5sum
-      .digest(password + salt)
-      .toString('hex');
-
-    return sha256
-      .digest(firstPart + salt)
-      .toString('hex');
+    return crypto
+      .createHash('sha256')
+      .update(password + salt)
+      .digest('base64');
   }
 
 }
