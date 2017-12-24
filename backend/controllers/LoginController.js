@@ -15,25 +15,41 @@ class LoginController {
     });
   }
 
+
   changePassword(req, res) {
     res.send('POST changepassword');
   }
 
+
   async register(req, res) {
-    const { user } = req.body;
+    const user = req.body.user;
+    const isUserFieldsCorrect = this.validateFieldsForRegistration.bind(this, user);
 
-    const response = await UserService.register(user);
-    const statusCode = response.status === 'OK' ? 200 : 400;
+    if (isUserFieldsCorrect) {
+      const response = await UserService.register(user);
+      const statusCode = response.status === 'OK' ? 200 : 400;
 
-    res.status(statusCode);
-    res.send(response);
+      res.status(statusCode);
+      res.send(response);
+    } else {
+      res.status(401);
+      res.send();
+    }
   }
+
+
+  validateFieldsForRegistration(user) {
+    return user.login && user.password &&
+      user.repeatedPassword && user.email
+      && (user.password === user.repeatedPassword);
+  }
+
 }
 
 const ctrl = new LoginController();
 
 api.post('/login', ctrl.login);
 api.post('/changepassword', ctrl.changePassword);
-api.post('/register', ctrl.register);
+api.post('/register', ctrl.register.bind(ctrl));
 
 export default api;
