@@ -43,6 +43,7 @@ export class NavbarComponent {
   private cssClass: string;
   private searchBarClass: string;
   private title: string;
+  private searchTerm: string;
 
   @Output() onToggleClick = new EventEmitter<any>();
 
@@ -77,6 +78,11 @@ export class NavbarComponent {
       this.cssClass = cssClassesMap[url].cssClass;
       this.title = cssClassesMap[url].title;
     }
+  }
+
+  clearInput() {
+    console.log('clearInput');
+    this.searchTerm = '';
   }
 
   toggle() {

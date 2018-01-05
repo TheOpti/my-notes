@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="navbar" [ngClass]="cssClass">
+<div color="primary" class="navbar" [ngClass]="cssClass">
   <div class="navbar__icon navbar__toggle-icon" (click)="toggle()">
     <mat-icon class="example-icon">menu</mat-icon>
   </div>
@@ -7,13 +7,18 @@
     [ngClass]="searchBarClass"
     class="navbar__search-bar"
   >
-    <mat-icon class="navbar__icon">search</mat-icon>
+    <mat-icon class="navbar__icon">
+      search
+    </mat-icon>
     <input
       (focus)="onSearchBarFocus()"
+      [(ngModel)]="searchTerm"
       class="navbar__input"
       placeholder="Search"
     />
-    <mat-icon class="navbar__icon">clear</mat-icon>
+    <mat-icon class="navbar__icon" (click)="clearInput()">
+      clear
+    </mat-icon>
 
   </div>
   <div class="navbar__more-actions">
@@ -23,4 +28,4 @@
       </mat-icon>
     </div>
   </div>
-</mat-toolbar>
+</div>

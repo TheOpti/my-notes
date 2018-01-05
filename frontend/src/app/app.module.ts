@@ -6,8 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'angular-calendar';
 
 import {
-  MatSidenavModule,
-  MatToolbarModule,
   MatIconModule,
   MatButtonModule,
   MatTooltipModule,
@@ -94,8 +92,6 @@ import { routes } from './routes';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSidenavModule,
-    MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
