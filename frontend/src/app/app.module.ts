@@ -31,12 +31,8 @@ import { PasswordForgotFormComponent } from './views/login/forms/password-forgot
 import { RegisterFormComponent } from './views/login/forms/register-form/register-form';
 import { ApplicationComponent } from './views/application/application';
 import { NotesComponent } from './views/notes/notes';
-import { RemindersComponent } from './views/reminders/reminders';
 import { CalendarComponent } from './views/calendar/calendar';
 import { SearchComponent } from './views/search/search';
-import { TagsComponent } from './views/tags/tags';
-import { ArchiveComponent } from './views/archive/archive';
-import { TrashComponent } from './views/trash/trash';
 import { AddNoteComponent } from './add-note/add-note';
 import { NoteCanvasComponent } from './note-canvas/note-canvas';
 import { NotificationsComponent } from './notifications/notifications';
@@ -69,12 +65,8 @@ import { routes } from './routes';
     RegisterFormComponent,
     ApplicationComponent,
     NotesComponent,
-    RemindersComponent,
     CalendarComponent,
-    TagsComponent,
     SearchComponent,
-    ArchiveComponent,
-    TrashComponent,
     AddNoteComponent,
     NoteCanvasComponent,
     NotificationsComponent,
@@ -106,8 +98,4 @@ import { routes } from './routes';
   providers: [NotesService, TagsService, NotificationService, SelectionService],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-
-
-}
+export class AppModule { }

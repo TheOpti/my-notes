@@ -1,15 +1,10 @@
-
 import { Routes } from '@angular/router';
 
 import { LoginComponent } from './views/login/login';
 import { NotesComponent } from './views/notes/notes';
-import { RemindersComponent } from './views/reminders/reminders';
 import { CalendarComponent } from './views/calendar/calendar';
 import { SearchComponent } from './views/search/search';
-import { TagsComponent } from './views/tags/tags';
-import { ArchiveComponent } from './views/archive/archive';
-import { TrashComponent } from './views/trash/trash';
-import {ApplicationComponent} from "./views/application/application";
+import { ApplicationComponent } from "./views/application/application";
 
 export const routes: Routes = [
   {
@@ -38,11 +33,13 @@ export const routes: Routes = [
     children: [
       {
         path: 'notes',
-        component: NotesComponent
+        component: NotesComponent,
+        data: { type: 'NOTES' }
       },
       {
         path: 'reminders',
-        component: RemindersComponent
+        component: NotesComponent,
+        data: { type: 'REMINDERS' }
       },
       {
         path: 'calendar',
@@ -50,7 +47,8 @@ export const routes: Routes = [
       },
       {
         path: 'tags/:name',
-        component: TagsComponent
+        component: NotesComponent,
+        data: { type: 'TAGS' }
       },
       {
         path: 'search',
@@ -58,11 +56,13 @@ export const routes: Routes = [
       },
       {
         path: 'archive',
-        component: ArchiveComponent
+        component: NotesComponent,
+        data: { type: 'ARCHIVE' }
       },
       {
         path: 'trash',
-        component: TrashComponent
+        component: NotesComponent,
+        data: { type: 'TRASH' }
       }
     ]
   },

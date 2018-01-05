@@ -28,6 +28,7 @@ export class ApplicationComponent {
   }
 
   checkCanShowAddNote(url) {
+    // TODO Refactor this logic using constant notes_types and data from route
     if (url.includes('tag') || url === '/notes' || url === '/reminders' || url === '/') {
       this.canShowAddNoteComponent = true;
     } else {
