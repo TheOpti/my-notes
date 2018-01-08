@@ -39,12 +39,6 @@ export class AddNoteComponent {
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if (event.target.className.includes('cdk-overlay-backdrop')
-      || event.target.className.includes('mat-menu')) {
-      this.enableEditing();
-      return;
-    }
-
     if (this.eRef.nativeElement.contains(event.target)) {
       this.enableEditing();
     } else {

@@ -4,6 +4,7 @@
     matTooltip="Reminde me"
     #reminderMenuTrigger="matMenuTrigger"
     [matMenuTriggerFor]="reminderMenu"
+    (mouseenter)="reminderMenuTrigger.openMenu()"
   >
     av_timer
   </mat-icon>
@@ -12,6 +13,7 @@
     matTooltip="Change color"
     #paletteMenuTrigger="matMenuTrigger"
     [matMenuTriggerFor]="paletteMenu"
+    (mouseenter)="paletteMenuTrigger.openMenu()"
   >
     palette
   </mat-icon>
@@ -20,12 +22,13 @@
     matTooltip="Select tags"
     #tagsMenuTrigger="matMenuTrigger"
     [matMenuTriggerFor]="tagsMenu"
+    (mouseenter)="tagsMenuTrigger.openMenu()"
   >
     label
   </mat-icon>
 
   <mat-menu #reminderMenu="matMenu">
-    <div class="icons-bar__menu" (click)="onMenuClick($event)">
+    <div class="icons-bar__menu" (click)="onMenuClick($event)" (mouseleave)="reminderMenuTrigger.closeMenu()">
       <div class="icons-bar__menu-title">Reminder:</div>
       <div class="icons-bar__menu-divider"></div>
       <div class="icons-bar__menu-items-list">
@@ -42,7 +45,7 @@
   </mat-menu>
 
   <mat-menu #paletteMenu="matMenu">
-    <div class="icons-bar__palette" (click)="onMenuClick($event)">
+    <div class="icons-bar__palette" (click)="onMenuClick($event)" (mouseleave)="paletteMenuTrigger.closeMenu()">
       <div
         *ngFor="let color of colors"
         (click)="setColor(color)"
@@ -55,7 +58,7 @@
   </mat-menu>
 
   <mat-menu #tagsMenu="matMenu">
-    <div class="icons-bar__menu" (click)="onMenuClick($event)">
+    <div class="icons-bar__menu" (click)="onMenuClick($event)" (mouseleave)="tagsMenuTrigger.closeMenu()">
       <div class="icons-bar__menu-title">Edit tags for note:</div>
       <div class="icons-bar__menu-divider"></div>
       <div class="icons-bar__menu-items-list">
@@ -70,5 +73,4 @@
       </div>
     </div>
   </mat-menu>
-
 </div>
