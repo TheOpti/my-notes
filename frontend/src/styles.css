@@ -1,5 +1,5 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-@import '../node_modules/angular-calendar/dist/css/angular-calendar.css';
+@import '../node_modules/angular-calendar/css/angular-calendar.css';
 
 html, body {
   width: 100%;
