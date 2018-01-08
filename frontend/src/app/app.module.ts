@@ -10,7 +10,6 @@ import {
   MatButtonModule,
   MatTooltipModule,
   MatDialogModule,
-  MatProgressSpinnerModule,
   MatMenuModule,
   MatInputModule,
   MatDatepickerModule,
@@ -40,6 +39,7 @@ import { NotificationComponent } from './notifications/notification/notification
 import { ReminderBarComponent } from './reminder-bar/reminder-bar';
 import { SelectedTagsBarComponent } from './selected-tags-bar/selected-tags-bar';
 import { IconsBarComponent } from './icons-bar/icons-bar';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner';
 
 import { NotesService } from './services/notes.service';
 import { TagsService } from './services/tags.service';
@@ -74,6 +74,7 @@ import { routes } from './routes';
     ReminderBarComponent,
     SelectedTagsBarComponent,
     IconsBarComponent,
+    LoadingSpinnerComponent,
     FocusDirective
   ],
   entryComponents: [TagsDialogComponent],
@@ -88,7 +89,6 @@ import { routes } from './routes';
     MatButtonModule,
     MatTooltipModule,
     MatDialogModule,
-    MatProgressSpinnerModule,
     MatMenuModule,
     MatInputModule,
     MatDatepickerModule,

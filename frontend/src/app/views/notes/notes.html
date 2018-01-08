@@ -1,8 +1,7 @@
 <div class="notes">
-  <mat-spinner
+  <loading-spinner
     *ngIf="loading"
-    class="notes__loading-spinner"
-  ></mat-spinner>
+  ></loading-spinner>
 
   <note-canvas
     *ngIf="!loading && notes.length"
