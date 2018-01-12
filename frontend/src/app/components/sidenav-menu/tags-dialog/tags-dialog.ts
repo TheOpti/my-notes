@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
-import {TagsService} from '../../services/tags.service';
+import {TagsService} from '../../../services/tags.service';
 
 import v1 from 'uuid/v1';
 

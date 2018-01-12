@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
-import { SelectionService } from '../services/selection.service';
-import { NotesService } from '../services/notes.service';
+import { SelectionService } from '../../services/selection.service';
+import { NotesService } from '../../services/notes.service';
 
 const NOTE_TYPES = {
   NOTE: 'note',

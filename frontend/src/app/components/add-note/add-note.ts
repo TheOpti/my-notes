@@ -7,7 +7,7 @@ import {
 
 import v1 from 'uuid/v1';
 
-import { NotesService } from '../services/notes.service';
+import { NotesService } from '../../services/notes.service';
 
 const NOTE_TYPES = {
   NOTE: 'note',

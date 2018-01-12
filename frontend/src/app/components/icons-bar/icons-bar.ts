@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 
-import { TagsService } from '../services/tags.service';
+import { TagsService } from '../../services/tags.service';
 
 @Component({
   selector: 'icons-bar',

@@ -1,11 +1,12 @@
 <div class="login">
   <div class="login__form">
-
     <div class="login__logo-section">
       <span>My notes logo</span>
     </div>
 
-    <login-form *ngIf="mode === 'login'" ></login-form>
+    <login-form
+      *ngIf="mode === 'login'"
+    ></login-form>
 
     <register-form
       *ngIf="mode === 'register'"
@@ -16,6 +17,5 @@
       *ngIf="mode === 'password-forgot'"
       class="login__form-wrapper"
     ></password-forgot-form>
-
   </div>
 </div>

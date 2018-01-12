@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
-import { NotificationService } from '../services/notification.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'notifications',

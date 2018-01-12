@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { TagsDialogComponent } from './tags-dialog/tags-dialog';
 
-import {TagsService} from '../services/tags.service';
+import {TagsService} from '../../services/tags.service';
 
 @Component({
   selector: 'sidenav-menu',
