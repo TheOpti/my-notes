@@ -3,7 +3,6 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import sequelize from './sequelize';
 
-import TestController from './controllers/TestController';
 import LoginController from './controllers/LoginController';
 import NotesController from './controllers/NotesController';
 
@@ -17,7 +16,6 @@ sequelize.authenticate()
   .catch(err => console.error('Unable to connect to the database:', err));
 
 // controllers
-app.use(TestController);
 app.use(LoginController);
 app.use(NotesController);
 
