@@ -31,6 +31,4 @@ const userFields = {
 
 const User = sequelize.define('user', userFields);
 
-User.sync({force: false});
-
 export default User;
