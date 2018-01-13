@@ -4,9 +4,7 @@ function authenticate(req, res, next) {
   // check header or url parameters or post parameters for token
   const token = req.headers['x-access-token'];
 
-  // decode token
   if (token) {
-    // verifies secret and checks exp
     // TODO place key to some config file
     jwt.verify(token, 'RESTFULAPIs', function(err, decoded) {
       if (err) {

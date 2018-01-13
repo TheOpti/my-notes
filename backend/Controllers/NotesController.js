@@ -1,12 +1,18 @@
-
 import express from 'express';
+import NotesService from '../Services/NotesService';
 
 const api = express.Router();
 
 class NotesController {
 
-  getNotes(req, res) {
-    res.send('GET getNotes');
+  async getNotes(req, res) {
+     const userId = req.decoded.userId;
+
+     const response = await NotesService.getNotes(userId);
+     const statusCode = response.status === 'OK' ? 200 : 400;
+
+     res.status(statusCode);
+     res.send(response);
   }
 
   addNewNote(req, res) {

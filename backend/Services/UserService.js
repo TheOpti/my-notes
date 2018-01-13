@@ -9,12 +9,12 @@ class UserService {
   async login(login, password) {
     const user = await User.findOne({
       where: { login },
-      attributes: ['login', 'password', 'salt']
-    });
+      attributes: ['id', 'login', 'password', 'salt']
+    }) || {};
 
     const passwordToCheck = this.encryptPassword(password, user.salt);
     if (passwordToCheck === user.password) {
-      const token = jwt.sign({ login: login }, 'RESTFULAPIs');
+      const token = jwt.sign({ id: user.id, login }, 'RESTFULAPIs');
       return {
         status: 'OK',
         msg: 'Logged successfully',
