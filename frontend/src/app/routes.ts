@@ -28,6 +28,11 @@ export const routes: Routes = [
     data: { state: 'REGISTERED' }
   },
   {
+    path: 'registration-complete',
+    component: LoginComponent,
+    data: { state: 'REGISTRATION_COMPLETE' }
+  },
+  {
     path: 'application',
     component: ApplicationComponent,
     children: [

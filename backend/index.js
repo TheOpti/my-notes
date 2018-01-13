@@ -13,6 +13,13 @@ const app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 
+// allow CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 // establish connection to DB
 sequelize.authenticate()
   .then(() => console.log('Connection has been established successfully.'))

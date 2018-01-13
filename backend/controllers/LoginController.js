@@ -26,7 +26,7 @@ class LoginController {
 
   async register(req, res) {
     const user = req.body.user;
-    const isUserFieldsCorrect = this.validateFieldsForRegistration.bind(this, user);
+    const isUserFieldsCorrect = this.validateFieldsForRegistration(user);
 
     if (isUserFieldsCorrect) {
       const response = await UserService.register(user);
@@ -35,7 +35,7 @@ class LoginController {
       res.status(statusCode);
       res.send(response);
     } else {
-      res.status(401);
+      res.status(400);
       res.send();
     }
   }
@@ -62,8 +62,8 @@ class LoginController {
 
 
   validateFieldsForRegistration(user) {
-    return user.login && user.password &&
-      user.repeatedPassword && user.email
+    return user && user.login && user.password
+      && user.repeatedPassword && user.email
       && (user.password === user.repeatedPassword);
   }
 

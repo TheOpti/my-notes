@@ -10,12 +10,15 @@
 
     <register-form
       *ngIf="mode === 'register'"
-      class="login__form-wrapper"
     ></register-form>
 
     <password-forgot-form
       *ngIf="mode === 'password-forgot'"
-      class="login__form-wrapper"
     ></password-forgot-form>
+
+    <registration-complete-form
+      *ngIf="mode === 'registration-complete'"
+    ></registration-complete-form>
+
   </div>
 </div>

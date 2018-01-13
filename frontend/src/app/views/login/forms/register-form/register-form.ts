@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'register-form',
@@ -12,15 +13,16 @@ export class RegisterFormComponent {
   public form: FormGroup;
   public submitted: boolean;
   public events: any[] = [];
+  public serverErrorMessage = '';
 
-  constructor(private router: Router, private _fb: FormBuilder) { }
+  constructor(private http: HttpClient, private router: Router, private _fb: FormBuilder) { }
 
   ngOnInit() {
     this.form = this._fb.group({
       login: ['', [<any>Validators.required]],
       email: ['', [<any>Validators.required]],
       password: ['', [<any>Validators.required]],
-      passwordRepeat: ['', [<any>Validators.required]]
+      repeatedPassword: ['', [<any>Validators.required]]
     });
 
     this.subcribeToFormChanges();
@@ -38,7 +40,13 @@ export class RegisterFormComponent {
 
   register(model, isValid) {
     this.submitted = true;
-    console.log('register()');
+    if (isValid) {
+      this.http.post('http://localhost:3000/register', { user: model })
+        .subscribe(
+          () => { this.router.navigate(['/registration-complete']); },
+          (error) => { this.serverErrorMessage = JSON.parse(error.error).msg; }
+        );
+    }
   }
 
 }

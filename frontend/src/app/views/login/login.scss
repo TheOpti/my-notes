@@ -36,12 +36,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 410px;
+    width: 420px;
+    padding: 10px 0 25px 0;
   }
 
 
   &__already-registered {
-    margin: 20px 0;
+    margin: 10px 0;
   }
 
 
@@ -82,7 +83,7 @@
     width: 80%;
     height: 38px;
     font-size: 18px;
-    margin-top: 14px;
+    margin-top: 8px;
   }
 
 

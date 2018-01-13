@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,6 +29,7 @@ import { LoginComponent } from './views/login/login';
 import { LoginFormComponent } from './views/login/forms/login-form/login-form';
 import { PasswordForgotFormComponent } from './views/login/forms/password-forgot-form/password-forgot-form';
 import { RegisterFormComponent } from './views/login/forms/register-form/register-form';
+import { RegistrationCompleteFormComponent } from './views/login/forms/registration-complete/registration-complete';
 import { ApplicationComponent } from './views/application/application';
 import { NotesComponent } from './views/notes/notes';
 import { CalendarComponent } from './views/calendar/calendar';
@@ -61,6 +63,7 @@ import { routes } from './routes';
     PlaceholderComponent,
     LoginComponent,
     LoginFormComponent,
+    RegistrationCompleteFormComponent,
     PasswordForgotFormComponent,
     RegisterFormComponent,
     ApplicationComponent,
@@ -82,6 +85,7 @@ import { routes } from './routes';
     RouterModule.forRoot( routes, { enableTracing: false } ),
     CalendarModule.forRoot(),
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,

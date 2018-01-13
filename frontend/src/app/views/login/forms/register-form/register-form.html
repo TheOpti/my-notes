@@ -51,16 +51,21 @@
   </div>
   <mat-form-field class="login__input-wrapper">
     <input
-      formControlName="passwordRepeat"
-      placeholder="Select login"
+      formControlName="repeatedPassword"
+      placeholder="Repeat password"
       type="password"
       required
       matInput
     >
   </mat-form-field>
   <div class="login__error-message">
-    <span [hidden]="form.controls.passwordRepeat.valid || (form.controls.passwordRepeat.pristine && !submitted)">
+    <span [hidden]="form.controls.repeatedPassword.valid || (form.controls.repeatedPassword.pristine && !submitted)">
       You have to repeat your password.
+    </span>
+  </div>
+  <div class="login__error-message ">
+    <span>
+      {{ serverErrorMessage }}
     </span>
   </div>
   <button

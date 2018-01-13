@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 const LOGIN_STATES = {
   LOGIN: 'login',
   REGISTER: 'register',
   PASSWORD_FORGOT: 'password-forgot',
   REGISTERED: 'registered',
+  REGISTRATION_COMPLETE: 'registration-complete',
 };
 
 @Component({
