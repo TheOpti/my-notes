@@ -9,15 +9,15 @@ const noteFields = {
   },
   title: {
     type: Sequelize.STRING,
-    field: 'name'
+    field: 'title'
   },
   post: {
     type: Sequelize.STRING,
-    field: 'name'
+    field: 'post'
   },
   type: {
     type: Sequelize.STRING,
-    field: 'name'
+    field: 'type'
   },
   reminder: {
     type: Sequelize.STRING,

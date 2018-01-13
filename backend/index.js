@@ -23,14 +23,14 @@ app.use((req, res, next) => {
 
 // establish connection to DB
 sequelize.authenticate()
-  .then(() => console.log('Connection has been established successfully.'))
+  .then(() => {
+    console.log('Connection has been established successfully.');
+
+    // create relations and tables
+    initAllRelations();
+    sequelize.sync({force: false});
+  })
   .catch(err => console.error('Unable to connect to the database:', err));
-
-// create relations
-initAllRelations();
-
-// create tables
-sequelize.sync({force: false});
 
 // use Controllers
 app.use(LoginController);
