@@ -30,8 +30,15 @@ class NotesController {
     const userId = req.decoded.userId;
   }
 
-  deleteNote(req, res) {
-    const userId = req.decoded.userId;
+  async deleteNote(req, res) {
+    const userId = req.decoded.id;
+    const noteId = req.params.id;
+
+    const response = await NotesService.deleteNote(noteId, userId);
+    const statusCode = response.status === 'OK' ? 200 : 400;
+
+    res.status(statusCode);
+    res.send(response);
   }
 
 }
@@ -41,6 +48,6 @@ const ctrl = new NotesController();
 api.get('/notes', ctrl.getNotes);
 api.post('/notes', ctrl.addNewNote);
 api.put('/notes', ctrl.updateNote);
-api.delete('/notes', ctrl.deleteNote);
+api.delete('/notes/:id', ctrl.deleteNote);
 
 export default api;

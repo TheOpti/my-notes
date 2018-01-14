@@ -14,6 +14,7 @@ class NotesService {
     };
   }
 
+
   async addNote(userId, note = { post: '' }) {
     const addedNote = await Note.create({
       id: uuidv1(),
@@ -21,7 +22,8 @@ class NotesService {
       post: note.post,
       title: note.title,
       type: note.type,
-      reminder: note.reminder
+      reminder: note.reminder,
+      deleted: false
     });
 
     if (addedNote) {
@@ -37,6 +39,33 @@ class NotesService {
     }
   }
 
+
+  async deleteNote(noteId, userId) {
+    const foundNote = await Note.findOne({
+      where: { id: noteId, userId }
+    });
+
+    if (foundNote) {
+      const isDeleted = await foundNote.updateAttributes({ deleted: true });
+
+      if (isDeleted) {
+        return {
+          status: 'OK',
+          msg: 'Note deleted.'
+        };
+      } else {
+        return {
+          status: 'ERROR',
+          msg: 'Error during deleting note.'
+        };
+      }
+    } else {
+      return {
+        status: 'ERROR',
+        msg: 'Error during deleting note.'
+      }
+    }
+  }
 
 }
 
