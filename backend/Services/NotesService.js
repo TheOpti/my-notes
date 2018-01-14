@@ -40,6 +40,41 @@ class NotesService {
   }
 
 
+  async updateNote(note, userId) {
+    const foundNote = await Note.findOne({
+      where: { id: note.id, userId }
+    });
+
+
+    if (foundNote) {
+      const isUpdated = await foundNote.updateAttributes({
+        title: note.title,
+        post: note.post,
+        type: note.type,
+        reminder: note.reminder,
+        updatedAt: new Date(),
+      });
+
+      if (isUpdated) {
+        return {
+          status: 'OK',
+          msg: 'Note updated.'
+        };
+      } else {
+        return {
+          status: 'ERROR',
+          msg: 'Error during updating note.'
+        };
+      }
+    } else {
+      return {
+        status: 'ERROR',
+        msg: 'Error during updating note.'
+      }
+    }
+  }
+
+
   async deleteNote(noteId, userId) {
     const foundNote = await Note.findOne({
       where: { id: noteId, userId }

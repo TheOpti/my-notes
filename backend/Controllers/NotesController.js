@@ -15,6 +15,7 @@ class NotesController {
      res.send(response);
   }
 
+
   async addNewNote(req, res) {
     const userId = req.decoded.id;
     const note = req.body.note;
@@ -26,9 +27,18 @@ class NotesController {
     res.send(response);
   }
 
-  updateNote(req, res) {
-    const userId = req.decoded.userId;
+
+  async updateNote(req, res) {
+    const userId = req.decoded.id;
+    const note = req.body.note;
+
+    const response = await NotesService.updateNote(note, userId);
+    const statusCode = response.status === 'OK' ? 200 : 400;
+
+    res.status(statusCode);
+    res.send(response);
   }
+
 
   async deleteNote(req, res) {
     const userId = req.decoded.id;
