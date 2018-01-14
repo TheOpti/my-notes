@@ -6,7 +6,7 @@ const api = express.Router();
 class NotesController {
 
   async getNotes(req, res) {
-     const userId = req.decoded.userId;
+     const userId = req.decoded.id;
 
      const response = await NotesService.getNotes(userId);
      const statusCode = response.status === 'OK' ? 200 : 400;
@@ -15,16 +15,23 @@ class NotesController {
      res.send(response);
   }
 
-  addNewNote(req, res) {
-    res.send('POST addNewNote');
+  async addNewNote(req, res) {
+    const userId = req.decoded.id;
+    const note = req.body.note;
+
+    const response = await NotesService.addNote(userId, note);
+    const statusCode = response.status === 'OK' ? 200 : 400;
+
+    res.status(statusCode);
+    res.send(response);
   }
 
   updateNote(req, res) {
-    res.send('PUT updateNote');
+    const userId = req.decoded.userId;
   }
 
   deleteNote(req, res) {
-    res.send('DELETE deleteNote');
+    const userId = req.decoded.userId;
   }
 
 }
