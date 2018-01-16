@@ -7,8 +7,6 @@ function initNoteRelations() {
 
   // Note belongs to user
   Note.belongsTo(User, {
-    foreignKey: 'userId',
-    as: 'note',
     constraints: false
   });
 

@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import sequelize from './sequelize';
 
 import LoginController from './Controllers/LoginController';
+import UserController from './Controllers/UserController';
 import NotesController from './Controllers/NotesController';
 import TagsController from './Controllers/TagsController';
 
@@ -35,6 +36,7 @@ sequelize.authenticate()
 
 // use Controllers
 app.use(LoginController);
+app.use(authenticate, UserController);
 app.use(authenticate, NotesController);
 app.use(authenticate, TagsController);
 

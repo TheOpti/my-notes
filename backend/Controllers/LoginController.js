@@ -41,26 +41,6 @@ class LoginController {
   }
 
 
-  async changePassword(req, res) {
-    const {
-      login = '',
-      password = '',
-      repeatedPassword = ''
-    } = req.body;
-
-    if (login && password && repeatedPassword && password === repeatedPassword) {
-      const response = await UserService.changePassword(login, password);
-      const statusCode = response.status === 'OK' ? 200 : 400;
-
-      res.status(statusCode);
-      res.send(response);
-    } else {
-      res.status(401);
-      res.send();
-    }
-  }
-
-
   validateFieldsForRegistration(user) {
     return user && user.login && user.password
       && user.repeatedPassword && user.email
@@ -72,7 +52,6 @@ class LoginController {
 const ctrl = new LoginController();
 
 api.post('/login', ctrl.login);
-api.post('/changepassword', ctrl.changePassword);
 api.post('/register', ctrl.register.bind(ctrl));
 
 export default api;

@@ -3,6 +3,8 @@ import uuidv1 from 'uuid/v1';
 import jwt from 'jsonwebtoken';
 
 import User from '../Models/User';
+import Tag from '../Models/Tag';
+import Note from '../Models/Note';
 
 class UserService {
 
@@ -57,6 +59,33 @@ class UserService {
         msg: 'User created successfully.'
       };
     }
+  }
+
+
+  async getAllUserData(userId) {
+    const user = await User.findOne({
+      where: { id: userId },
+      attributes: ['id', 'login', 'email'],
+      include: [
+        {
+          model: Note,
+          include: [
+            {
+              model: Tag,
+              where: { deleted: false },
+              attributes: ['id', 'name'],
+              through: {attributes: []}
+            }
+          ]
+        },
+        {
+          model: Tag,
+          attributes: ['id', 'name']
+        }
+      ]
+    });
+
+    return { user };
   }
 
 
