@@ -7,7 +7,8 @@ function initTagRelations() {
 
   // Many tags are defined by a single user
   Tag.belongsTo(User, {
-    foreignKey: 'user_id',
+    foreignKey: 'userId',
+    as: 'tag',
     constraints: false
   });
 
@@ -17,7 +18,7 @@ function initTagRelations() {
       model: TagNote,
       unique: false,
     },
-    foreignKey: 'tag_id',
+    foreignKey: 'tagId',
     constraints: false
   });
 

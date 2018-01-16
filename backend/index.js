@@ -5,6 +5,7 @@ import sequelize from './sequelize';
 
 import LoginController from './Controllers/LoginController';
 import NotesController from './Controllers/NotesController';
+import TagsController from './Controllers/TagsController';
 
 import authenticate from './Authentication/Authentication';
 import initAllRelations from './init-relations';
@@ -35,6 +36,7 @@ sequelize.authenticate()
 // use Controllers
 app.use(LoginController);
 app.use(authenticate, NotesController);
+app.use(authenticate, TagsController);
 
 // start the app
 app.listen(3000, () => {

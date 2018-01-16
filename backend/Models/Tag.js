@@ -14,6 +14,10 @@ const tagFields = {
   userId: {
     type: Sequelize.UUID,
     field: 'user_id'
+  },
+  deleted: {
+    type: Sequelize.BOOLEAN,
+    field: 'deleted'
   }
 };
 

@@ -7,7 +7,8 @@ function initNoteRelations() {
 
   // Note belongs to user
   Note.belongsTo(User, {
-    foreignKey: 'user_id',
+    foreignKey: 'userId',
+    as: 'note',
     constraints: false
   });
 
@@ -17,7 +18,7 @@ function initNoteRelations() {
       model: TagNote,
       unique: false,
     },
-    foreignKey: 'note_id',
+    foreignKey: 'noteId',
     constraints: false
   });
 
