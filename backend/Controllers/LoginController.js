@@ -1,5 +1,5 @@
 import express from 'express';
-import UserService from '../Services/UserService';
+import LoginService from '../Services/LoginService';
 
 const api = express.Router();
 
@@ -12,7 +12,7 @@ class LoginController {
     } = req.body;
 
     if (login && password) {
-      const response = await UserService.login(login, password);
+      const response = await LoginService.login(login, password);
       const statusCode = response.status === 'OK' ? 200 : 400;
 
       res.status(statusCode);
@@ -29,7 +29,7 @@ class LoginController {
     const isUserFieldsCorrect = this.validateFieldsForRegistration(user);
 
     if (isUserFieldsCorrect) {
-      const response = await UserService.register(user);
+      const response = await LoginService.register(user);
       const statusCode = response.status === 'OK' ? 200 : 400;
 
       res.status(statusCode);
