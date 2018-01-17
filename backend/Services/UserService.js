@@ -27,7 +27,7 @@ class UserService {
       ]
     });
 
-    return { user };
+    return { status: 'OK', user };
   }
 
 

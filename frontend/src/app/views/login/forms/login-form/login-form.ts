@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import {AuthService} from "../../../../services/auth.service";
 
 @Component({
   selector: 'login-form',
@@ -13,7 +13,7 @@ export class LoginFormComponent {
   public submitted: boolean;
   public events: any[] = [];
 
-  constructor(private router: Router, private _fb: FormBuilder) {}
+  constructor(private authService: AuthService, private _fb: FormBuilder) {}
 
   ngOnInit() {
     this.form = this._fb.group({
@@ -37,8 +37,7 @@ export class LoginFormComponent {
   save(model, isValid) {
     this.submitted = true;
     if (isValid) {
-      // TODO implement login logic
-      this.router.navigate(['/application/notes']);
+      this.authService.login(model.login, model.password);
     }
   }
 

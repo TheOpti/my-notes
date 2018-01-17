@@ -4,7 +4,9 @@ import { LoginComponent } from './views/login/login';
 import { NotesComponent } from './views/notes/notes';
 import { CalendarComponent } from './views/calendar/calendar';
 import { SearchComponent } from './views/search/search';
-import { ApplicationComponent } from "./views/application/application";
+import { ApplicationComponent } from './views/application/application';
+
+import { AlwaysAuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -35,6 +37,7 @@ export const routes: Routes = [
   {
     path: 'application',
     component: ApplicationComponent,
+    canActivate: [ AlwaysAuthGuard ],
     children: [
       {
         path: 'notes',

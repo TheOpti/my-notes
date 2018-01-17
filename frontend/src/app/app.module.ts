@@ -43,12 +43,17 @@ import { SelectedTagsBarComponent } from './components/selected-tags-bar/selecte
 import { IconsBarComponent } from './components/icons-bar/icons-bar';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner';
 
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+import { BaseHttpClient } from './services/baseHttp.service';
 import { NotesService } from './services/notes.service';
 import { TagsService } from './services/tags.service';
 import { NotificationService } from './services/notification.service';
 import { SelectionService } from './services/selection.service';
 
-import {FocusDirective} from './directives/focus.directive';
+import { AlwaysAuthGuard } from './guards/auth.guard';
+
+import { FocusDirective } from './directives/focus.directive';
 
 import { routes } from './routes';
 
@@ -99,7 +104,16 @@ import { routes } from './routes';
     MatNativeDateModule,
     MatCheckboxModule
   ],
-  providers: [NotesService, TagsService, NotificationService, SelectionService],
+  providers: [
+    AlwaysAuthGuard,
+    BaseHttpClient,
+    UserService,
+    AuthService,
+    NotesService,
+    TagsService,
+    NotificationService,
+    SelectionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
