@@ -11,7 +11,9 @@
   &__search-bar {
     background-color: rgba(255,255,255,0.16);
     transition: background-color 0.5s ease;
-    width: 700px;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 0 40px;
     height: 42px;
     border-radius: 5px;
     display: flex;
@@ -61,7 +63,7 @@
   }
 
   &__more-actions {
-    flex: 1;
+    margin-right: 15px;
     display: flex;
     justify-content: flex-end;
   }
