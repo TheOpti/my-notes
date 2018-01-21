@@ -8,7 +8,6 @@ import UserController from './Controllers/UserController';
 import NotesController from './Controllers/NotesController';
 import TagsController from './Controllers/TagsController';
 
-import authenticate from './Authentication/Authentication';
 import initAllRelations from './init-relations';
 
 // set up
@@ -36,9 +35,9 @@ sequelize.authenticate()
 
 // use Controllers
 app.use(LoginController);
-app.use(authenticate, UserController);
-app.use(authenticate, NotesController);
-app.use(authenticate, TagsController);
+app.use(UserController);
+app.use(NotesController);
+app.use(TagsController);
 
 // start the app
 app.listen(3000, () => {

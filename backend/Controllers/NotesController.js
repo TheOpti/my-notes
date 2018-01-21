@@ -1,18 +1,19 @@
 import express from 'express';
 import NotesService from '../Services/NotesService';
+import authenticate from '../Authentication/Authentication';
 
 const api = express.Router();
 
 class NotesController {
 
   async getNotes(req, res) {
-     const userId = req.decoded.id;
+    const userId = req.decoded.id;
 
-     const response = await NotesService.getNotes(userId);
-     const statusCode = response.status === 'OK' ? 200 : 400;
+    const response = await NotesService.getNotes(userId);
+    const statusCode = response.status === 'OK' ? 200 : 400;
 
-     res.status(statusCode);
-     res.send(response);
+    res.status(statusCode);
+    res.send(response);
   }
 
 
@@ -55,9 +56,9 @@ class NotesController {
 
 const ctrl = new NotesController();
 
-api.get('/notes', ctrl.getNotes);
-api.post('/notes', ctrl.addNewNote);
-api.put('/notes', ctrl.updateNote);
-api.delete('/notes/:id', ctrl.deleteNote);
+api.get('/notes', authenticate, ctrl.getNotes);
+api.post('/notes', authenticate, ctrl.addNewNote);
+api.put('/notes', authenticate, ctrl.updateNote);
+api.delete('/notes/:id', authenticate, ctrl.deleteNote);
 
 export default api;

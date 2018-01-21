@@ -1,5 +1,6 @@
 import express from 'express';
 import UserService from '../Services/UserService';
+import authenticate from '../Authentication/Authentication';
 
 const api = express.Router();
 
@@ -38,7 +39,7 @@ class UserController {
 
 const ctrl = new UserController();
 
-api.get('/user', ctrl.getAllUserData);
-api.post('/changepassword', ctrl.changePassword);
+api.get('/user', authenticate, ctrl.getAllUserData);
+api.post('/changepassword', authenticate, ctrl.changePassword);
 
 export default api;

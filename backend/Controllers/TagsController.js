@@ -1,5 +1,6 @@
 import express from 'express';
 import TagsService from '../Services/TagsService';
+import authenticate from '../Authentication/Authentication';
 
 const api = express.Router();
 
@@ -55,9 +56,9 @@ class TagsController {
 
 const ctrl = new TagsController();
 
-api.get('/tag', ctrl.getTags);
-api.post('/tag', ctrl.addNewTag);
-api.put('/tag', ctrl.updateTag);
-api.delete('/tag/:id', ctrl.deleteTag);
+api.get('/tag', authenticate, ctrl.getTags);
+api.post('/tag', authenticate, ctrl.addNewTag);
+api.put('/tag', authenticate, ctrl.updateTag);
+api.delete('/tag/:id', authenticate, ctrl.deleteTag);
 
 export default api;
