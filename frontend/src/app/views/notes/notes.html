@@ -1,4 +1,8 @@
 <div class="notes">
+  <add-note
+    *ngIf="canShowAddNoteComponent"
+  ></add-note>
+
   <loading-spinner
     *ngIf="loading"
   ></loading-spinner>

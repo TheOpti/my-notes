@@ -5,6 +5,8 @@ import { NotesService } from '../../services/notes.service';
 import { ActivatedRoute } from "@angular/router";
 import NOTES_TYPES from '../../constants/notes_types';
 
+const addNewNoteViews = [NOTES_TYPES.NOTES, NOTES_TYPES.TAGS, NOTES_TYPES.REMINDERS];
+
 @Component({
   selector: 'notes',
   templateUrl: 'notes.html',
@@ -13,34 +15,44 @@ import NOTES_TYPES from '../../constants/notes_types';
 export class NotesComponent {
 
   private notes : any;
-  private subscription: Subscription;
+  private routeSubscription: Subscription;
+  private notesSubscription: Subscription;
   private loading: boolean;
   private notesType: string;
+  private canShowAddNoteComponent: boolean;
 
   constructor(private notesService: NotesService, private route: ActivatedRoute) {
     this.notes = [];
     this.loading = true;
     this.notesType = '';
+    this.canShowAddNoteComponent = true;
   }
 
   ngOnInit() {
-    this.route
+    this.routeSubscription = this.route
       .data
       .subscribe(data => {
         this.notesType = NOTES_TYPES[data.type];
+        this.canShowAddNoteComponent = this.checkCanShowAddNote(this.notesType);
 
         this.notesService.getAllNotes().then((notes: Array<any>) => {
           this.notes = notes.filter(note => note.type === this.notesType);
           this.loading = false;
         });
 
-        this.subscription = this.notesService.getMessage().subscribe(notes => {
+        this.notesSubscription = this.notesService.getMessage().subscribe(notes => {
           this.notes = notes.filter(note => note.type === this.notesType);
         });
       });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.routeSubscription.unsubscribe();
+    this.notesSubscription.unsubscribe();
   }
+
+  checkCanShowAddNote(noteType) {
+    return addNewNoteViews.includes(noteType);
+  }
+
 }

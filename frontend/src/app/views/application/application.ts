@@ -1,5 +1,4 @@
-import { Component, ViewChild, ElementRef, Renderer2} from '@angular/core';
-import { Router, NavigationEnd, Event} from '@angular/router';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'application',
@@ -8,33 +7,8 @@ import { Router, NavigationEnd, Event} from '@angular/router';
 })
 export class ApplicationComponent {
 
-  private canShowAddNoteComponent: boolean;
-
   @ViewChild('sidenav', {read: ElementRef}) sidenav: ElementRef;
   @ViewChild('mainContent') mainContent: ElementRef;
-
-  constructor(private router: Router, private rd: Renderer2) {
-    this.canShowAddNoteComponent = true;
-  }
-
-  ngOnInit() {
-    this.router.events
-      .filter((event) => event instanceof NavigationEnd)
-      .subscribe((event:Event) => {
-        if (event instanceof NavigationEnd) {
-          this.checkCanShowAddNote(event.url);
-        }
-      });
-  }
-
-  checkCanShowAddNote(url) {
-    // TODO Refactor this logic using constant notes_types and data from route
-    if (url.includes('tag') || url === '/notes' || url === '/reminders' || url === '/') {
-      this.canShowAddNoteComponent = true;
-    } else {
-      this.canShowAddNoteComponent = false;
-    }
-  }
 
   toggleSidenavClass() {
     this.sidenav.nativeElement.classList.toggle("application__sidenav--opened");
