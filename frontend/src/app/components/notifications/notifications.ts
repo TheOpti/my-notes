@@ -20,6 +20,7 @@ export class NotificationsComponent {
   ngOnInit() {
     this.subscription = this.notificationService.getMessage()
       .subscribe(notifications => {
+        console.log('subscribe ngOnInit', notifications);
         this.notifications = notifications;
       });
   }

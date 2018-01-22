@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
-import v1 from 'uuid/v1';
+import { v1 } from 'uuid';
 
 @Injectable()
 export class NotificationService {

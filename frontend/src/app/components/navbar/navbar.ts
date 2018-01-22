@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from "../../services/auth.service";
 
 const cssClassesMap = {
   '/application/notes': {
@@ -47,7 +48,7 @@ export class NavbarComponent {
 
   @Output() onToggleClick = new EventEmitter<any>();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
     this.router.events
@@ -90,8 +91,7 @@ export class NavbarComponent {
   }
 
   logout() {
-    // TODO implement logout logic
-    this.router.navigate(['/login']);
+    this.authService.logout();
   }
 
 }

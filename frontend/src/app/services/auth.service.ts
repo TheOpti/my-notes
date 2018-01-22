@@ -15,6 +15,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  removeToken() {
+    localStorage.removeItem('token');
+  }
+
   login(login, password) {
     this.http.post('http://localhost:3000/login', { login, password })
       .subscribe(
@@ -39,6 +43,7 @@ export class AuthService {
   }
 
   logout() {
+    this.removeToken();
     this.router.navigate(['/login']);
   }
 
