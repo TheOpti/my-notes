@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eee;
+  background: url('../../../assets/bg-pattern.png'), linear-gradient(#dc2430, #7b4397);
 
 
   &__logo-section {
@@ -21,14 +21,13 @@
 
 
   &__form {
-    width: 410px;
+    width: 430px;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
     background-color: white;
-    border: 1px solid #ebebeb;
-    box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+    box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.35);
   }
 
 
