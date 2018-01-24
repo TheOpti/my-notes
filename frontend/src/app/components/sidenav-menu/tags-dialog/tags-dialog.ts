@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
-import {TagsService} from '../../../services/tags.service';
-
-import v1 from 'uuid/v1';
+import { TagsService} from '../../../services/tags.service';
 
 @Component({
   selector: 'tags-dialog',
@@ -20,12 +18,15 @@ export class TagsDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<TagsDialogComponent>, private tagsService: TagsService) {
     this.isAddingNew = false;
-
     this.tags = this.tagsService.getAllTags();
 
-    this.subscription = this.tagsService.getMessage().subscribe(notes => {
-      this.tags = notes;
+    this.subscription = this.tagsService.getMessage().subscribe(tags => {
+      this.tags = tags;
     });
+  }
+
+  trackByFn(idx, tag) {
+    return tag.name;
   }
 
   enableAddingNew() {
@@ -45,17 +46,16 @@ export class TagsDialogComponent {
   }
 
   createNewTag(tag) {
-    const newTag = {
-      id: v1(),
-      name: tag
-    };
+    const newTag = { name: tag };
 
     this.tagsService.addTag(newTag);
     this.disableAddingNew();
   }
 
-  updateTag(tag, tagId) {
-    this.tagsService.updateTag(tag);
+  updateTag(newTagName, tag) {
+    if (newTagName !== tag.name) {
+      this.tagsService.updateTag({id: tag.id, name: newTagName});
+    }
     this.disableEditingTagById();
   }
 

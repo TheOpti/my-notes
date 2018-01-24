@@ -25,10 +25,10 @@ export class TagsService {
   }
 
   addTag(tag) {
-    this.baseHttpClient.post('http://localhost:3000/tag', tag)
+    this.baseHttpClient.post('http://localhost:3000/tag', { tag })
       .subscribe(
-        (data) => {
-          console.log(data);
+        (data: any) => {
+          this.tags.push(data.tag);
         },
         (error) => {
           console.log(error);
@@ -37,10 +37,18 @@ export class TagsService {
   }
 
   updateTag(tag) {
-    this.baseHttpClient.put('http://localhost:3000/tag/', tag)
+    this.baseHttpClient.put('http://localhost:3000/tag', { tag })
       .subscribe(
-        (data) => {
-          console.log(data);
+        () => {
+          const updatedTags = this.tags.map(currentTag => {
+            if (currentTag.id === tag.id) {
+              currentTag.name = tag.name;
+            }
+
+            return currentTag;
+          });
+
+          this.tags = updatedTags;
         },
         (error) => {
           console.log(error);
@@ -51,8 +59,9 @@ export class TagsService {
   deleteTag(tagId) {
     this.baseHttpClient.delete('http://localhost:3000/tag/' + tagId)
       .subscribe(
-        (data) => {
-          console.log(data);
+        () => {
+          this.tags = this.tags.filter(tag => tag.id !== tagId);
+          this.sendMessage(this.tags);
         },
         (error) => {
           console.log(error);

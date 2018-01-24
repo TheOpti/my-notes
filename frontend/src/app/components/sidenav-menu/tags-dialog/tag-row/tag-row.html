@@ -1,12 +1,10 @@
 <div class="tag-row">
+  <div>{{ tag }}</div>
   <div class="tag-row__row" *ngIf="!condition">
     <mat-icon *ngIf="type === 'add'" class="tag-row__icon" matTooltip="Create new tag" (click)="enableEditing()">
       add
     </mat-icon>
-    <mat-icon
-      *ngIf="type === 'edit'"
-      class="tag-row__icon tag-row__icon-label"
-    >
+    <mat-icon *ngIf="type === 'edit'" class="tag-row__icon tag-row__icon-label">
       label
     </mat-icon>
     <mat-icon
@@ -25,7 +23,7 @@
 
   <div class="tag-row__row" *ngIf="condition">
     <mat-icon class="tag-row__icon" [matTooltip]="editedTagTooltip" (click)="inputIconClick()">
-      {{editedTagIcon}}
+      {{ editedTagIcon }}
     </mat-icon>
     <input
       class="tag-row__input"

@@ -21,8 +21,8 @@ export class SidenavMenuComponent {
   ngOnInit() {
     this.tags = this.tagsService.getAllTags();
 
-    this.subscription = this.tagsService.getMessage().subscribe(notes => {
-      this.tags = notes;
+    this.subscription = this.tagsService.getMessage().subscribe(tags => {
+      this.tags = tags;
     });
   }
 

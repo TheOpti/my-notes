@@ -38,7 +38,8 @@ export class TagRowComponent {
 
   acceptClick() {
     this.onAcceptClick.emit(this.tag);
-    this.tag = '';
+    // TODO create separate component for adding and editing tags
+    // this.tag = '';
   }
 
   deleteTag() {

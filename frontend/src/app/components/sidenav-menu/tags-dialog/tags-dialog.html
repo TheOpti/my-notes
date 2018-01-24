@@ -16,7 +16,7 @@
 
     <tag-row
       class="tags-dialog__row-wrapper"
-      *ngFor="let tag of tags"
+      *ngFor="let tag of tags; trackBy: trackByFn"
       [placeholder]="'Enter name of tag'"
       [type]="'edit'"
       [tag]="tag.name"
