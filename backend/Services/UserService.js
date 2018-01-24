@@ -1,62 +1,25 @@
-import User from '../Models/User';
-import Tag from '../Models/Tag';
-import Note from '../Models/Note';
+import UserRepository from '../Repository/UserRepository';
 
 class UserService {
 
   async getAllUserData(userId) {
-    const user = await User.findOne({
-      where: { id: userId },
-      attributes: ['id', 'login', 'email'],
-      include: [
-        {
-          model: Note,
-          include: [
-            {
-              model: Tag,
-              where: { deleted: false },
-              attributes: ['id', 'name'],
-              through: {attributes: []}
-            }
-          ]
-        },
-        {
-          model: Tag,
-          attributes: ['id', 'name']
-        }
-      ]
-    });
+    try {
+      const user = UserRepository.getUserData(userId);
 
-    return { status: 'OK', user };
+      return { status: 'OK', user };
+    } catch (error) {
+      return { status: 'ERROR', error };
+    }
   }
 
 
   async changePassword(login, password) {
-    const foundUser = await User.findOne({
-      where: { login },
-      attributes: ['id', 'login', 'password', 'salt']
-    });
+    try {
+      const msg = UserRepository.changePassword(login, password);
 
-    if (foundUser) {
-      const newPassword = this.encryptPassword(password, foundUser.salt);
-      const isUpdated = await foundUser.updateAttributes({ password: newPassword });
-
-      if (isUpdated) {
-        return {
-          status: 'OK',
-          msg: 'Password changed.'
-        };
-      } else {
-        return {
-          status: 'ERROR',
-          msg: 'Error during password change.'
-        };
-      }
-    } else {
-      return {
-        status: 'ERROR',
-        msg: 'Login or password incorrect.'
-      }
+      return { status: 'OK', msg }
+    } catch (error) {
+      return { status: 'ERROR',  msg: error }
     }
   }
 

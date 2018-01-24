@@ -1,8 +1,7 @@
-import crypto from 'crypto';
-import uuidv1 from 'uuid/v1';
 import jwt from 'jsonwebtoken';
-
 import User from '../Models/User';
+import UserRepository from '../Repository/UserRepository';
+import { encryptPassword } from '../utils/encrypt';
 
 class LoginService {
 
@@ -12,7 +11,7 @@ class LoginService {
       attributes: ['id', 'login', 'password', 'salt']
     }) || {};
 
-    const passwordToCheck = this.encryptPassword(password, user.salt);
+    const passwordToCheck = encryptPassword(password, user.salt);
     if (passwordToCheck === user.password) {
       const token = jwt.sign({ id: user.id, login }, 'RESTFULAPIs');
       return {
@@ -30,49 +29,19 @@ class LoginService {
 
 
   async register(user) {
-    const foundUser = await User.findOne({
-      where: {
-        $or: [{ login: user.login }, { email: user.email }]
-      }});
-
-    if (foundUser) {
-      return {
-        status: 'ERROR',
-        msg: 'User already exists.'
-      }
-    } else {
-      const salt = this.generateSalt();
-      const password = this.encryptPassword(user.password, salt);
-
-      const created = User.create({
-        id: uuidv1(),
-        login: user.login,
-        email: user.email,
-        salt: salt,
-        password: password,
-        registration_date: Date.now(),
-      });
+    try {
+      await UserRepository.addUser(user);
 
       return {
         status: 'OK',
         msg: 'User created successfully.'
       };
+    } catch (error) {
+      return {
+        status: 'ERROR',
+        msg: error
+      }
     }
-  }
-
-
-  generateSalt() {
-    return crypto
-      .randomBytes(4)
-      .toString('hex');
-  }
-
-
-  encryptPassword(password, salt) {
-    return crypto
-      .createHash('sha256')
-      .update(password + salt)
-      .digest('base64');
   }
 
 }
