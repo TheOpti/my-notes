@@ -9,6 +9,7 @@ import NotesController from './Controllers/NotesController';
 import TagsController from './Controllers/TagsController';
 
 import initAllRelations from './init-relations';
+import initData from './init-data';
 
 // set up
 const app = express();
@@ -30,7 +31,9 @@ sequelize.authenticate()
 
     // create relations and tables
     initAllRelations();
-    sequelize.sync({force: true});
+    sequelize.sync({force: true}).then(() => {
+      initData();
+    });
   })
   .catch(err => console.error('Unable to connect to the database:', err));
 
