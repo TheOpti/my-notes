@@ -17,7 +17,7 @@ class TagsService {
     try {
       const addedTag = await TagRepository.addTag(userId, tag);
 
-      return { status: 'OK',  addedTag }
+      return { status: 'OK',  tag: addedTag }
     } catch (error) {
       return { status: 'ERROR', msg: error }
     }
@@ -35,9 +35,9 @@ class TagsService {
   }
 
 
-  async deleteTag(tagId) {
+  async deleteTag(tagId, userId) {
     try {
-      const deleted = await TagRepository.deleteTag(tagId);
+      const deleted = await TagRepository.deleteTag(tagId, userId);
 
       return { status: 'OK', deleted }
     } catch (error) {

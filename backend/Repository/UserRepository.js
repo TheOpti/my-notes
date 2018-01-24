@@ -47,12 +47,13 @@ class UserRepository {
               model: Tag,
               where: { deleted: false },
               attributes: ['id', 'name'],
-              through: {attributes: []}
+              through: { attributes: [] }
             }
           ]
         },
         {
           model: Tag,
+          where: { deleted: false },
           attributes: ['id', 'name']
         }
       ]

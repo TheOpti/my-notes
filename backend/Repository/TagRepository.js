@@ -33,17 +33,11 @@ class TagRepository {
 
 
   async updateTag(userId, tag) {
-    const foundTag = await Tag.findOne({
-      where: { id: tag.id, userId }
-    });
-
-    if (!foundTag) {
-      throw 'No tag found for given user!';
-    }
-
-    const updatedTag = await foundTag.updateAttributes({
-      title: tag.name,
+    const updatedTag = await Tag.update({
+      name: tag.name,
       updatedAt: new Date(),
+    }, {
+      where: { id: tag.id, userId }
     });
 
     if (!updatedTag) {
@@ -54,9 +48,9 @@ class TagRepository {
   }
 
 
-  async deleteTag() {
+  async deleteTag(tagId, userId) {
     const foundTag = await Tag.findOne({
-      where: { id: noteId, userId }
+      where: { id: tagId, userId }
     });
 
     if (!foundTag) {
