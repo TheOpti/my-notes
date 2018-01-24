@@ -55,9 +55,7 @@ export class TagsDialogComponent {
   }
 
   updateTag(tag, tagId) {
-    console.log('tag, tagId', tag, tagId);
-
-    this.tagsService.updateTag(tag, tagId);
+    this.tagsService.updateTag(tag);
     this.disableEditingTagById();
   }
 

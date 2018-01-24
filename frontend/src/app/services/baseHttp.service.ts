@@ -21,4 +21,15 @@ export class BaseHttpClient {
     const headers = this.createAuthorizationHeader();
     return this.http.post(url, data, { headers });
   }
+
+  put(url, data) {
+    const headers = this.createAuthorizationHeader();
+    return this.http.put(url, data, { headers });
+  }
+
+  delete(url) {
+    const headers = this.createAuthorizationHeader();
+    return this.http.delete(url, { headers });
+  }
+
 }

@@ -2,63 +2,62 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
+import { BaseHttpClient } from './baseHttp.service';
+
 @Injectable()
 export class TagsService {
 
-  private subject = new Subject<any>();
+  private subject: Subject<any>;
+  private tags: Array<any>;
 
-  addTag(tag) {
-    let tags: any = localStorage.getItem('tags');
-
-    if (tags) {
-      tags = JSON.parse(tags);
-      tags.push(tag);
-    } else {
-      tags = [tag];
-    }
-
-    tags = JSON.stringify(tags);
-    localStorage.setItem('tags', tags);
-
-    const allTags = this.getAllTags();
-
-    this.sendMessage(allTags);
-  }
-
-  deleteTag(tagId) {
-    const tags = this.getAllTags();
-    const filteredTags = tags.filter(tag => tag.id !== tagId);
-    const stringified = JSON.stringify(filteredTags);
-
-    localStorage.setItem('tags', stringified);
-    this.sendMessage(filteredTags);
+  constructor(private baseHttpClient: BaseHttpClient) {
+    this.subject = new Subject<any>();
+    this.tags = [];
   }
 
   getAllTags() {
-    let tags;
-
-    try {
-      tags = JSON.parse(localStorage.getItem('tags'));
-    } catch (error) {
-      tags = [];
-    }
-
-    return tags ? tags : [];
+    return this.tags;
   }
 
-  updateTag(tagName, tagId) {
-    let tags = this.getAllTags();
+  setTags(tags) {
+    this.tags = tags;
+    this.sendMessage(this.tags);
+  }
 
-    tags.forEach((tag) => {
-      if (tag.id === tagId) {
-        tag.name = tagName;
-      }
-    });
+  addTag(tag) {
+    this.baseHttpClient.post('http://localhost:3000/tag', tag)
+      .subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 
-    const stringifiedTags = JSON.stringify(tags);
+  updateTag(tag) {
+    this.baseHttpClient.put('http://localhost:3000/tag/', tag)
+      .subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 
-    localStorage.setItem('tags', stringifiedTags);
-    this.sendMessage(tags);
+  deleteTag(tagId) {
+    this.baseHttpClient.delete('http://localhost:3000/tag/' + tagId)
+      .subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   sendMessage(allTags) {
@@ -72,4 +71,5 @@ export class TagsService {
   getMessage(): Observable<any> {
     return this.subject.asObservable();
   }
+
 }

@@ -7,7 +7,7 @@ export class UserService {
   constructor(private http: BaseHttpClient) { }
 
   getUserData() {
-    return this.http.get('http://localhost:3000/user')
+    return this.http.get('http://localhost:3000/user');
   }
 
 }
