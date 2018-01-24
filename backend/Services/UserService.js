@@ -4,7 +4,7 @@ class UserService {
 
   async getAllUserData(userId) {
     try {
-      const user = UserRepository.getUserData(userId);
+      const user = await UserRepository.getUserData(userId);
 
       return { status: 'OK', user };
     } catch (error) {

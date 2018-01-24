@@ -1,100 +1,47 @@
-import uuidv1 from 'uuid/v1';
-import Tag from '../Models/Tag';
+import TagRepository from '../Repository/TagRepository';
 
 class TagsService {
 
   async getTags(userId) {
-    const userTags = await Tag.findAll({
-      where: { userId, deleted: false }
-    }) || [];
+    try {
+      const tags = await TagRepository.getTags(userId);
 
-    return {
-      status: 'OK',
-      tags: userTags
-    };
+      return { status: 'OK',  tags }
+    } catch (error) {
+      return { status: 'ERROR', msg: error }
+    }
   }
 
 
   async addTag(userId, tag) {
-    console.log('AddTag, tag: ', tag);
+    try {
+      const addedTag = await TagRepository.addTag(userId, tag);
 
-    const addedTag = await Tag.create({
-      id: uuidv1(),
-      userId: userId,
-      name: tag.name,
-      deleted: false
-    });
-
-    if (addedTag) {
-      return {
-        status: 'OK',
-        msg: 'Tag created successfully.'
-      };
-    } else {
-      return {
-        status: 'ERROR',
-        msg: 'Error during adding new tag.'
-      };
+      return { status: 'OK',  addedTag }
+    } catch (error) {
+      return { status: 'ERROR', msg: error }
     }
   }
 
 
   async updateTag(tag, userId) {
-    const foundTag = await Tag.findOne({
-      where: { id: tag.id, userId }
-    });
+    try {
+      const updatedTag = await TagRepository.updateTag(userId, tag);
 
-
-    if (foundTag) {
-      const isUpdated = await foundTag.updateAttributes({
-        title: tag.name,
-        updatedAt: new Date(),
-      });
-
-      if (isUpdated) {
-        return {
-          status: 'OK',
-          msg: 'Tag updated.'
-        };
-      } else {
-        return {
-          status: 'ERROR',
-          msg: 'Error during updating tag.'
-        };
-      }
-    } else {
-      return {
-        status: 'ERROR',
-        msg: 'Error during updating tag.'
-      }
+      return { status: 'OK',  updatedTag }
+    } catch (error) {
+      return { status: 'ERROR', msg: error }
     }
   }
 
 
-  async deleteTag(noteId, userId) {
-    const foundTag = await Tag.findOne({
-      where: { id: noteId, userId }
-    });
+  async deleteTag(tagId) {
+    try {
+      const deleted = await TagRepository.deleteTag(tagId);
 
-    if (foundTag) {
-      const isDeleted = await foundTag.updateAttributes({ deleted: true });
-
-      if (isDeleted) {
-        return {
-          status: 'OK',
-          msg: 'Note deleted.'
-        };
-      } else {
-        return {
-          status: 'ERROR',
-          msg: 'Error during deleting tag.'
-        };
-      }
-    } else {
-      return {
-        status: 'ERROR',
-        msg: 'Error during deleting tag.'
-      }
+      return { status: 'OK', deleted }
+    } catch (error) {
+      return { status: 'ERROR', msg: error }
     }
   }
 
