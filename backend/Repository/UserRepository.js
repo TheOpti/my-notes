@@ -42,10 +42,10 @@ class UserRepository {
       include: [
         {
           model: Note,
+          where: { deleted: false },
           include: [
             {
               model: Tag,
-              where: { deleted: false },
               attributes: ['id', 'name'],
               through: { attributes: [] }
             }

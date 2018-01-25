@@ -35,10 +35,11 @@ export class NotesComponent {
         this.notesType = NOTES_TYPES[data.type];
         this.canShowAddNoteComponent = this.checkCanShowAddNote(this.notesType);
 
-        this.notesService.getAllNotes().then((notes: Array<any>) => {
-          this.notes = notes.filter(note => note.type === this.notesType);
-          this.loading = false;
-        });
+        this.notes = this.notesService
+          .getAllNotes()
+          .filter(note => note.type === this.notesType);
+
+        this.loading = false;
 
         this.notesSubscription = this.notesService.getMessage().subscribe(notes => {
           this.notes = notes.filter(note => note.type === this.notesType);

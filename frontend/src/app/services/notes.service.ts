@@ -2,83 +2,75 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
-import {NotificationService} from "./notification.service";
+import { BaseHttpClient } from "./baseHttp.service";
+import { NotificationService } from "./notification.service";
 
 @Injectable()
 export class NotesService {
 
   private subject = new Subject<any>();
+  private notes: Array<any>;
 
-  constructor(private notificationService: NotificationService) { }
-
-  addNote(note) {
-    let notes: any = localStorage.getItem('notes');
-
-    if (notes) {
-      notes = JSON.parse(notes);
-      notes.push(note);
-    } else {
-      notes = [note];
-    }
-
-    notes = JSON.stringify(notes);
-    localStorage.setItem('notes', notes);
-
-    this.getAllNotes()
-      .then((notes) => {
-        this.sendMessage(notes);
-        this.notificationService.addNotification('note-add');
-      });
-  }
-
-  updateNote(updatedNote, noteId) {
-    let notes: any = localStorage.getItem('notes');
-
-    if (notes) {
-      notes = JSON.parse(notes);
-    } else {
-      notes = [];
-    }
-
-    const idx = notes.findIndex(note => note.id === noteId);
-    notes[idx] = updatedNote;
-
-    notes = JSON.stringify(notes);
-    localStorage.setItem('notes', notes);
+  constructor(private baseHttpClient: BaseHttpClient, private notificationService: NotificationService) {
+    this.subject = new Subject<any>();
+    this.notes = [];
   }
 
   getAllNotes() {
-    let notes;
+    return this.notes;
+  }
 
-    try {
-      notes = JSON.parse(localStorage.getItem('notes'));
-    } catch (error) {
-      notes = [];
-    }
+  setNotes(notes) {
+    this.notes = notes;
+    this.sendMessage(this.notes);
+  }
 
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const notesToReturn = notes ? notes : [];
-        resolve(notesToReturn);
-      }, 600);
-    });
+  addNote(note) {
+    this.baseHttpClient.post('http://localhost:3000/notes', { note })
+      .subscribe(
+        (data: any) => {
+          this.notes.push(data.note);
+          this.sendMessage(this.notes);
+          this.notificationService.addNotification('note-add');
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+  updateNote(note) {
+    this.baseHttpClient.put('http://localhost:3000/notes', { note })
+      .subscribe(
+        () => {
+          const updatedNotes = this.notes.map(currentNote => {
+            if (currentNote.id === note.id) {
+              currentNote = { ...note };
+            }
+
+            return currentNote;
+          });
+
+          this.notes = updatedNotes;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   deleteNote(noteId) {
-    let notes: any = localStorage.getItem('notes');
-
-    if (notes) {
-      notes = JSON.parse(notes);
-    } else {
-      notes = [];
-    }
-
-    let filteredNotes = notes.filter(note => note.id !== noteId);
-    let stringified = JSON.stringify(filteredNotes);
-
-    localStorage.setItem('notes', stringified);
-    this.sendMessage(filteredNotes);
-    this.notificationService.addNotification('note-delete');
+    this.baseHttpClient.delete('http://localhost:3000/notes/' + noteId)
+      .subscribe(
+        () => {
+          this.notes = this.notes.filter(note=> note.id !== noteId);
+          this.notificationService.addNotification('note-delete');
+          this.sendMessage(this.notes);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   sendMessage(allNotes) {

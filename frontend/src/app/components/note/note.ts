@@ -47,21 +47,21 @@ export class NoteComponent {
 
   setColor(color) {
     this.note.color = color;
-    this.notesService.updateNote(this.note, this.note.id);
+    this.notesService.updateNote(this.note);
   }
 
   setReminder(date) {
     this.note.type = NOTE_TYPES.REMINDER;
     this.note.reminder = date;
 
-    this.notesService.updateNote(this.note, this.note.id);
+    this.notesService.updateNote(this.note);
   }
 
   removeReminder() {
     this.note.type = NOTE_TYPES.NOTE;
     this.note.reminder = null;
 
-    this.notesService.updateNote(this.note, this.note.id);
+    this.notesService.updateNote(this.note);
   }
 
   isTagSelected(tag) {
@@ -75,7 +75,7 @@ export class NoteComponent {
       this.note.tags.push(tag);
     }
 
-    this.notesService.updateNote(this.note, this.note.id);
+    this.notesService.updateNote(this.note);
   }
 
 
