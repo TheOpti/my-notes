@@ -31,7 +31,7 @@ sequelize.authenticate()
 
     // create relations and tables
     initAllRelations();
-    sequelize.sync({force: false}).then(() => {
+    sequelize.sync({force: true}).then(() => {
       initData();
     });
   })

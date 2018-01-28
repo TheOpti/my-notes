@@ -27,6 +27,10 @@ const noteFields = {
     type: Sequelize.UUID,
     field: 'user_id'
   },
+  color: {
+    type: Sequelize.STRING,
+    field: 'color'
+  },
   deleted: {
     type: Sequelize.BOOLEAN,
     field: 'deleted'

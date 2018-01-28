@@ -1,11 +1,13 @@
 import sequelize from '../sequelize';
 import Sequelize from 'sequelize';
+import DataTypes from 'sequelize';
 
 const tagNoteFields = {
   id: {
     type: Sequelize.UUID,
     primaryKey: true,
-    field: 'id'
+    field: 'id',
+    defaultValue: DataTypes.UUIDV1
   },
   tagId: {
     type: Sequelize.UUID,

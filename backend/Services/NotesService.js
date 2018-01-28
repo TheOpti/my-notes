@@ -1,104 +1,47 @@
-import Note from '../Models/Note';
-import uuidv1 from 'uuid/v1';
+import NotesRepository from '../Repository/NoteRepository';
 
 class NotesService {
 
   async getNotes(userId) {
-    const userNotes = await Note.findAll({
-      where: { userId }
-    }) || [];
+    try {
+      const notes = await NotesRepository.getNotes(userId);
 
-    return {
-      status: 'OK',
-      notes: userNotes
-    };
-  }
-
-
-  async addNote(userId, note = { post: '' }) {
-    const addedNote = await Note.create({
-      id: uuidv1(),
-      userId: userId,
-      post: note.post,
-      title: note.title,
-      type: note.type,
-      reminder: note.reminder,
-      deleted: false
-    });
-
-    if (addedNote) {
-      return {
-        status: 'OK',
-        msg: 'Note created successfully.'
-      };
-    } else {
-      return {
-        status: 'ERROR',
-        msg: 'Error during adding new note.'
-      };
+      return { status: 'OK',  notes }
+    } catch (error) {
+      return { status: 'ERROR', msg: error }
     }
   }
 
 
-  async updateNote(note, userId) {
-    const foundNote = await Note.findOne({
-      where: { id: note.id, userId }
-    });
+  async addNote(userId, Note) {
+    try {
+      const addedNote = await NotesRepository.addNote(userId, Note);
 
-
-    if (foundNote) {
-      const isUpdated = await foundNote.updateAttributes({
-        title: note.title,
-        post: note.post,
-        type: note.type,
-        reminder: note.reminder,
-        updatedAt: new Date(),
-      });
-
-      if (isUpdated) {
-        return {
-          status: 'OK',
-          msg: 'Note updated.'
-        };
-      } else {
-        return {
-          status: 'ERROR',
-          msg: 'Error during updating note.'
-        };
-      }
-    } else {
-      return {
-        status: 'ERROR',
-        msg: 'Error during updating note.'
-      }
+      return { status: 'OK',  note: addedNote }
+    } catch (error) {
+      return { status: 'ERROR', msg: error }
     }
   }
 
 
-  async deleteNote(noteId, userId) {
-    const foundNote = await Note.findOne({
-      where: { id: noteId, userId }
-    });
+  async updateNote(Note, userId) {
+    try {
+      const updatedNote = await NotesRepository.updateNote(userId, Note);
 
-    if (foundNote) {
-      const isDeleted = await foundNote.updateAttributes({ deleted: true });
+      return { status: 'OK',  updatedNote }
+    } catch (error) {
+      return { status: 'ERROR', msg: error }
+    }
+  }
 
-      if (isDeleted) {
-        return {
-          status: 'OK',
-          msg: 'Note deleted.'
-        };
-      } else {
-        return {
-          status: 'ERROR',
-          msg: 'Error during deleting note.'
-        };
-      }
-    } else {
-      return {
-        status: 'ERROR',
-        msg: 'Error during deleting note.'
-      }
+
+  async deleteNote(NoteId, userId) {
+    try {
+      const deleted = await NotesRepository.deleteNote(NoteId, userId);
+
+      return { status: 'OK', deleted }
+    } catch (error) {
+      return { status: 'ERROR', msg: error }
     }
   }
 
