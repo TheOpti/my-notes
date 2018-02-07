@@ -27,9 +27,7 @@ class noteRepository {
       color: note.color,
       reminder: note.reminder,
       deleted: false
-    }, { include: [{ model: Tag }] });
-
-    console.log('added note: ', addedNote);
+    });
 
     if (note.tags) {
       const tagsIds = note.tags.map(tag => tag.id);
@@ -40,7 +38,16 @@ class noteRepository {
       throw 'Error during putting new note into DB!';
     }
 
-    return addedNote;
+    const addedNoteWithTags = await Note.findOne({
+      where: { id: addedNote.id },
+      include: [{
+        model: Tag,
+        attributes: ['id', 'name'],
+        through: { attributes: [] }
+      }]
+    });
+
+    return addedNoteWithTags;
   }
 
 
