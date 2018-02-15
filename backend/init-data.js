@@ -19,10 +19,11 @@ async function initData() {
   const addedTag2 = await TagRepository.addTag(userId, tag2);
 
   const tag3 = { name: 'Friends' };
-  await TagRepository.addTag(userId, tag3);
+  const addedTag3 = await TagRepository.addTag(userId, tag3);
 
-  const tagOneWithId = Object.assign({}, tag1, { id: addedTag1.id});
-  const tagTwoWithId = Object.assign({}, tag1, { id: addedTag2.id});
+  const tagOneWithId = Object.assign({}, tag1, { id: addedTag1.id });
+  const tagTwoWithId = Object.assign({}, tag2, { id: addedTag2.id });
+  const tagThreeWithId = Object.assign({}, tag3, { id: addedTag3.id });
 
   const note1 = {
     post: 'Buy milk and 10 eggs',
@@ -44,9 +45,20 @@ async function initData() {
     ]
   };
 
+  const note3 = {
+    post: 'Call to Mike',
+    title: 'Mike',
+    type: 'note',
+    color: 'blue',
+    reminder: '',
+    tags: [
+      tagThreeWithId
+    ]
+  };
+
   await NoteRepository.addNote(userId, note1);
   await NoteRepository.addNote(userId, note2);
-
+  await NoteRepository.addNote(userId, note3);
 }
 
 export default initData;

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
 import { BaseHttpClient } from './baseHttp.service';
+import { NotesService } from "./notes.service";
 
 @Injectable()
 export class TagsService {
@@ -10,7 +11,7 @@ export class TagsService {
   private subject: Subject<any>;
   private tags: Array<any>;
 
-  constructor(private baseHttpClient: BaseHttpClient) {
+  constructor(private baseHttpClient: BaseHttpClient, private notesService: NotesService) {
     this.subject = new Subject<any>();
     this.tags = [];
   }
@@ -61,6 +62,7 @@ export class TagsService {
       .subscribe(
         () => {
           this.tags = this.tags.filter(tag => tag.id !== tagId);
+          this.notesService.deleteTagsFromNotes(tagId);
           this.sendMessage(this.tags);
         },
         (error) => {

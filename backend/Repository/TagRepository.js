@@ -1,4 +1,5 @@
 import Tag from '../Models/Tag';
+import TagNote from '../Models/TagNote';
 import uuidv1 from 'uuid/v1';
 
 class TagRepository {
@@ -53,13 +54,18 @@ class TagRepository {
       where: { id: tagId, userId }
     });
 
+    const foundTagConnectionsWithNotes = await TagNote.find({
+      where: { tagId: tagId }
+    });
+
     if (!foundTag) {
       throw 'No tag found for given user!';
     }
 
     const isDeleted = await foundTag.updateAttributes({ deleted: true });
+    const areTagConnectionsDeleted = await foundTagConnectionsWithNotes.updateAttributes({ deleted: true });
 
-    if (!isDeleted) {
+    if (!isDeleted && !areTagConnectionsDeleted) {
       throw 'Error during deleting tag!';
     }
 

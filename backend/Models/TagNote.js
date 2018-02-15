@@ -16,6 +16,10 @@ const tagNoteFields = {
   noteId: {
     type: Sequelize.UUID,
     field: 'note_id'
+  },
+  deleted: {
+    type: Sequelize.BOOLEAN,
+    field: 'deleted'
   }
 };
 

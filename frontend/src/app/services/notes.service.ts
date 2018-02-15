@@ -73,6 +73,12 @@ export class NotesService {
       );
   }
 
+  deleteTagsFromNotes(tagId) {
+    this.notes.forEach(note => {
+      note.tags = note.tags.filter(tag => tag.id !== tagId);
+    });
+  }
+
   sendMessage(allNotes) {
     this.subject.next(allNotes);
   }
