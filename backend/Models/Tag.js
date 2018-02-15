@@ -17,7 +17,8 @@ const tagFields = {
   },
   deleted: {
     type: Sequelize.BOOLEAN,
-    field: 'deleted'
+    field: 'deleted',
+    defaultValue: false
   }
 };
 

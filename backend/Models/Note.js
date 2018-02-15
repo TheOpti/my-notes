@@ -33,7 +33,8 @@ const noteFields = {
   },
   deleted: {
     type: Sequelize.BOOLEAN,
-    field: 'deleted'
+    field: 'deleted',
+    defaultValue: false
   }
 };
 
