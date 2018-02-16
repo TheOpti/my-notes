@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/combineLatest';
 import { Subscription } from 'rxjs/Subscription';
 
 import { NotesService } from '../../services/notes.service';
 import { ActivatedRoute } from "@angular/router";
 import NOTES_TYPES from '../../constants/notes_types';
 
-const addNewNoteViews = [NOTES_TYPES.NOTES, NOTES_TYPES.TAGS, NOTES_TYPES.REMINDERS];
+const addNewNoteViews = [
+  NOTES_TYPES.NOTES,
+  NOTES_TYPES.TAGS,
+  NOTES_TYPES.REMINDERS
+];
 
 @Component({
   selector: 'notes',
@@ -15,7 +21,8 @@ const addNewNoteViews = [NOTES_TYPES.NOTES, NOTES_TYPES.TAGS, NOTES_TYPES.REMIND
 export class NotesComponent {
 
   private notes : any;
-  private routeSubscription: Subscription;
+  private params : any;
+  private subscription: Subscription;
   private notesSubscription: Subscription;
   private loading: boolean;
   private notesType: string;
@@ -29,27 +36,41 @@ export class NotesComponent {
   }
 
   ngOnInit() {
-    this.routeSubscription = this.route
-      .data
-      .subscribe(data => {
+    this.subscription = Observable
+      .combineLatest(this.route.data, this.route.params)
+      .subscribe(([data, params]) => {
+        console.log('subscribe this.route.data');
+
         this.notesType = NOTES_TYPES[data.type];
         this.canShowAddNoteComponent = this.checkCanShowAddNote(this.notesType);
-
-        this.notes = this.notesService
-          .getAllNotes()
-          .filter(note => note.type === this.notesType);
-
-        this.loading = false;
+        this.notes = this.notesService.getAllNotes();
+        this.params = params;
+        this.filterNotes(this.notes);
 
         this.notesSubscription = this.notesService.getMessage().subscribe(notes => {
-          this.notes = notes.filter(note => note.type === this.notesType);
+          this.filterNotes(notes);
         });
+
+        this.loading = false;
       });
   }
 
   ngOnDestroy() {
-    this.routeSubscription.unsubscribe();
+    this.subscription.unsubscribe();
     this.notesSubscription.unsubscribe();
+  }
+
+  filterNotes(notes) {
+    const tagName = this.params.name;
+    if (this.notesType === NOTES_TYPES.TAGS) {
+      this.notes = notes.filter(note => {
+        return note.tags.some(tag => {
+          return tag.name === tagName;
+        });
+      });
+    } else {
+      this.notes = notes.filter(note => note.type === this.notesType);
+    }
   }
 
   checkCanShowAddNote(noteType) {
