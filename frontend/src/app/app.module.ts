@@ -43,6 +43,9 @@ import { SelectedTagsBarComponent } from './components/selected-tags-bar/selecte
 import { IconsBarComponent } from './components/icons-bar/icons-bar';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner';
 
+import { DropdownComponent } from './components/dropdown/dropdown';
+import { DropdownToggleComponent } from './components/dropdown/dropdown-toggle';
+
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { BaseHttpClient } from './services/baseHttp.service';
@@ -83,7 +86,9 @@ import { routes } from './routes';
     SelectedTagsBarComponent,
     IconsBarComponent,
     LoadingSpinnerComponent,
-    FocusDirective
+    FocusDirective,
+    DropdownComponent,
+    DropdownToggleComponent
   ],
   entryComponents: [TagsDialogComponent],
   imports: [
