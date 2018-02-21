@@ -1,4 +1,9 @@
-import {Component, ElementRef, HostBinding, HostListener} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostBinding,
+  HostListener
+} from '@angular/core';
 
 @Component({
   selector: 'dropdown',
@@ -11,9 +16,15 @@ export class DropdownComponent {
   @HostBinding('class.is-open')
   isOpen = false;
 
+  @HostBinding('style.top.px')
+  top: number;
+
+  @HostBinding('style.left.px')
+  left: number;
+
   @HostListener('document:click', ['$event'])
-  clickout(event) {
-    if (this.eRef.nativeElement.contains(event.target)) {
+  clickout($event) {
+    if (this.eRef.nativeElement.contains($event.target)) {
       console.log('clicked inside!');
     } else {
       console.log('clicked outside!');
@@ -23,7 +34,9 @@ export class DropdownComponent {
     }
   }
 
-  toggle() {
+  toggle(distances) {
+    this.top = distances.top;
+    this.left = distances.left;
     this.isOpen = !this.isOpen;
   }
 

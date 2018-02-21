@@ -1,9 +1,9 @@
 :host {
+  position: fixed;
   box-sizing: border-box;
   display: none;
-  transition: max-height 1.2s;
   width: 300px;
-  height: 100%;
+  height: auto;
   background: #ccc;
   border-radius: 5px;
   padding: 20px 10px;

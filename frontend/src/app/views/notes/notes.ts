@@ -39,8 +39,6 @@ export class NotesComponent {
     this.subscription = Observable
       .combineLatest(this.route.data, this.route.params)
       .subscribe(([data, params]) => {
-        console.log('subscribe this.route.data');
-
         this.notesType = NOTES_TYPES[data.type];
         this.canShowAddNoteComponent = this.checkCanShowAddNote(this.notesType);
         this.notes = this.notesService.getAllNotes();

@@ -44,7 +44,7 @@ import { IconsBarComponent } from './components/icons-bar/icons-bar';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner';
 
 import { DropdownComponent } from './components/dropdown/dropdown';
-import { DropdownToggleComponent } from './components/dropdown/dropdown-toggle';
+import { DropdownDirective } from './components/dropdown/dropdown-toggle.directive';
 
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -87,8 +87,8 @@ import { routes } from './routes';
     IconsBarComponent,
     LoadingSpinnerComponent,
     FocusDirective,
-    DropdownComponent,
-    DropdownToggleComponent
+    DropdownDirective,
+    DropdownComponent
   ],
   entryComponents: [TagsDialogComponent],
   imports: [
