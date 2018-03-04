@@ -16,14 +16,14 @@ const LOGIN_STATES = {
 })
 export class LoginComponent {
 
-  private mode: string;
+  public mode: string;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route
       .data
-      .subscribe(data => {
+      .subscribe((data: any) => {
         this.mode = LOGIN_STATES[data.state];
       });
   }

@@ -17,8 +17,11 @@ export class NoteComponent {
 
   @Input() note: any;
 
-  constructor(private selectionService: SelectionService, private notesService: NotesService) {
+  public tag: string;
+  public reminder: string;
+  public color: string;
 
+  constructor(private selectionService: SelectionService, private notesService: NotesService) {
     this.isTagSelected = this.isTagSelected.bind(this);
   }
 

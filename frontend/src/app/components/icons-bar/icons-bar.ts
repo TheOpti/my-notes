@@ -21,10 +21,9 @@ export class IconsBarComponent {
   @ViewChild('paletteMenuTrigger') paletteMenu: any;
   @ViewChild('reminderMenuTrigger') reminderMenu: any;
 
-  private tags = [];
-  private subscription: any;
-  private colors = ['white', 'red', 'orange', 'yellow', 'grey', 'blue', 'sea', 'green'];
-  private dateOptions = [
+  public tags = [];
+  public colors = ['white', 'red', 'orange', 'yellow', 'grey', 'blue', 'sea', 'green'];
+  public dateOptions = [
     {
       id: 'tomorrow-16',
       day: 'Today',
@@ -41,6 +40,7 @@ export class IconsBarComponent {
       time: '12:00'
     },
   ];
+  private subscription: any;
 
   constructor(private tagsService: TagsService) {
     this.tags = this.tagsService.getAllTags();

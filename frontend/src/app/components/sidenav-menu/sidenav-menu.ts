@@ -13,7 +13,7 @@ import {TagsService} from '../../services/tags.service';
 })
 export class SidenavMenuComponent {
 
-  private tags: any;
+  public tags: any;
   private subscription: Subscription;
 
   constructor(public dialog: MatDialog, private tagsService: TagsService) {}

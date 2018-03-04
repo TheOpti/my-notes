@@ -20,13 +20,13 @@ const addNewNoteViews = [
 })
 export class NotesComponent {
 
-  private notes : any;
+  public loading: boolean;
+  public notes : any;
+  public canShowAddNoteComponent: boolean;
   private params : any;
   private subscription: Subscription;
   private notesSubscription: Subscription;
-  private loading: boolean;
   private notesType: string;
-  private canShowAddNoteComponent: boolean;
 
   constructor(private notesService: NotesService, private route: ActivatedRoute) {
     this.notes = [];

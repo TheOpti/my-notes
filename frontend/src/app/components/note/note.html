@@ -20,9 +20,9 @@
       [reminder]="note.reminder"
       [selectedTags]="note.tags"
       [isTagSelected]="isTagSelected"
-      (onColorSelect)="setColor($event, color)"
-      (onReminderSelect)="setReminder($event, reminder)"
-      (onTagSelect)="handleTagSelection($event, tag)"
+      (onColorSelect)="setColor(color)"
+      (onReminderSelect)="setReminder(reminder)"
+      (onTagSelect)="handleTagSelection(tag)"
     ></icons-bar>
 
     <mat-icon matTooltip="Delete note" (click)="deleteNote(note.id)">

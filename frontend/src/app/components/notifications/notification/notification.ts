@@ -12,7 +12,7 @@ const notificationsTypesMap = {
 })
 export class NotificationComponent {
 
-  private notificationTypeMessage: string;
+  public notificationTypeMessage: string;
 
   @Input() type: string;
   @Input() id: string;

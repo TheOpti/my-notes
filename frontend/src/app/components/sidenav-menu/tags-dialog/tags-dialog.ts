@@ -11,8 +11,8 @@ import { TagsService} from '../../../services/tags.service';
 })
 export class TagsDialogComponent {
 
-  private tags: any;
-  private isAddingNew: boolean;
+  public tags: any;
+  public isAddingNew: boolean;
   private currentEditingTag: string;
   private subscription: Subscription;
 

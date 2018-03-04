@@ -31,11 +31,14 @@ const placeholdersMap = {
 })
 export class PlaceholderComponent {
 
-  private placeholder : object;
+  public placeholder : any;
   @Input() placeholderType: string;
 
   constructor() {
-    this.placeholder = {};
+    this.placeholder = {
+      icon: '',
+      text: ''
+    };
   }
 
   ngOnInit() {

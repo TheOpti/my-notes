@@ -19,7 +19,7 @@ const NOTE_TYPES = {
 })
 export class AddNoteComponent {
 
-  private isAddingNewNote = false;
+  public isAddingNewNote = false;
   private post = '';
   private title = '';
   private addNoteClass = '';

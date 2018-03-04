@@ -41,10 +41,10 @@ const cssClassesMap = {
 })
 export class NavbarComponent {
 
-  private cssClass: string;
-  private searchBarClass: string;
-  private title: string;
-  private searchTerm: string;
+  public cssClass: string;
+  public searchBarClass: string;
+  public title: string;
+  public searchTerm: string;
 
   @Output() onToggleClick = new EventEmitter<any>();
 

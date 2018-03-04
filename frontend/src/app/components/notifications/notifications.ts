@@ -10,7 +10,7 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class NotificationsComponent {
 
-  private notifications: any;
+  public notifications: any;
   private subscription: Subscription;
 
   constructor(private notificationService: NotificationService) {
