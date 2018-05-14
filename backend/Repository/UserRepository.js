@@ -42,6 +42,7 @@ class UserRepository {
       include: [
         {
           model: Note,
+          required: false,
           where: { deleted: false },
           include: [
             {
@@ -53,6 +54,7 @@ class UserRepository {
         },
         {
           model: Tag,
+          required: false,
           where: { deleted: false },
           attributes: ['id', 'name']
         }
