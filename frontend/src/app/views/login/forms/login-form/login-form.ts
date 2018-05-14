@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {AuthService} from "../../../../services/auth.service";
+import { AuthService } from "../../../../services/auth.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login-form',
@@ -13,10 +14,12 @@ export class LoginFormComponent {
   public submitted: boolean;
   public events: any[] = [];
   public showCredentialsError: boolean;
+  public showLoadingSpinner: boolean;
 
-  constructor(private authService: AuthService, private _fb: FormBuilder) {
+  constructor(private authService: AuthService, private _fb: FormBuilder, private router: Router) {
     this.submitted = false;
     this.showCredentialsError = false;
+    this.showLoadingSpinner = false;
   }
 
   ngOnInit() {
@@ -38,12 +41,19 @@ export class LoginFormComponent {
   }
 
 
-  save(model, isValid) {
+  login(model, isValid) {
+    this.showLoadingSpinner = true;
     this.submitted = true;
     if (isValid) {
-      this.authService.login(model.login, model.password).then((err) => {
-        this.showCredentialsError = true;
-      });
+      this.authService.login(model.login, model.password)
+        .then(() => {
+          this.showLoadingSpinner = false;
+          this.router.navigate(['/application/notes']);
+        })
+        .catch(() => {
+          this.showCredentialsError = true;
+          this.showLoadingSpinner = false;
+        });
     }
   }
 

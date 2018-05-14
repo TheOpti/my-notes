@@ -22,12 +22,11 @@ export class AuthService {
   login(login, password) {
     return this.http.post('http://localhost:3000/login', { login, password })
       .toPromise()
-      .then((response) => {
-        this.saveToken(response.token);
-        this.router.navigate(['/application/notes']);
+      .then((response: any) => {
+        return this.saveToken(response.token);
       })
       .catch((error) => {
-        return error;
+        throw error;
       });
   }
 

@@ -1,9 +1,10 @@
 <form
-  (ngSubmit)="save(form.value, form.valid)"
+  (ngSubmit)="login(form.value, form.valid)"
   [formGroup]="form"
   class="login__form-wrapper"
   novalidate
 >
+  <loading-spinner *ngIf="showLoadingSpinner"></loading-spinner>
   <mat-form-field class="login__input-wrapper">
     <input
       formControlName="login"
