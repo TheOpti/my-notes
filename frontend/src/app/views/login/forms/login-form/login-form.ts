@@ -12,8 +12,12 @@ export class LoginFormComponent {
   public form: FormGroup;
   public submitted: boolean;
   public events: any[] = [];
+  public showCredentialsError: boolean;
 
-  constructor(private authService: AuthService, private _fb: FormBuilder) {}
+  constructor(private authService: AuthService, private _fb: FormBuilder) {
+    this.submitted = false;
+    this.showCredentialsError = false;
+  }
 
   ngOnInit() {
     this.form = this._fb.group({
@@ -37,7 +41,9 @@ export class LoginFormComponent {
   save(model, isValid) {
     this.submitted = true;
     if (isValid) {
-      this.authService.login(model.login, model.password);
+      this.authService.login(model.login, model.password).then((err) => {
+        this.showCredentialsError = true;
+      });
     }
   }
 

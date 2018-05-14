@@ -41,7 +41,7 @@
     Login
   </button>
   <div class="login__error-message">
-    <span [hidden]="(!form.controls.login.valid || !form.controls.password.valid) && submitted">
+    <span [hidden]="!showCredentialsError">
       Login or password is incorrect.
     </span>
   </div>

@@ -20,16 +20,15 @@ export class AuthService {
   }
 
   login(login, password) {
-    this.http.post('http://localhost:3000/login', { login, password })
-      .subscribe(
-        (response: any) => {
-          this.saveToken(response.token);
-          this.router.navigate(['/application/notes']);
-        },
-        (error) => {
-          console.log(error)
-        }
-      );
+    return this.http.post('http://localhost:3000/login', { login, password })
+      .toPromise()
+      .then((response) => {
+        this.saveToken(response.token);
+        this.router.navigate(['/application/notes']);
+      })
+      .catch((error) => {
+        return error;
+      });
   }
 
   register(user) {
