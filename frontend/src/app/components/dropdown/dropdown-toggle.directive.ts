@@ -3,8 +3,8 @@ import {
   Input,
   HostListener,
   ElementRef
-} from "@angular/core";
-import { DropdownComponent } from "./dropdown";
+} from '@angular/core';
+import { DropdownComponent } from './dropdown';
 
 @Directive({
   selector: '[dropdown]'
@@ -19,15 +19,22 @@ export class DropdownDirective {
 
   @HostListener('click', ['$event'])
   click($event) {
-    console.log('$event ', $event);
+    console.log('click $event ', $event);
     const { offsetX, clientX, offsetY, clientY } = $event;
     const distances = {
       left: clientX - offsetX,
       top: clientY - offsetY
     };
 
-    $event.stopPropagation();
-    this.dropdown.toggle(distances);
+    this.dropdown.open();
+    this.dropdown.setCoordinates(distances);
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickout($event) {
+    if ($event.target !== this.dropdown.eRef.nativeElement.parentElement.firstElementChild) {
+      this.dropdown.close();
+    }
   }
 
 }

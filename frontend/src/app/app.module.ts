@@ -117,7 +117,7 @@ import { routes } from './routes';
     NotesService,
     TagsService,
     NotificationService,
-    SelectionService
+    SelectionService,
   ],
   bootstrap: [AppComponent]
 })

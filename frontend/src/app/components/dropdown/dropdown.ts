@@ -2,7 +2,6 @@ import {
   Component,
   ElementRef,
   HostBinding,
-  HostListener
 } from '@angular/core';
 
 @Component({
@@ -11,7 +10,7 @@ import {
   styleUrls: ['./dropdown.scss']
 })
 export class DropdownComponent {
-  constructor(private eRef: ElementRef) { }
+  constructor(public eRef: ElementRef) { }
 
   @HostBinding('class.is-open')
   isOpen = false;
@@ -22,22 +21,17 @@ export class DropdownComponent {
   @HostBinding('style.left.px')
   left: number;
 
-  @HostListener('document:click', ['$event'])
-  clickout($event) {
-    if (this.eRef.nativeElement.contains($event.target)) {
-      console.log('clicked inside!');
-    } else {
-      console.log('clicked outside!');
-      if (this.isOpen) {
-        this.isOpen = false;
-      }
-    }
+  open() {
+    this.isOpen = true;
   }
 
-  toggle(distances) {
+  close() {
+    this.isOpen = false;
+  }
+
+  setCoordinates(distances) {
     this.top = distances.top;
     this.left = distances.left;
-    this.isOpen = !this.isOpen;
   }
 
 }

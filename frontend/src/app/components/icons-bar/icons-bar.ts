@@ -18,8 +18,8 @@ export class IconsBarComponent {
   @Output() onReminderSelect: EventEmitter<any> = new EventEmitter();
   @Output() onTagSelect: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild('paletteMenuTrigger') paletteMenu: any;
-  @ViewChild('reminderMenuTrigger') reminderMenu: any;
+  // @ViewChild('paletteMenuTrigger') paletteMenu: any;
+  // @ViewChild('reminderMenuTrigger') reminderMenu: any;
 
   public tags = [];
   public colors = ['white', 'red', 'orange', 'yellow', 'grey', 'blue', 'sea', 'green'];
@@ -59,12 +59,12 @@ export class IconsBarComponent {
   }
 
   setColor(color) {
-    this.paletteMenu.closeMenu();
+    // this.paletteMenu.closeMenu();
     this.onColorSelect.emit(color);
   }
 
   setReminder(date) {
-    this.reminderMenu.closeMenu();
+    // this.reminderMenu.closeMenu();
     this.onReminderSelect.emit(date);
   }
 
