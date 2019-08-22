@@ -11,6 +11,19 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'css-loader',
+        query: {
+          modules: {
+            localIdentName: '[local]__[hash:base64:4]'
+          },
+        }
       }
     ]
   },
