@@ -5,7 +5,8 @@ const Button = ({ label, onClickHandler }) => {
   return (
     <button 
       onClick={onClickHandler}
-      className={styles.root}>
+      className={styles.root}
+    >
       { label }
     </button>
   )
