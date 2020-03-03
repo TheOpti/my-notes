@@ -3,9 +3,11 @@ import styles from './styles.css';
 
 type ButtonPropsType = {
   label: string;
-  onClickHandler: Function;
+  onClickHandler?: (event: any) => void;
 }
-const Button: React.SFC<ButtonPropsType> = ({ label, onClickHandler }: ButtonPropsType) => {
+const Button: React.SFC<ButtonPropsType> = (props: ButtonPropsType) => {
+  const { label, onClickHandler } = props;
+
   return (
     <button 
       onClick={onClickHandler}
@@ -15,5 +17,9 @@ const Button: React.SFC<ButtonPropsType> = ({ label, onClickHandler }: ButtonPro
     </button>
   )
 }
+
+Button.defaultProps = {
+  label: '',
+};
 
 export default Button;

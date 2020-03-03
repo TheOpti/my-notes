@@ -6,4 +6,6 @@ function loadStories() {
   req.keys().forEach(req);
 }
 
+import '../src/index.css';
+
 configure(loadStories, module);
