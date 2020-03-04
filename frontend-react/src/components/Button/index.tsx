@@ -1,17 +1,21 @@
 import React from 'react';
+import cx from 'classnames';
 import styles from './styles.css';
 
 type ButtonPropsType = {
   label: string;
   onClickHandler?: (event: any) => void;
+  classname?: string,
 }
 const Button: React.SFC<ButtonPropsType> = (props: ButtonPropsType) => {
-  const { label, onClickHandler } = props;
+  const { label, onClickHandler, classname } = props;
+
+  const btnClasses = cx(styles.root, classname);
 
   return (
     <button 
       onClick={onClickHandler}
-      className={styles.root}
+      className={btnClasses}
     >
       { label }
     </button>
@@ -20,6 +24,7 @@ const Button: React.SFC<ButtonPropsType> = (props: ButtonPropsType) => {
 
 Button.defaultProps = {
   label: '',
+  classname: '',
 };
 
 export default Button;

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import Button from '../../components/Button';
+import LoginForm from '../../containers/LoginForm';
 import styles from './styles.css';
 
 
@@ -8,13 +8,7 @@ class Login extends PureComponent {
   render() {
     return (
       <div className={styles.login}>
-        This is first page component - Login Page
-        <div>
-          <Button 
-            onClickHandler={() => {}} 
-            label="Example" 
-          />
-        </div>
+        <LoginForm />
       </div>
     );
   }
