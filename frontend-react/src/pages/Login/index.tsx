@@ -83,6 +83,7 @@ class Login extends PureComponent {
                 onClickHandler={this.switchActiveSection}
                 classname={styles.switcherBtn}
                 label={switcherBtnTitle}
+                color="outlined"
               />
             </div>
 

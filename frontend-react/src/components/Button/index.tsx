@@ -5,12 +5,13 @@ import styles from './styles.css';
 type ButtonPropsType = {
   label: string;
   onClickHandler?: (event: any) => void;
+  color?: 'raised' | 'outlined';
   classname?: string,
 }
 const Button: React.SFC<ButtonPropsType> = (props: ButtonPropsType) => {
-  const { label, onClickHandler, classname } = props;
+  const { label, onClickHandler, color, classname } = props;
 
-  const btnClasses = cx(styles.root, classname);
+  const btnClasses = cx(styles.root, styles[color], classname);
 
   return (
     <button 
@@ -24,6 +25,7 @@ const Button: React.SFC<ButtonPropsType> = (props: ButtonPropsType) => {
 
 Button.defaultProps = {
   label: '',
+  color: 'raised',
   classname: '',
 };
 
