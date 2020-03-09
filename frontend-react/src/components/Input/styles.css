@@ -1,0 +1,66 @@
+.root {
+  position: relative;
+  margin: 18px 0;
+  max-width: var(--max-form-elem-width);
+  width: 100%;
+  color: var(--main-dark-gray-color);
+}
+
+.input {
+  background: none;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--main-dark-gray-color);
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:focus ~ .label,
+.input:valid ~ .label {
+  top: -14px;
+  font-size: 12px;
+  color: var(--main-blue-color);
+}
+
+.input:focus ~ .highlight:before {
+  width: 100%;
+}
+
+.highlight {
+  position: relative;
+  display: block;
+}
+
+.highlight:before {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: var(--main-blue-color);
+  transition: 0.3s ease all;
+  left: 0%;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.3s ease all;
+}
+
+.errorMsg {
+  height: 16px;
+  font-size: 14px;
+  margin-top: 8px;
+  color: var(--main-red-color);
+}
