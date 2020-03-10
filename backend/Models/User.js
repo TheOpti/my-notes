@@ -1,34 +1,23 @@
-import sequelize from '../sequelize';
-import Sequelize from 'sequelize';
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
-const userFields = {
-  id: {
-    type: Sequelize.UUID,
-    primaryKey: true,
-    field: 'id'
-  },
+const userSchema = new Schema({
   login: {
-    type: Sequelize.STRING,
-    field: 'login'
+    type: String,
+    unique: true,
   },
-  password: {
-    type: Sequelize.STRING,
-    field: 'password'
-  },
-  salt: {
-    type: Sequelize.STRING,
-    field: 'salt'
-  },
+  password: String,
+  salt: String,
   email: {
-    type: Sequelize.STRING,
-    field: 'email'
+    type: String,
+    unique: true,
   },
-  registration_date: {
-    type: Sequelize.DATE,
-    field: 'registration_date'
-  },
+  type: String,
+});
+
+const userModel = mongoose.model('User', userSchema);
+
+export {
+  userSchema,
+  userModel,
 };
-
-const User = sequelize.define('user', userFields);
-
-export default User;

@@ -7,7 +7,9 @@
     "babel-node": "babel-node --presets=latest",
     "start": "nodemon --exec npm run babel-node -- ./index.js",
     "build": "babel src -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed-data": "babel-node -e 'import {seedUserData} from \"./utils/data\" seedUserData()'",
+    "clear-data": ""
   },
   "author": "",
   "license": "ISC",

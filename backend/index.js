@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 
 import { establishConnectionToDatabase } from './mongo';
+import { seedUserData } from './utils/data';
 
 // set up
 const app = express();
@@ -25,4 +26,7 @@ app.listen(3000, () => {
   console.log('Example app listening on port 3000!');
 
   establishConnectionToDatabase();
+
+  // populate DB with data
+  seedUserData();
 });
