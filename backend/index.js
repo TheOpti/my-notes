@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 
 import { establishConnectionToDatabase } from './mongo';
 import { seedUserData } from './utils/data';
+import router from './routes';
 
 // set up
 const app = express();
@@ -20,6 +21,9 @@ app.use((_, res, next) => {
   res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
   next();
 });
+
+// define routes
+app.use('/', router);
 
 // start the app
 app.listen(3000, () => {

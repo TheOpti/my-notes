@@ -1,6 +1,6 @@
 import { USER_TYPES } from '../constant';
 import { generateSalt, encryptPassword } from './encrypt';
-import { userModel as User } from '../models/user';
+import { User } from '../models/user';
 
 function seedUserData() {
   const salt = generateSalt();

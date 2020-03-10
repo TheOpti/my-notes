@@ -19,5 +19,5 @@ const userModel = mongoose.model('User', userSchema);
 
 export {
   userSchema,
-  userModel,
+  userModel as User,
 };
