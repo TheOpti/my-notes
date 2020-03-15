@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { REPSONSE_MESSAGES } from '../../constant';
 import { encryptPassword } from '../../utils/encrypt';
 import { User } from '../../models/user';
 
@@ -10,7 +11,7 @@ function login(req, res) {
       if (err) {
         res
           .status(404)
-          .send({ message: 'There is no user with given login' });
+          .send({ message: REPSONSE_MESSAGES.NO_USER_WITH_LOGIN });
 
         return;
       }
@@ -22,19 +23,19 @@ function login(req, res) {
         const token = jwt.sign({ login, type }, 'RESTFULAPIs');
         res
           .status(200)
-          .send({ message: 'Logged successfully', token });
+          .send({ message: REPSONSE_MESSAGES.LOGIN_OK, token });
 
         return;
       }
       
       res
         .status(404)
-        .send({ message: 'Incorrect login or password' });
+        .send({ message: REPSONSE_MESSAGES.LOGIN_PASS_INCORRECT });
     });
   } else {
     res
-      .status(401)
-      .send();
+      .status(400)
+      .send({ message: REPSONSE_MESSAGES.LOGIN_PASS_INCORRECT });
   }
 }
 
