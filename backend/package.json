@@ -7,9 +7,7 @@
     "babel-node": "babel-node --presets=latest",
     "start": "nodemon --exec npm run babel-node -- ./index.js",
     "build": "babel src -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "seed-data": "babel-node -e 'import {seedUserData} from \"./utils/data\" seedUserData()'",
-    "clear-data": ""
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -29,5 +27,9 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.22.6",
     "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "supertest": "^4.0.2"
   }
 }
