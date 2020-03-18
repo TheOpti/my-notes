@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 
-import { allowCors } from './middleware/cors';
+import allowCors from './middleware/cors';
 import router from './routes';
 
 const app = express();
