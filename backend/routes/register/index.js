@@ -9,26 +9,22 @@ function register(req, res) {
   const credentialsCorrect = login && email && passwordOk;
 
   if (!credentialsCorrect) {
-    res
+    return res
       .status(400)
       .send({ message: REPSONSE_MESSAGES.INCORRECT_DATA });
-
-    return;
   }
 
   User.findOne({ $or: [{ login }, { email }] }, 'login', (err, user) => {
     if (err) {
-      res
+      return res
         .status(500)
         .send({ message: REPSONSE_MESSAGES.SERVER_ERROR });
     }
 
     if (user) {
-      res
+      return res
         .status(400)
         .send({ message: REPSONSE_MESSAGES.USER_EXISTS });
-
-      return;
     }
 
     const salt = generateSalt();
@@ -44,13 +40,13 @@ function register(req, res) {
 
     User.create(newUser, (err, user) => {
       if (err) {
-        res
+        return res
           .status(500)
           .send({ message: REPSONSE_MESSAGES.SERVER_ERROR });
       }
 
       if (user) {
-        res
+        return res
           .status(200)
           .send({ message: REPSONSE_MESSAGES.ACCOUNT_CREATED });
       }
