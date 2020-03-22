@@ -10,7 +10,7 @@ function encryptPassword(password, salt) {
   return crypto
     .createHash('sha256')
     .update(password + salt)
-    .digest('base64');
+    .digest('hex');
 }
 
 export {

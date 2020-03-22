@@ -2,33 +2,25 @@ import { encryptPassword, generateSalt } from '../../utils/encrypt';
 import { USER_TYPES, REPSONSE_MESSAGES } from '../../constant';
 import { User } from '../../models/user';
 
-function register(req, res) {
+async function register(req, res) {
   const { login, email, password, repeatedPassword } = req.body;
 
   const passwordOk = password && repeatedPassword && password === repeatedPassword
   const credentialsCorrect = login && email && passwordOk;
 
   if (!credentialsCorrect) {
-    res
+    return res
       .status(400)
       .send({ message: REPSONSE_MESSAGES.INCORRECT_DATA });
-
-    return;
   }
 
-  User.findOne({ $or: [{ login }, { email }] }, 'login', (err, user) => {
-    if (err) {
-      res
-        .status(500)
-        .send({ message: REPSONSE_MESSAGES.SERVER_ERROR });
-    }
+  try {
+    const user = await User.findOne({ $or: [{ login }, { email }] }, 'login').exec();
 
     if (user) {
-      res
-        .status(400)
+      return res
+        .status(409)
         .send({ message: REPSONSE_MESSAGES.USER_EXISTS });
-
-      return;
     }
 
     const salt = generateSalt();
@@ -42,20 +34,21 @@ function register(req, res) {
       type: USER_TYPES.USER,
     };
 
-    User.create(newUser, (err, user) => {
-      if (err) {
-        res
-          .status(500)
-          .send({ message: REPSONSE_MESSAGES.SERVER_ERROR });
-      }
+    const createdUser = User.create(newUser);
+    if (!createdUser) {
+      return res
+        .status(409)
+        .send({ message: REPSONSE_MESSAGES.USER_EXISTS });
+    }
 
-      if (user) {
-        res
-          .status(200)
-          .send({ message: REPSONSE_MESSAGES.ACCOUNT_CREATED });
-      }
-    });
-  });
+    return res
+      .status(200)
+      .send({ message: REPSONSE_MESSAGES.ACCOUNT_CREATED });
+  } catch (error) {
+    return res
+      .status(500)
+      .send({ message: REPSONSE_MESSAGES.SERVER_ERROR });
+  }
 }
 
 export default register;

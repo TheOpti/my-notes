@@ -4,7 +4,10 @@ import register from './register';
 
 const router = express.Router();
 
-router.post('/login', login);
-router.post('/register', register);
+router.route('/login')
+  .post(login);
+
+router.route('/register')
+  .post(register);
 
 export default router;
