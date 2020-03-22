@@ -21,7 +21,7 @@ async function login(req, res) {
       
       if (passwordToCheck !== storedPassword) {
         return res
-          .status(404)
+          .status(400)
           .send({ message: REPSONSE_MESSAGES.LOGIN_PASS_INCORRECT });
       }
 
@@ -31,10 +31,14 @@ async function login(req, res) {
         .send({ message: REPSONSE_MESSAGES.LOGIN_OK, token });
     } catch (error) {
       return res
-        .status(400)
-        .send({ message: REPSONSE_MESSAGES.LOGIN_PASS_INCORRECT });
+        .status(500)
+        .send({ message: REPSONSE_MESSAGES.SERVER_ERROR });
     }
   }
+
+  return res
+    .status(400)
+    .send({ message: REPSONSE_MESSAGES.INCORRECT_DATA });
 }
 
 export default login;
