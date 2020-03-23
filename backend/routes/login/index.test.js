@@ -78,7 +78,6 @@ describe('/login endpoint', () => {
 
     expect(res.statusCode).toEqual(200);
     expect(res.body.message).toEqual(REPSONSE_MESSAGES.LOGIN_OK);
-    expect(typeof res.body.token).toEqual('string');
   });
 
   afterEach(() => {

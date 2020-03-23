@@ -33,7 +33,12 @@ async function login(req, res) {
     const token = jwt.sign({ login, type }, 'RESTFULAPIs');
     return res
       .status(200)
-      .send({ message: REPSONSE_MESSAGES.LOGIN_OK, token });
+      .cookie('token', token, {
+        expires: new Date(Date.now() + 604800000),
+        secure: false,
+        httpOnly: true,
+      })
+      .send({ message: REPSONSE_MESSAGES.LOGIN_OK });
   } catch (error) {
     return res
       .status(500)
