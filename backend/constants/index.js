@@ -8,6 +8,7 @@ export const REPSONSE_MESSAGES = {
   // 200 - OK
   LOGIN_OK: 'Logged successfully',
   ACCOUNT_CREATED: 'Your account was created succesfully. You can now login.',
+  LOG_OUT_OK: 'Succesfully logged out from the application.',
 
   // 400 - user errors
   USER_EXISTS: 'User already exists. You have to select another email or login.',

@@ -7,13 +7,9 @@ import Login from './pages/Login';
 function App() {
   const user: any = useAuth();
 
-  console.log('App, user ', user);
-
-  if (user.data) {
-    return <Application />;
-  }
-
-  return <Login />
+  return user.data
+    ? <Application />
+    : <Login />
 }
 
 export default App;
