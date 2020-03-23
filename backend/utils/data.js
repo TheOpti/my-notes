@@ -1,4 +1,4 @@
-import { USER_TYPES } from '../constant';
+import { USER_TYPES } from '../constants';
 import { generateSalt, encryptPassword } from './encrypt';
 import { User } from '../models/user';
 
