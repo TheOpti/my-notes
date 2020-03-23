@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { REPSONSE_MESSAGES } from '../../constant';
+import { REPSONSE_MESSAGES } from '../../constants';
 import { encryptPassword } from '../../utils/encrypt';
 import { User } from '../../models/user';
 

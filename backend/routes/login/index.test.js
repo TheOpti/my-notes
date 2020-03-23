@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { REPSONSE_MESSAGES } from '../../constant';
+import { REPSONSE_MESSAGES } from '../../constants';
 import { User } from '../../models/user';
 import app from '../../app';
 import { encryptPassword } from '../../utils/encrypt';

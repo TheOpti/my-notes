@@ -1,5 +1,5 @@
 import { encryptPassword, generateSalt } from '../../utils/encrypt';
-import { USER_TYPES, REPSONSE_MESSAGES } from '../../constant';
+import { USER_TYPES, REPSONSE_MESSAGES } from '../../constants';
 import { User } from '../../models/user';
 
 async function register(req, res) {
