@@ -14,6 +14,7 @@ export const REPSONSE_MESSAGES = {
   INCORRECT_DATA: 'Incorrect data. Chech if all fields are filled correctly.',
   NO_USER_WITH_LOGIN: 'There is no user with given login',
   LOGIN_PASS_INCORRECT: 'Incorrect login or password',
+  YOU_NEED_LOGIN: 'You need to Login',
   
   // 500 - server errors
   SERVER_ERROR: 'There was an error during request. Please, try again later.',
