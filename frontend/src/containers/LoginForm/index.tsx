@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import styles from './styles.css';
@@ -13,9 +14,13 @@ class LoginForm extends Component<{}, LoginFormState> {
     password: '',
   };
 
-  login = () => {
-    console.log('login');
-  };
+  // TODO: as for now it is hardocded, but later it should be 
+  loginToApplication = () => {
+    axios.post('http://localhost:3000/login', {
+      login: 'testuser',
+      password: 'test'
+    }, { withCredentials: true });
+  }
 
   updateField = (fieldName: string, value: string) => {
     this.setState({
@@ -41,7 +46,7 @@ class LoginForm extends Component<{}, LoginFormState> {
           handleChange={this.updateField}
         />
         <Button 
-          onClickHandler={this.login}
+          onClickHandler={this.loginToApplication}
           label="Login"
           classname={styles.login}
         />
