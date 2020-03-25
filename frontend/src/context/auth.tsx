@@ -28,10 +28,19 @@ function AuthProvider(props) {
     return null;
   }
 
-  // TODO implement these function later
-  const login = () => {} // make a login request
+  const login = async (login: string, password: string) => {
+    const data = await axios.post('http://localhost:3000/login', { login, password }, { withCredentials: true });
+    setUserData(data);
+  };
+
+  const logout = async () => {
+    const response = await axios.post('http://localhost:3000/logout', {}, { withCredentials: true });
+    console.log('Response from logout', response);
+    setUserData(null);
+  };
+
   const register = () => {} // register the user
-  const logout = () => {} // clear the token in localStorage and the user data
+  
 
   return (
     <AuthContext.Provider 
@@ -45,6 +54,7 @@ function AuthProvider(props) {
 const useAuth = () => React.useContext(AuthContext);
 
 export {
+  AuthContext,
   AuthProvider, 
   useAuth
 }

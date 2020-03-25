@@ -22,5 +22,5 @@ storiesOf('Input', module)
           />
         )}
       </Parent>
-    )
-  })
+    );
+  });
