@@ -3,11 +3,11 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import styles from './styles.css';
 
-type RegisterFormState = {
+type RegisterFormStateType = {
   [fieldName: string]: string
 }
 
-class RegisterForm extends Component<{}, RegisterFormState> {
+class RegisterForm extends Component<{}, RegisterFormStateType> {
   state = {
     login: '',
     password: '',

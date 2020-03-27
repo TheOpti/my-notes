@@ -30,9 +30,11 @@ const Button: React.SFC<ButtonPropsType> = (props: ButtonPropsType) => {
       className={btnClasses}
       type="button"
     >
-      { loading && <LoadingSpinner size="small" />}
-      <span style={labelStyles}>
-        { label }
+      <span className={styles.content}>
+        { loading && <LoadingSpinner size="small" monocolor />}
+        <span style={labelStyles}>
+          { label }
+        </span>
       </span>
     </button>
   );

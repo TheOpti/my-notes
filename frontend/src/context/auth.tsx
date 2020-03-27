@@ -29,22 +29,24 @@ function AuthProvider(props) {
   }
 
   const login = async (login: string, password: string) => {
-    const data = await axios.post('http://localhost:3000/login', { login, password }, { withCredentials: true });
-    setUserData(data);
+    try {
+      const data = await axios.post('http://localhost:3000/login', { login, password }, { withCredentials: true });
+      setUserData(data);
+    } catch (error) {
+      const { data: { message } } = error.response;
+      return message;
+    }
   };
 
   const logout = async () => {
     const response = await axios.post('http://localhost:3000/logout', {}, { withCredentials: true });
     console.log('Response from logout', response);
     setUserData(null);
-  };
-
-  const register = () => {} // register the user
-  
+  };  
 
   return (
     <AuthContext.Provider 
-      value={{ data: userData, login, logout, register }}
+      value={{ data: userData, login, logout }}
     >
       { props.children }
     </AuthContext.Provider>

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import cx from 'classnames';
 
+import { AuthContext } from '../../context/auth';
 import Button from '../../components/Button';
 import LoginForm from '../../containers/LoginForm';
 import RegisterForm from '../../containers/RegisterForm';
@@ -91,7 +92,13 @@ class Login extends PureComponent {
               <div className={styles.sectionTitle}>
                 No, I am already registered:
               </div>
-              <LoginForm />
+              <AuthContext.Consumer>
+                {({ login }: any) => (
+                  <LoginForm 
+                    handleLogin={login}
+                  />
+                )}
+              </AuthContext.Consumer>
             </div>
 
           </div>
