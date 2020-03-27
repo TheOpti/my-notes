@@ -7,11 +7,14 @@ type ButtonPropsType = {
   onClickHandler?: (event: any) => void;
   color?: 'raised' | 'outlined';
   classname?: string,
+  disabled?: boolean,
 }
 const Button: React.SFC<ButtonPropsType> = (props: ButtonPropsType) => {
-  const { label, onClickHandler, color, classname } = props;
+  const { label, onClickHandler, color, classname, disabled } = props;
 
-  const btnClasses = cx(styles.root, styles[color], classname);
+  const btnClasses = cx(styles.root, styles[color], classname, {
+    [styles.disabled]: disabled,
+  });
 
   return (
     <button 

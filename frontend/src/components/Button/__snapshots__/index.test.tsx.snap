@@ -1,10 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button should render correctly without any issues 1`] = `
-<button
-  className="root"
-  onClick={[Function]}
+<Button
+  classname=""
+  color="raised"
+  label="Label"
+  onClickHandler={[Function]}
 >
-  Label
-</button>
+  <button
+    className="root raised"
+    onClick={[Function]}
+  >
+    Label
+  </button>
+</Button>
 `;

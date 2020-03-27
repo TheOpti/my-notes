@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should render input with no props without crashing 1`] = `
+<div
+  className="root"
+>
+  <input
+    className="input"
+    onBlur={[Function]}
+    onChange={[Function]}
+    required={true}
+    value=""
+  />
+  <div
+    className="highlight"
+  />
+  <label
+    className="label"
+  >
+    Field
+  </label>
+  <div
+    className="errorMsg"
+  />
+</div>
+`;
