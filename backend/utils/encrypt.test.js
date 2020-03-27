@@ -1,4 +1,3 @@
-import crypto from 'crypto';
 import { generateSalt, encryptPassword } from './encrypt';
 
 describe('encrypt', () => {

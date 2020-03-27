@@ -3,28 +3,54 @@ import Button from '../../components/Button';
 import Input from '../../components/Input';
 import styles from './styles.css';
 
-type LoginFormState = {
-  [fieldName: string]: string
+type LoginFormPropsType = {
+  handleLogin: any,
 }
 
-class LoginForm extends Component<{}, LoginFormState> {
+type LoginFormStateType = {
+  loginFormFields: {
+    [fieldName: string]: string;
+  };
+  loading: boolean;
+  errorMesage: string;
+}
+
+class LoginForm extends Component<LoginFormPropsType, LoginFormStateType> {
   state = {
-    login: '',
-    password: '',
+    loginFormFields: {
+      login: '',
+      password: '',
+    },
+    errorMesage: '',
+    loading: false
   };
 
-  login = () => {
-    console.log('login');
-  };
+  loginToApplication = async () => {
+    const { handleLogin } = this.props;
+    const { loginFormFields: { login, password } } = this.state;
+
+    this.setState({ loading: true }, async () => {
+      try {
+        const response = await handleLogin(login, password);
+        this.setState({ errorMesage: response, loading: false });
+      } catch (error) {
+        this.setState({ errorMesage: error })
+      }
+    });
+  }
 
   updateField = (fieldName: string, value: string) => {
-    this.setState({
-      [fieldName]: value,
-    });
+    this.setState((prevState) => ({
+      ...prevState,
+      loginFormFields: { 
+        ...prevState.loginFormFields,
+        [fieldName]: value,
+      },
+    }));
   };
 
   render() {
-    const { login, password } = this.state;
+    const { loginFormFields: { login, password }, errorMesage } = this.state;
 
     return (
       <div className={styles.root}>
@@ -41,10 +67,15 @@ class LoginForm extends Component<{}, LoginFormState> {
           handleChange={this.updateField}
         />
         <Button 
-          onClickHandler={this.login}
+          onClickHandler={this.loginToApplication}
           label="Login"
           classname={styles.login}
         />
+        {errorMesage && (
+          <div className={styles.errorMessage}>
+            { errorMesage }
+          </div>
+        )}
       </div>
     )
   }

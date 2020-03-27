@@ -2,3 +2,9 @@
   display: flex;
   flex-direction: column;
 }
+
+.errorMessage {
+  margin-top: 16px;
+  font-size: 16px;
+  color: var(--main-red-color);
+}

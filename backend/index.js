@@ -9,5 +9,5 @@ dotenv.config();
 app.listen(3000, () => {
   console.log('Example app listening on port 3000!');
   establishConnectionToDatabase();
-  seedUserData();
+  // seedUserData();
 });
