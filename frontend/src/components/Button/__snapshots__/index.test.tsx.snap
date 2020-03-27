@@ -10,8 +10,13 @@ exports[`Button should render correctly without any issues 1`] = `
   <button
     className="root raised"
     onClick={[Function]}
+    type="button"
   >
-    Label
+    <span
+      style={Object {}}
+    >
+      Label
+    </span>
   </button>
 </Button>
 `;

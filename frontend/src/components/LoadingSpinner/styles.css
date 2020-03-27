@@ -10,7 +10,15 @@
 .path {
   stroke-dasharray: 200;
   transform-origin: center;
-  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+.colors {
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite
+}
+
+.monocolor {
+  animation: dash 1.4s ease-in-out infinite;
+  stroke: var(--main-dark-gray-color);
 }
 
 @keyframes colors {
