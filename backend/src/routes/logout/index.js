@@ -1,4 +1,4 @@
-import { REPSONSE_MESSAGES } from '../../constants';
+import { REPSONSE_MESSAGES } from 'src/constants';
 
 async function logout(_, res) {
   res

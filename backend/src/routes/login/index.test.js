@@ -1,9 +1,8 @@
 import request from 'supertest';
-import { REPSONSE_MESSAGES } from '../../constants';
-import { User } from '../../models/user';
+import { REPSONSE_MESSAGES } from 'src/constants';
+import { User } from 'src/models/user';
+import { encryptPassword } from 'src/utils/encrypt';
 import app from '../../app';
-import { encryptPassword } from '../../utils/encrypt';
-
 
 describe('/login endpoint', () => {
   it('should return an error when no data is passed', async () => {

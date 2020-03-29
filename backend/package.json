@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "link-module-alias",
     "babel-node": "babel-node --presets=latest",
     "start": "nodemon --exec npm run babel-node -- ./index.js",
     "build": "babel src -d dist",
@@ -21,6 +22,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.16.2",
     "jsonwebtoken": "^8.1.0",
+    "module-alias": "^2.2.2",
     "mongoose": "^5.9.4",
     "morgan": "^1.9.0",
     "nodemon": "^1.12.1",
@@ -31,6 +33,10 @@
   },
   "devDependencies": {
     "jest": "^25.1.0",
+    "link-module-alias": "^1.2.0",
     "supertest": "^4.0.2"
+  },
+  "_moduleAliases": {
+    "src": "src"
   }
 }
