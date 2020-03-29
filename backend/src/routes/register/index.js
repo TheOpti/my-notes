@@ -1,6 +1,6 @@
-import { encryptPassword, generateSalt } from '../../utils/encrypt';
-import { USER_TYPES, REPSONSE_MESSAGES } from '../../constants';
-import { User } from '../../models/user';
+import { encryptPassword, generateSalt } from 'src/utils/encrypt';
+import { USER_TYPES, REPSONSE_MESSAGES } from 'src/constants';
+import { User } from 'src/models/user';
 
 async function register(req, res) {
   const { login, email, password, repeatedPassword } = req.body;

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { AuthContext } from '../../context/auth';
+import { AuthContext } from 'context/auth';
 
 class Application extends PureComponent {
   render() {
@@ -15,7 +15,6 @@ class Application extends PureComponent {
             </button>
           )}
         </AuthContext.Consumer>
-        
       </div>
     );
   }

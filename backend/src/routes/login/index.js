@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
-import { REPSONSE_MESSAGES } from '../../constants';
-import { encryptPassword } from '../../utils/encrypt';
-import { User } from '../../models/user';
+import { REPSONSE_MESSAGES } from 'src/constants';
+import { encryptPassword } from 'src/utils/encrypt';
+import { User } from 'src/models/user';
 
 async function login(req, res) {
   const { login = '', password = '' } = req.body;

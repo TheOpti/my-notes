@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import cx from 'classnames';
 
-import { AuthContext } from '../../context/auth';
-import Button from '../../components/Button';
-import LoginForm from '../../containers/LoginForm';
-import RegisterForm from '../../containers/RegisterForm';
+import { AuthContext } from 'context/auth';
+import Button from 'components/Button';
+import LoginForm from 'containers/LoginForm';
+import RegisterForm from 'containers/RegisterForm';
 import styles from './styles.css';
 
 const FORM_TYPES = {
