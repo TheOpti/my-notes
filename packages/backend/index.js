@@ -1,3 +1,4 @@
+require('module-alias/register');
 import dotenv from 'dotenv';
 
 import { seedUserData } from 'src/utils/data';
