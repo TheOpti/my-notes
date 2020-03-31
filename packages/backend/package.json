@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "clear": "rm -rf node_modules/",
     "start": "nodemon --exec babel-node ./index.js",
     "build": "babel src -d dist",
     "test": "jest"
