@@ -38,7 +38,15 @@ module.exports = ({ config }) => {
     },
   );
   
-  config.resolve.extensions.push('.ts', '.tsx');
+  config.resolve = {
+    extensions: ['.ts', '.tsx', '.js'],
+    alias: {
+      components: path.resolve(__dirname, '../src/components/'),
+      containers: path.resolve(__dirname, '../src/containers/'),
+      context: path.resolve(__dirname, '../src/context/'),
+      pages: path.resolve(__dirname, '../src/pages/'),
+    }
+  };
 
   return config;
 };
