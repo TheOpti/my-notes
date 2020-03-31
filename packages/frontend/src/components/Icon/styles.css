@@ -28,10 +28,14 @@
 .cancel:before { content: '\e808'; }
 .pin:before { content: '\e809'; }
 .bell:before { content: '\e80a'; }
+.cog:before { content: '\e80b'; }
 .archive-1:before { content: '\e80c'; }
 .archive-2:before { content: '\e80d'; }
 .box:before { content: '\e80e'; }
+.palette:before { content: '\e80f'; }
+.search:before { content: '\e810'; }
 .menu:before { content: '\f0c9'; }
 .lightbulb:before { content: '\f0eb'; }
+.upload-cloud:before { content: '\f0ee'; }
 .folder-open-empty:before { content: '\f115'; }
 .file-archive:before { content: '\f1c6'; }

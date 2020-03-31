@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react'
 
 import iconStyles from 'components/Icon/styles.css';
-import IconButton from './'
+import IconButton from './';
 
 const { root, small, medium, large, ...rest } = iconStyles;
 
