@@ -1,0 +1,12 @@
+{
+  "name": "my-notes",
+  "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap --hoist",
+    "clear:all": "lerna run clear",
+    "test:all": "lerna run test"
+  },
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  }
+}
