@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.image {
+  width: 48px;
+  height: 48px;
+}
+
+.small { width: 48px; height: 48px; } 
+.medium { width: 64px; height: 64px; } 
+.large { width: 96px; height: 96px; }
+
+.logoText {
+  margin-left: 4px;
+  font-weight: 600;
+}

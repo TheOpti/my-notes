@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
 import IconButton from 'components/IconButton';
+import Logo from 'components/Logo';
 import styles from './styles.css';
 
 type NavbarPropsType = {
 }
 class Navbar extends PureComponent<NavbarPropsType, {}> {
-  
-
   render() {
     return (
       <div className={styles.root}>
@@ -15,9 +14,11 @@ class Navbar extends PureComponent<NavbarPropsType, {}> {
           onClick={() => {}}
           customClassName={styles.iconButton}
         />
-        <div className={styles.logo}>
-          Logo
-        </div>
+        <Logo 
+          customClassName={styles.logo}
+          withTitle 
+          size="small"
+        />
         <div className={styles.input}>
           Input
         </div>
@@ -44,7 +45,7 @@ class Navbar extends PureComponent<NavbarPropsType, {}> {
           customClassName={styles.iconButton}
         />
       </div>
-    )
+    );
   }
 }
 

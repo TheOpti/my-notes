@@ -23,7 +23,24 @@ module.exports = {
         }
       },
       {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        include: [
+          path.resolve(__dirname, 'src/assets/images/')
+        ],
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[hash]-[name].[ext]',
+            },
+          },
+        ],
+      },
+      {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        include: [
+          path.resolve(__dirname, 'src/assets/fonts/')
+        ],
         use: [
           {
             loader: 'file-loader',
@@ -33,7 +50,7 @@ module.exports = {
             }
           }
         ]
-      }
+      },
     ]
   },
   resolve: {
@@ -43,6 +60,7 @@ module.exports = {
       containers: path.resolve(__dirname, 'src/containers/'),
       context: path.resolve(__dirname, 'src/context/'),
       pages: path.resolve(__dirname, 'src/pages/'),
+      images: path.resolve(__dirname, 'src/assets/images/'),
     }
   },
   plugins: [
