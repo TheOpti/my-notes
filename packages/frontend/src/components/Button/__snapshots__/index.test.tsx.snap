@@ -13,9 +13,13 @@ exports[`Button should render correctly without any issues 1`] = `
     type="button"
   >
     <span
-      style={Object {}}
+      className="content"
     >
-      Label
+      <span
+        style={Object {}}
+      >
+        Label
+      </span>
     </span>
   </button>
 </Button>
