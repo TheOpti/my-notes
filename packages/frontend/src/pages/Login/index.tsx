@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import cx from 'classnames';
 
 import { AuthContext } from 'context/auth';
+import Logo from 'components/Logo';
 import Button from 'components/Button';
 import LoginForm from 'containers/LoginForm';
 import RegisterForm from 'containers/RegisterForm';
@@ -65,6 +66,10 @@ class Login extends PureComponent {
     return (
       <div className={styles.login}>
         <div className={styles.root}>
+          <Logo 
+            customClassName={styles.logo}
+            size="large"
+          />
           <div className={styles.title}>
             Is it you first visit?
           </div>

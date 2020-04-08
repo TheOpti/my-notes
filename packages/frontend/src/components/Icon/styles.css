@@ -1,0 +1,41 @@
+.root:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sizing */
+.small { font-size: 16px; } 
+.medium { font-size: 24px; } 
+.large { font-size: 32px; }
+
+/* Icons definitions */
+.th:before { content: '\e800'; }
+.user:before { content: '\e801'; }
+.ok:before { content: '\e802'; }
+.arrows-cw:before { content: '\e803'; }
+.th-list:before { content: '\e804'; }
+.tag:before { content: '\e805'; }
+.pencil:before { content: '\e806'; }
+.trash-empty:before { content: '\e807'; }
+.cancel:before { content: '\e808'; }
+.pin:before { content: '\e809'; }
+.bell:before { content: '\e80a'; }
+.cog:before { content: '\e80b'; }
+.archive-1:before { content: '\e80c'; }
+.archive-2:before { content: '\e80d'; }
+.box:before { content: '\e80e'; }
+.palette:before { content: '\e80f'; }
+.search:before { content: '\e810'; }
+.menu:before { content: '\f0c9'; }
+.lightbulb:before { content: '\f0eb'; }
+.upload-cloud:before { content: '\f0ee'; }
+.folder-open-empty:before { content: '\f115'; }
+.file-archive:before { content: '\f1c6'; }
